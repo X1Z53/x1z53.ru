@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/ciphers/atbash", "next.config.js"  ],
   "exclude": [
     "node_modules"
   ]

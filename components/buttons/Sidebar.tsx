@@ -13,9 +13,13 @@ export default function Sidebar() {
       <DrawerContent>
         <DrawerHeader><Theme /></DrawerHeader>
         <DrawerBody>
-          <Flex direction="column" justifyContent="center">
-            <Link href="/idk"><Button width="100%" variant="ghost">Somthink intresting</Button></Link>
-            <Link href="/about"><Button width="100%" variant="ghost">About</Button></Link>
+          <Flex direction="column" align="center">
+            <Link href="/ciphers" onClick={onClose}>
+              <Button variant="ghost">Ciphers</Button>
+            </Link>
+            <Link href="/about" onClick={onClose}>
+              <Button variant="ghost">About</Button>
+            </Link>
           </Flex>
         </DrawerBody>
         <DrawerFooter>Designed by X1Z53</DrawerFooter>
