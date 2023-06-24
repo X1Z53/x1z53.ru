@@ -5,6 +5,6 @@ export default function Caesar(text: string, alphabet: string): string {
   const lower = alphabet.toLowerCase()
   const upper = alphabet.toUpperCase()
   alphabet = lower + upper
-  const shiftedAlphabet = lower.split("").toReversed().join("") + upper.split("").toReversed().join("")
+  const shiftedAlphabet = lower.split("").reverse().join("") + upper.split("").reverse().join("")
   return text.split("").map(char => alphabet.includes(char) ? shiftedAlphabet[alphabet.indexOf(char)] : char).join("")
 }

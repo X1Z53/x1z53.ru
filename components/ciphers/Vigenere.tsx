@@ -21,7 +21,6 @@ export default function VigenereCipher(text: string, key: string, alphabet: stri
     if (alphabet.includes(currentChar)) {
       const keyIndex = lower.indexOf(normalizedKey[i - nonAlphabetCharsCounter])
       const textIndex = alphabet.indexOf(currentChar)
-      console.log(vigenereTable, keyIndex, currentChar)
       result += method === "Encrypt"
         ? vigenereTable[keyIndex][textIndex]
         : alphabet[vigenereTable[keyIndex].indexOf(currentChar)]
