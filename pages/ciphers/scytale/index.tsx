@@ -12,17 +12,19 @@ export default function CaesarPage() {
   const result = Scytale(text, Number(key), method)
 
   return <>
-    <Heading>Шифр Скиталы</Heading>
+    <Heading>Шифр «Скитала» (шифр Древней Спарты)</Heading>
     <Text paddingBottom="4">
-      .
+      Представляет собой цилиндр и узкую полоску пергамента, на которой писалось сообщение,
+      обматывавшуюся вокруг него по спирали. Античные греки и спартанцы, предположительно,
+      использовали этот шифр для обмена сообщениями во время военных кампаний.
     </Text>
     <SimpleGrid columns={2} spacing="4" marginBottom="4">
       <AdaptiveInputField title="Текст" type="text" value={text} callback={setText} />
-      <AdaptiveInputField title="Ключ" type="number" value={key} callback={setKey} minValue={2}/>
+      <AdaptiveInputField title="Ключ" type="number" value={key} callback={setKey} minValue={2} />
       <ToggleButtonGroup buttons={methods} callback={setMethod} />
     </SimpleGrid>
     <Flex justify="center">
-      <AdaptiveInputField styles={{width: "50%"}} title="Результат" copyButton readOnly type="text" value={result} />
+      <AdaptiveInputField styles={{ width: "50%" }} title="Результат" copyButton readOnly type="text" value={result} />
     </Flex >
   </>
 }
