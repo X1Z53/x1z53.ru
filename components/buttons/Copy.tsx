@@ -12,7 +12,6 @@ export default function Copy({ styles, value }: { styles?: StyleProps, value: st
     <Button onClick={() => {
       setCopied(1)
       navigator.clipboard.writeText(value)
-      
     }} {...styles}>
       <Icon as={BsFillClipboard2Fill} />
     </Button>

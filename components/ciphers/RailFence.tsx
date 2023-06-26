@@ -1,4 +1,7 @@
+// Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
+
 export default function RailFence(text, key, method) {
+  if (!text || !key || key < 2 || key.includes("-")) return ""
   const matrix = Array.from(Array(Number(key)).keys()).map((): string[] => [])
   let moveDown = false
   let row = 0

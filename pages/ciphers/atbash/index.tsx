@@ -2,6 +2,7 @@ import { Flex, Heading, Input, InputGroup, InputLeftAddon, InputRightAddon, Simp
 import { useState } from "react"
 import Copy from "../../../components/buttons/Copy"
 import Atbash from "../../../components/ciphers/Atbash"
+import AdaptiveInputField from "../../../components/AdaptiveInputField"
 
 export default function AtbasePage() {
   const [text, setText] = useState("Hello, World!")
@@ -16,23 +17,11 @@ export default function AtbasePage() {
     </Text>
 
     <SimpleGrid columns={2} spacing="4" marginBottom="4">
-      <InputGroup>
-        <InputLeftAddon>Текст</InputLeftAddon>
-        <Input value={text} onChange={event => setText(event.target.value)} />
-      </InputGroup>
-      <InputGroup>
-        <InputLeftAddon>Алфавит</InputLeftAddon>
-        <Input value={alphabet} onChange={event => setAlphabet(event.target.value)} />
-      </InputGroup>
+      <AdaptiveInputField type="text" title="Текст" value={text} callback={setText} />
+      <AdaptiveInputField type="text" title="Алфавит" value={alphabet} callback={setAlphabet} />
     </SimpleGrid>
     <Flex justify="center">
-      <InputGroup width="50%">
-        <InputLeftAddon>Результат</InputLeftAddon>
-        <Input readOnly value={result} />
-        <InputRightAddon padding="0" >
-          <Copy value={result} styles={{ borderTopLeftRadius: "0", borderBottomLeftRadius: "0" }} />
-        </InputRightAddon>
-      </InputGroup>
+      <AdaptiveInputField copyButton readOnly type="text" title="Результат" styles={{width: "50%"}} value={result} />
     </Flex >
   </>
 }

@@ -1,6 +1,6 @@
-import { Flex, Heading, Input, InputGroup, InputLeftAddon, InputRightAddon, SimpleGrid, Text } from "@chakra-ui/react"
+import { Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react"
 import { useState } from "react"
-import Copy from "../../../components/buttons/Copy"
+import AdaptiveInputField from "../../../components/AdaptiveInputField"
 import ToggleButtonGroup from "../../../components/buttons/ToggleButtonGroup"
 import Caesar from "../../../components/ciphers/Caesar"
 
@@ -19,30 +19,13 @@ export default function CaesarPage() {
       находящимся на некотором постоянном числе позиций левее или правее него в алфавите
     </Text>
     <SimpleGrid columns={2} spacing="4" marginBottom="4">
-      <InputGroup>
-        <InputLeftAddon>Текст</InputLeftAddon>
-        <Input value={text} onChange={event => setText(event.target.value)} />
-      </InputGroup>
-      <InputGroup>
-        <InputLeftAddon>Алфавит</InputLeftAddon>
-        <Input value={alphabet} onChange={event => setAlphabet(event.target.value)} />
-      </InputGroup>
-      <InputGroup>
-        <InputLeftAddon>Ключ</InputLeftAddon>
-        <Input value={key}
-          onChange={event => setKey(event.target.value.split("").filter(i => "1234567890".includes(i)).join(""))}
-        />
-      </InputGroup>
+      <AdaptiveInputField type="text" title="Текст" value={text} callback={setText} />
+      <AdaptiveInputField type="text" title="Алфавит" value={alphabet} callback={setAlphabet} />
+      <AdaptiveInputField type="number" title="Ключ" value={key} callback={setKey} />
       <ToggleButtonGroup buttons={methods} callback={setMethod} />
     </SimpleGrid>
     <Flex justify="center">
-      <InputGroup width="50%">
-        <InputLeftAddon>Результат</InputLeftAddon>
-        <Input readOnly value={result} />
-        <InputRightAddon padding="0">
-          <Copy value={result} styles={{ borderTopLeftRadius: "0", borderBottomLeftRadius: "0" }} />
-        </InputRightAddon>
-      </InputGroup>
+      <AdaptiveInputField styles={{ width: "50%" }} type="text" readOnly copyButton value={result} title="Результат" />
     </Flex >
   </>
 }

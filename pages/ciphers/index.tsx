@@ -3,7 +3,7 @@ import CardGrid from "../../components/CardGrid"
 export default function CiphersIndexPage() {
   return <CardGrid cards={[
     {
-      header: "Шифр Атбаш",
+      header: "Шифр «Атбаш»",
       body: "Простой шифр подстановки для алфавитного письма, не требующий ключа",
       link: "/ciphers/atbash"
     },
@@ -13,7 +13,12 @@ export default function CiphersIndexPage() {
       link: "/ciphers/vigenere"
     },
     {
-      header: "Шифр ограждения рельса (зигзагообразный шифр)",
+      header: "Шифр рельсового ограничения (зигзагообразный шифр)",
+      body: "Является классическим типом транспозиционного шифра, получил название от способа, которым выполняется шифрование",
+      link: "/ciphers/railFence"
+    },
+    {
+      header: "Шифр «Скитала»",
       body: "Является классическим типом транспозиционного шифра, получил название от способа, которым выполняется шифрование",
       link: "/ciphers/railFence"
     },
