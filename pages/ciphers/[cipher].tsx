@@ -26,7 +26,7 @@ export default function CipherPage() {
   return <>
     <Heading>{title}</Heading>
     <Text paddingBottom="4">{description}</Text>
-    <SimpleGrid columns={2} spacing="4" marginBottom="4">
+    <SimpleGrid columns={[1, 2]} spacing="4" marginBottom="4">
       {result ? <AdaptiveInputField type="text" title="Текст" value={text} callback={setText} /> : <></>}
       {requiresAlphabet ? <AdaptiveInputField type="text" title="Алфавит" value={alphabet} callback={setAlphabet} /> : <></>}
       {
@@ -43,7 +43,7 @@ export default function CipherPage() {
       {canBeDecrypted ? <ToggleButtonGroup buttons={buttons} callback={setMethod} /> : <></>}
     </SimpleGrid>
     <Flex justify="center">
-      {result ? <AdaptiveInputField styles={{ width: "50%" }} type="text" readOnly copyButton value={result} title="Результат" /> : <></>}
+      {result ? <AdaptiveInputField type="text" readOnly copyButton value={result} title="Результат" /> : <></>}
     </Flex >
   </>
 }
