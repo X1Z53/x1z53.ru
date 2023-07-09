@@ -1,14 +1,14 @@
 import { Box, Container, Flex, Image, useColorModeValue } from "@chakra-ui/react"
 import Link from "next/link"
-import Login from "./buttons/Login"
-import Sidebar from "./buttons/Sidebar"
+import { Login, Sidebar } from "components/buttons"
+
 
 export default function Header() {
   const filter = useColorModeValue("", "invert(1)")
   const background = useColorModeValue("gray.100", "gray.700")
 
   return <Box as="header" paddingY="2" backgroundColor={background}>
-    <Container maxWidth="container.lg">
+    <Container maxWidth="container.xl">
       <Flex justifyContent="space-between" alignItems="center">
         <Sidebar />
         <Link href="/">

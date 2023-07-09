@@ -1,19 +1,19 @@
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { useState } from "react"
 
-export default function ToggleButtonGroup({buttons, callback}: {buttons: string[], callback: (param: string) => void}) {
+export default function ToggleButtonGroup({ buttons, callback }: { buttons: string[], callback: (param: string) => void }) {
   const [selected, setSelected] = useState(buttons[0])
   return <ButtonGroup isAttached variant="outline">
-    {buttons.map(name =>
+    {buttons.map(buttonName =>
       <Button
-        key={name}
-        colorScheme={selected === name ? "" : "gray"}
+        key={buttonName}
+        colorScheme={selected === buttonName ? "" : "gray"}
         onClick={() => {
-          setSelected(name)
-          callback(name)
+          setSelected(buttonName)
+          callback(buttonName)
         }}
       >
-        {name}
+        {buttonName}
       </Button>
     )}
   </ButtonGroup>

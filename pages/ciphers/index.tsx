@@ -1,31 +1,8 @@
-import CardGrid from "../../components/CardGrid"
+import { Spinner } from "@chakra-ui/react"
+import { CardGrid } from "components/layout"
+import getDatabase from "modules/hooks/getDatabase"
 
 export default function CiphersIndexPage() {
-  return <CardGrid cards={[
-    {
-      header: "Шифр «Атбаш»",
-      body: "Простой шифр подстановки для алфавитного письма, не требующий ключа",
-      link: "/ciphers/atbash"
-    },
-    {
-      header: "Шифр Виженера",
-      body: "Каждый символ иходного текста кодируется шифром Цезаря с использованием разных ключей",
-      link: "/ciphers/vigenere"
-    },
-    {
-      header: "Шифр рельсового ограничения (зигзагообразный шифр)",
-      body: "Является классическим типом транспозиционного шифра, получил название от способа, которым выполняется шифрование",
-      link: "/ciphers/railFence"
-    },
-    {
-      header: "Шифр «Скитала» (шифр Древней Спарты)",
-      body: "Скитала - инструмент, используемый для осуществления перестановочного шифрования, в криптографии известный также как шифр Древней Спарты.",
-      link: "/ciphers/scytale"
-    },
-    {
-      header: "Шифр Цезаря",
-      body: "Один из самых простых и наиболее широко известных методов шифрования",
-      link: "/ciphers/caesar"
-    },
-  ]} />
+  const { ciphers } = getDatabase()
+  return ciphers ? <CardGrid cards={ciphers} /> : <Spinner />
 }

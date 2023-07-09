@@ -1,4 +1,4 @@
 
 export default function IndexPage() {
-  return "Index Page"
+  return "Index page"
 }

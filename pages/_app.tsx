@@ -1,12 +1,14 @@
 import { ChakraProvider, Container } from "@chakra-ui/react"
-import { type AppProps } from "next/app"
-import Header from "../components/Header"
+import type { AppProps } from "next/app"
+import Header from "../components/layout/Header"
+import { useEffect, useState } from "react"
+import ky from "ky"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <Header />
-      <Container paddingY="5" maxWidth="container.lg">
+      <Container paddingY="5" maxWidth="container.xl">
         <Component {...pageProps} />
       </Container>
     </ChakraProvider>

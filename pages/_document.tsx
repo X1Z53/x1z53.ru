@@ -12,7 +12,9 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="icon" type="image/png" href="https://images.x1z53.ru/x1z53.svg" />
+        </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />

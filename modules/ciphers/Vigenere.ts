@@ -1,8 +1,7 @@
 // Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
 
-export default function VigenereCipher(text: string, key: string, alphabet: string, method: string) {
-  if (!text || !key || !alphabet) return ""
-
+export default function Vigenere({ text, key, alphabet, isDecrypt }) {
+  if (!text || !key || typeof key !== "string" || !alphabet) return ""
   const lower = alphabet.toLowerCase()
   const upper = alphabet.toUpperCase()
   alphabet = lower + upper
@@ -21,9 +20,9 @@ export default function VigenereCipher(text: string, key: string, alphabet: stri
     if (alphabet.includes(currentChar)) {
       const keyIndex = lower.indexOf(normalizedKey[i - nonAlphabetCharsCounter])
       const textIndex = alphabet.indexOf(currentChar)
-      result += method === "Encrypt"
-        ? vigenereTable[keyIndex][textIndex]
-        : alphabet[vigenereTable[keyIndex].indexOf(currentChar)]
+      result += isDecrypt
+        ? alphabet[vigenereTable[keyIndex].indexOf(currentChar)]
+        : vigenereTable[keyIndex][textIndex]
     } else {
       nonAlphabetCharsCounter++
       result += currentChar

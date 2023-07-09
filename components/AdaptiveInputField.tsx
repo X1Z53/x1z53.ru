@@ -1,8 +1,8 @@
 import { Flex, Input, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, StyleProps } from "@chakra-ui/react"
-import Copy from "./buttons/Copy"
+import { Copy } from "components/buttons"
 
-export default function AdaptiveInputField({ title = "", type = "text", value, callback, styles, minValue, maxValue, readOnly = false, copyButton = false }:
-  { title: string, type: string, value: string | number, callback?: (i: any) => void, styles?: StyleProps, minValue?: number, maxValue?: number, readOnly?: boolean, copyButton?: boolean }) {
+export default function AdaptiveInputField({ title = "", type = "text", value, callback, styles, minValue, maxValue, readOnly = false, copyButton = false, includedInAlphabet = false, alphabet }:
+  { title: string, type: string, value: string | number, callback?: (i: any) => void, styles?: StyleProps, minValue?: number, maxValue?: number, readOnly?: boolean, copyButton?: boolean, includedInAlphabet?: boolean, alphabet?: string }) {
 
   return <InputGroup {...styles} flexDirection={["column", "column", "row"]}>
     <InputLeftAddon
@@ -17,7 +17,10 @@ export default function AdaptiveInputField({ title = "", type = "text", value, c
         type === "text" && <Input
           readOnly={readOnly}
           value={value}
-          onChange={event => callback(event.target.value)}
+          onChange={event => callback(
+            includedInAlphabet
+              ? event.target.value.split("").filter(i => alphabet.includes(i)).join("")
+              : event.target.value)}
           borderTopLeftRadius="0"
           borderTopRightRadius={copyButton ? 0 : [0, 0, 6]}
           borderBottomLeftRadius={[6, 6, 0]}

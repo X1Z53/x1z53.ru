@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es2017"
     ],
+    "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -22,8 +24,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/ciphers/atbash", "next.config.js"  ],
+    "**/*.tsx",
+  ],
   "exclude": [
     "node_modules"
   ]

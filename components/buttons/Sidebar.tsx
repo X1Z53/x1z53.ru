@@ -1,7 +1,7 @@
 import { HamburgerIcon } from "@chakra-ui/icons"
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, IconButton, useDisclosure } from "@chakra-ui/react"
 import Link from "next/link"
-import Theme from "./Theme"
+import { Theme } from "components/buttons"
 
 
 export default function Sidebar() {

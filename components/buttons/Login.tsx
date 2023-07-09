@@ -1,7 +1,7 @@
 import { Button, Heading, Icon, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
 import { useState } from "react"
 import { BsPersonCircle } from "react-icons/bs"
-import ToggleButtonGroup from "./ToggleButtonGroup"
+import { ToggleButtonGroup } from "components/buttons"
 
 export default function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure()
