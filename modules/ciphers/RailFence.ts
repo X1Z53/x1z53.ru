@@ -3,15 +3,21 @@
 export default function RailFence({ text, key, isDecrypt }) {
   if (!parseInt(key)) return "keyError"
   key = Number(key)
-  const matrix = Array.from({length: key}, () => [])
-  let moveDown = false
-  let row = 0
 
-  text.split("").map(letter => {
-    if ([0, key - 1].includes(row)) moveDown = !moveDown
-    matrix[row].push(letter)
-    row += moveDown ? 1 : -1
-  })
+  const rails = []
+  for (let counter = 0; counter < key; counter++) {
+    let value = counter
+    let direction = counter
+    while (value < text.length) {
+      rails.push(value)
+      value += 2 * (key - 1 - (key === direction + 1 ? 0 : direction))
+      direction = key - 1 - direction
+    }
+  }
 
-  return isDecrypt ? "Work in progress" : matrix.flat().join("")
+  const result = []
+  if (isDecrypt) for (const [textIndex, resultIndex] of rails.entries()) result[resultIndex] = text[textIndex]
+  else rails.map(index => result.push(text[index]))
+
+  return result.join("")
 }

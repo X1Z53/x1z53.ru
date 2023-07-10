@@ -3,14 +3,13 @@
 export default function Scytale({ text, key, isDecrypt }) {
   if (!parseInt(key)) return "keyError"
   key = Number(key)
-  const matrix = Array.from(Array(key), () => [])
 
-  let row = 0
-  for (let i = 0; i < text.length; i++) {
-    matrix[row].push(text[i])
-    row = (row + 1) % key
-  }
+  const result = []
+  const columns = Math.ceil(text.length / key)
 
-  return isDecrypt ? "Work in progress" : matrix.flat().join("")
+  for (let i = 0; i < (isDecrypt ? key : columns); ++i)
+    for (let j = i; j < columns * key; j += (isDecrypt ? key : columns))
+      result.push(text[j] || " ")
+
+  return result.join("")
 }
-
