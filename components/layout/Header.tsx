@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Image, useColorModeValue } from "@chakra-ui/react"
 import Link from "next/link"
-import { Login, Sidebar } from "components/buttons"
+import { LoginButton, SidebarButton } from "components/buttons"
 
 
 export default function Header() {
@@ -10,11 +10,11 @@ export default function Header() {
   return <Box as="header" paddingY="2" backgroundColor={background}>
     <Container maxWidth="container.xl">
       <Flex justifyContent="space-between" alignItems="center">
-        <Sidebar />
+        <SidebarButton />
         <Link href="/">
           <Image filter={filter} src="https://images.x1z53.ru/x1z53.svg" alt="X1Z53" boxSize="50" objectFit="cover" />
         </Link>
-        <Login />
+        <LoginButton />
       </Flex>
     </Container>
   </Box>
