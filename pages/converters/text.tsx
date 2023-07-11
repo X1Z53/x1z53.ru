@@ -43,8 +43,8 @@ export default function TextConverter() {
       <ToggleButtonGroup buttons={buttons} callback={setMethod} />
       {
         !buttons.indexOf(method) && <>
-          <CheckBox text="Дополонять до 8 цифр" isChecked={addUpToEightChars} callback={toggleAddUpToEightChars} />
-          <CheckBox text="Использовать пробелы" isChecked={addSpacesBetween} callback={toggleAddSpacesBetween} />
+          <CheckBox text="Дополонять до 8 цифр" value={addUpToEightChars} callback={toggleAddUpToEightChars} />
+          <CheckBox text="Использовать пробелы" value={addSpacesBetween} callback={toggleAddSpacesBetween} />
         </>
       }
     </SimpleGrid>
