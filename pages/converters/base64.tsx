@@ -20,9 +20,9 @@ export default function Base64Converter() {
     <Heading>{title}</Heading>
     <Text paddingBottom="4">{description}</Text>
     <SimpleGrid columns={2} spacing={4} marginBottom={4} alignItems="center">
-      <InputField title="Текст" type="text" value={text} callback={setText} />
+      <InputField type="text" title="Текст" value={text} callback={setText} />
       <ToggleButtonGroup buttons={buttons} callback={setMethod} />
     </SimpleGrid>
-    <InputField title="Результат" type="text" readOnly copyButton value={result} />
+    <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </>
 }

@@ -1,15 +1,18 @@
-import { Checkbox } from "@chakra-ui/react"
+import { Checkbox, Flex } from "@chakra-ui/react"
 import { useToggle } from "modules/hooks"
 
-export default function CheckBox({ value, text, callback }: { value: boolean, text: string, callback: () => void }) {
+export default function CheckBox({ title, value, callback }: { title: string, value: boolean, callback: () => void }) {
   const [selected, toggleSelected] = useToggle(value)
-  return <Checkbox
-    isChecked={selected}
-    onChange={() => {
-      toggleSelected()
-      callback()
-    }}
-  >
-    {text}
-  </Checkbox>
+  return <Flex>
+    <Checkbox
+      isChecked={selected}
+      colorScheme="gray"
+      onChange={() => {
+        toggleSelected()
+        callback()
+      }}
+    >
+      {title}
+    </Checkbox>
+  </Flex>
 }

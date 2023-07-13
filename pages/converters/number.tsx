@@ -20,10 +20,10 @@ export default function NumberConverter() {
     <Heading>{title}</Heading>
     <Text paddingBottom="4">{description}</Text>
     <SimpleGrid columns={[1, 3]} spacing={4} marginBottom={4} alignItems="center">
-      <InputField title="Число" type="text" value={number} callback={setNumber} />
-      <InputField title="Исходная система" type="number" minValue={2} maxValue={36} value={sourceBase.toString()} callback={setSourceBase} />
-      <InputField title="Конечная система" type="number" minValue={2} maxValue={36} value={targetBase.toString()} callback={setTargetBase} />
+      <InputField type="text" title="Число" value={number} callback={setNumber} />
+      <InputField type="number" title="Исходная система" minValue={2} maxValue={36} value={sourceBase.toString()} callback={setSourceBase} />
+      <InputField type="number" title="Конечная система" minValue={2} maxValue={36} value={targetBase.toString()} callback={setTargetBase} />
     </SimpleGrid>
-    <InputField title="Результат" type="text" readOnly copyButton value={result} />
+    <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </>
 }

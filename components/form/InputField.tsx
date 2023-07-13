@@ -2,36 +2,39 @@ import { Flex, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepp
 import { ColorPicker, Copy } from "components/buttons"
 import { useState } from "react"
 
-export default function InputField({
-  title = "",
-  type = "text",
-  value,
-  alphabet,
-  callback,
-  colorPickerButton = false,
-  copyButton = false,
-  includedInAlphabet = false,
-  maxValue,
-  minValue,
-  options,
-  readOnly = false,
-  styles,
-}:
-  {
-    title: string,
-    type: string,
-    value: string,
-    alphabet?: string,
-    callback?: (any) => void,
-    colorPickerButton?: boolean,
-    copyButton?: boolean,
-    includedInAlphabet?: boolean,
-    maxValue?: number,
-    minValue?: number,
-    options?: any[],
-    readOnly?: boolean,
-    styles?: StyleProps,
-  }) {
+type InputProps = {
+  title: string,
+  value: string,
+  callback?: (any) => void,
+  readOnly?: boolean,
+  colorPickerButton?: boolean,
+  copyButton?: boolean,
+  styles?: StyleProps,
+}
+
+type TextProps = {
+  type: "text",
+  alphabet?: string,
+  includedInAlphabet?: boolean,
+}
+
+type NumberProps = {
+  type: "number",
+  minValue?: number,
+  maxValue?: number,
+  step?: number,
+}
+
+type SelectProps = {
+  type: "select",
+  options?: string[],
+}
+
+export default function InputField(props: InputProps & (TextProps | NumberProps | SelectProps)) {
+  const { type, title, value, callback, readOnly, colorPickerButton, copyButton, styles } = props
+  const { alphabet, includedInAlphabet } = type === "text" ? props : { alphabet: "", includedInAlphabet: false }
+  const { minValue, maxValue, step } = type === "number" ? props : { minValue: Number.MIN_SAFE_INTEGER, maxValue: Number.MAX_SAFE_INTEGER, step: 1 }
+  const { options } = type === "select" ? props : { options: [] }
 
   const minHeight = "40px"
   const [height, setHeight] = useState(minHeight)
@@ -40,7 +43,7 @@ export default function InputField({
     borderTopLeftRadius: "0",
     borderTopRightRadius: copyButton || colorPickerButton ? 0 : [0, 0, 6],
     borderBottomLeftRadius: [6, 6, 0],
-    borderBottomRightRadius: copyButton || colorPickerButton ? 0 : 6 
+    borderBottomRightRadius: copyButton || colorPickerButton ? 0 : 6
   }
   const rightStyles = {
     minHeight: minHeight,
@@ -66,7 +69,7 @@ export default function InputField({
           {...middleStyles}
           minHeight={minHeight}
           height={height}
-          focusBorderColor="white"
+          focusBorderColor="gray"
           readOnly={readOnly}
           value={value}
           onMouseMove={event => {
@@ -79,11 +82,12 @@ export default function InputField({
             )
           }}
         /> : type === "number" ? <NumberInput
+          step={step}
           width="100%"
-          focusBorderColor="white"
+          focusBorderColor="gray"
           defaultValue={3}
-          min={minValue ? minValue : Number.MIN_SAFE_INTEGER}
-          max={maxValue ? maxValue : Number.MAX_SAFE_INTEGER}
+          min={minValue}
+          max={maxValue}
           value={value}
           onChange={callback}
         >

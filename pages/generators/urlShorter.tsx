@@ -14,7 +14,7 @@ export default function UrlShorter() {
   }, [text])
 
   return <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-    <InputField title="Текст" type="text" value={text} callback={setText} />
-    <InputField copyButton readOnly title="Результат" type="text" value={result} callback={setResult} />
+    <InputField type="text" title="Текст" value={text} callback={setText} />
+    <InputField type="text" title="Результат" copyButton readOnly value={result} callback={setResult} />
   </SimpleGrid>
 }

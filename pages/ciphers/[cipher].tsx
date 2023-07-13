@@ -32,8 +32,8 @@ export default function CipherPage() {
       {
         requiresKey ? <InputField
           type={letterKey ? "text" : "number"}
+          title="Ключ"
           includedInAlphabet={letterKey}
-          title={"Ключ"}
           value={key.toString()}
           alphabet={alphabet}
           minValue={2}
@@ -43,7 +43,7 @@ export default function CipherPage() {
       {canBeDecrypted ? <ToggleButtonGroup buttons={buttons} callback={setMethod} /> : <></>}
     </SimpleGrid>
     <Flex justify="center">
-      {result ? <InputField type="text" readOnly copyButton value={result} title="Результат" /> : <></>}
+      {result ? <InputField type="text" title="Результат" readOnly copyButton value={result} /> : <></>}
     </Flex >
   </>
 }

@@ -39,15 +39,15 @@ export default function TextConverter() {
     <Heading>{title}</Heading>
     <Text paddingBottom="4">{description}</Text>
     <SimpleGrid columns={[1, 2]} spacing={4} marginBottom={4} alignItems="center">
-      <InputField title="Число" type="text" value={text} callback={setText} />
+      <InputField type="text" title="Число" value={text} callback={setText} />
       <ToggleButtonGroup buttons={buttons} callback={setMethod} />
       {
         !buttons.indexOf(method) && <>
-          <CheckBox text="Дополонять до 8 цифр" value={addUpToEightChars} callback={toggleAddUpToEightChars} />
-          <CheckBox text="Использовать пробелы" value={addSpacesBetween} callback={toggleAddSpacesBetween} />
+          <CheckBox title="Дополонять до 8 цифр" value={addUpToEightChars} callback={toggleAddUpToEightChars} />
+          <CheckBox title="Использовать пробелы" value={addSpacesBetween} callback={toggleAddSpacesBetween} />
         </>
       }
     </SimpleGrid>
-    <InputField title="Результат" type="text" readOnly copyButton value={result} />
+    <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </>
 }

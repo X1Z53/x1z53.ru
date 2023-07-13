@@ -51,23 +51,23 @@ export default function passwordGenerator() {
       <InputField type="number" title="Длина" value={length.toString()} callback={setLength} />
       <Button onClick={() => setResult(generatePassword())}>Сгенерировать</Button>
     </SimpleGrid>
-    <CheckBox text="Свой алфавит" value={useCustomAlphabet} callback={toggleUseCustomAlphabet} />
+    <CheckBox title="Свой алфавит" value={useCustomAlphabet} callback={toggleUseCustomAlphabet} />
     {
       useCustomAlphabet ? <InputField
-        title="Алфавит"
         type="text"
+        title="Алфавит"
         value={alphabet}
         callback={setAlphabet}
         styles={{ marginBottom: 4 }}
       /> : <SimpleGrid columns={2} spacing={4} marginBottom={4}>
-        <CheckBox text="Прописные буквы" value={useLowerCase} callback={toggleUseLowerCase} />
-        <CheckBox text="Заглавные буквы" value={useUpperCase} callback={toggleUseUpperCase} />
-        <CheckBox text="Цифры" value={useNumbers} callback={toggleUseNumbers} />
-        <CheckBox text="Прописные буквы" value={useSpecialSymbols} callback={toggleUseSpecialSymbols} />
+        <CheckBox title="Прописные буквы" value={useLowerCase} callback={toggleUseLowerCase} />
+        <CheckBox title="Заглавные буквы" value={useUpperCase} callback={toggleUseUpperCase} />
+        <CheckBox title="Цифры" value={useNumbers} callback={toggleUseNumbers} />
+        <CheckBox title="Прописные буквы" value={useSpecialSymbols} callback={toggleUseSpecialSymbols} />
       </SimpleGrid>
     }
     <Flex>
-      <InputField title="Результат" type="text" copyButton readOnly value={result} />
+      <InputField type="text" title="Результат" copyButton readOnly value={result} />
     </Flex>
   </Heading >
 }
