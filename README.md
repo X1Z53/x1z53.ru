@@ -13,7 +13,7 @@ On site you can find:
 - Converters:
   - Base64
   - Number
-  - Bytes
+  - Binary
 - Generators
   - Password
   - QRCode
