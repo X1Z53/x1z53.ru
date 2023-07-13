@@ -1,12 +1,11 @@
 import { Box, SimpleGrid } from "@chakra-ui/react"
+import { GradientSettings } from "components/buttons"
 import { CheckBox, InputField } from "components/form"
 import { useToggle } from "modules/hooks"
 import { CornerDotType, CornerSquareType, DotType, GradientType, TypeNumber } from "qr-code-styling"
 import { useEffect, useRef, useState } from "react"
-import { GradientSettings } from "../../components/buttons/GradientSettings"
 
 export default function App() {
-  const gradientTypes = ["linear", "radial"]
   const [text, setText] = useState("Hello, World!")
   const [qrType, setQrType] = useState<TypeNumber>(0)
   const [useMargin, toggleUseMargin] = useToggle(true)

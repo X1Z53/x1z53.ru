@@ -1,6 +1,6 @@
 import { InputField } from "components/form"
 
-export function GradientSettings({ useGradient, colorOffset, secondColor, secondColorOffset, rotation, type }: {
+export default function GradientSettings({ useGradient, colorOffset, secondColor, secondColorOffset, rotation, type }: {
   useGradient: boolean
   colorOffset: [number, (any) => void]
   secondColor: [string, (any) => void]

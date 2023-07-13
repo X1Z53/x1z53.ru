@@ -1,5 +1,5 @@
-import { Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react"
-import { InputField, CheckBox, ToggleButtonGroup } from "components/form"
+import { Heading, SimpleGrid, Text } from "@chakra-ui/react"
+import { CheckBox, InputField, ToggleButtonGroup } from "components/form"
 import { getDatabase, useToggle } from "modules/hooks"
 import { useEffect, useState } from "react"
 
