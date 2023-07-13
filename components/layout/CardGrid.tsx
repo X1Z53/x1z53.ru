@@ -7,7 +7,7 @@ export default function CardGrid({ cardWidth = "300px", isExternal, cards }: { c
   return <SimpleGrid spacing="4" templateColumns={`repeat(auto-fill, minmax(${cardWidth}, 1fr))`}>
     {cards.map(({ title, description, name, url }) => (
       <Card key={name} size="sm" justify="center">
-        <Link href={url || `${asPath}/${name}`} target={isExternal && "_blank"}>
+        <Link href={url || `${asPath.length - 1 ? asPath : ""}/${name}`} target={isExternal && "_blank"}>
           <CardHeader textAlign="center" justifyContent="center">
             <Heading size="md">{title}</Heading>
           </CardHeader>

@@ -29,46 +29,46 @@ export default function App() {
     [backgroundRotation, setBackgroundRotation],
     [backgroundSecondColor, setBackgroundSecondColor],
     [backgroundSecondColorOffset, setBackgroundSecondColorOffset]
-  ] = [useToggle(false), useToggle(false), useState("#1a202c"), useState(0), useState<GradientType>("linear"), useState(0), useState("#4299e1"), useState(1)]
+  ] = [useToggle(false), useToggle(false), useState("#1a202c"), useState(0), useState<GradientType>("linear"), useState(0), useState("#1a202c"), useState(1)]
 
   const dotsTypes = ["classy", "classy-rounded", "dots", "extra-rounded", "rounded", "square"]
   const [
     [useDotsStyle, toggleUseDotsStyle],
     [useDotsGradient, toggleUseDotsGradient],
     [dotsType, setDotsType],
-    [dotsColor, setDotsColor],
-    [dotsColorOffset, setDotsColorOffset],
     [dotsGradientType, setDotsGradientType],
     [dotsRotation, setDotsRotation],
+    [dotsColor, setDotsColor],
+    [dotsColorOffset, setDotsColorOffset],
     [dotsSecondColor, setDotsSecondColor],
     [dotsSecondColorOffset, setDotsSecondColorOffset]
-  ] = [useToggle(false), useToggle(false), useState<DotType>("rounded"), useState("#ffffff"), useState(0), useState<GradientType>("linear"), useState(0), useState("#4299e1"), useState(1)]
+  ] = [useToggle(false), useToggle(false), useState<DotType>("square"), useState<GradientType>("linear"), useState(0), useState("#ffffff"), useState(0), useState("#ffffff"), useState(1)]
 
   const cornerSquareTypes = ["dot", "extra-rounded", "square"]
   const [
     [useCornerSquaresStyle, toggleUseCornerSquaresStyle],
     [useCornerSquaresGradient, toggleUseCornerSquaresGradient],
     [cornerSquaresType, setCornerSquaresType],
-    [cornerSquaresColor, setCornerSquaresColor],
-    [cornerSquaresColorOffset, setCornerSquaresColorOffset],
     [cornerSquaresGradientType, setCornerSquaresGradientType],
     [cornerSquaresRotation, setCornerSquaresRotation],
+    [cornerSquaresColor, setCornerSquaresColor],
+    [cornerSquaresColorOffset, setCornerSquaresColorOffset],
     [cornerSquaresSecondColor, setCornerSquaresSecondColor],
     [cornerSquaresSecondColorOffset, setCornerSquaresSecondColorOffset]
-  ] = [useToggle(false), useToggle(false), useState<CornerSquareType>("square"), useState(dotsColor), useState(0), useState<GradientType>("linear"), useState(0), useState("#4299e1"), useState(1)]
+  ] = [useToggle(false), useToggle(false), useState<CornerSquareType>("square"), useState<GradientType>(dotsGradientType), useState(dotsRotation), useState(dotsColor), useState(dotsColorOffset), useState(dotsSecondColor), useState(dotsSecondColorOffset)]
 
   const cornerDotTypes = ["dot", "square"]
   const [
     [useCornerDotsStyle, toggleUseCornerDotsStyle],
     [useCornerDotsGradient, toggleUseCornerDotsGradient],
     [cornerDotsType, setCornerDotsType],
-    [cornerDotsColor, setCornerDotsColor],
-    [cornerDotsColorOffset, setCornerDotsColorOffset],
     [cornerDotsGradientType, setCornerDotsGradientType],
     [cornerDotsRotation, setCornerDotsRotation],
+    [cornerDotsColor, setCornerDotsColor],
+    [cornerDotsColorOffset, setCornerDotsColorOffset],
     [cornerDotsSecondColor, setCornerDotsSecondColor],
     [cornerDotsSecondColorOffset, setCornerDotsSecondColorOffset]
-  ] = [useToggle(false), useToggle(false), useState<CornerDotType>("square"), useState(dotsColor), useState(0), useState<GradientType>("linear"), useState(0), useState("#4299e1"), useState(1)]
+  ] = [useToggle(false), useToggle(false), useState<CornerDotType>("square"), useState<GradientType>(cornerSquaresGradientType), useState(cornerSquaresRotation), useState(cornerSquaresColor), useState(cornerSquaresColorOffset), useState(cornerSquaresSecondColor), useState(cornerSquaresSecondColorOffset)]
 
   const ref = useRef(null)
 
@@ -91,10 +91,7 @@ export default function App() {
               rotation: backgroundRotation,
               colorStops: [
                 { offset: backgroundColorOffset, color: backgroundColor },
-                {
-                  offset: backgroundSecondColorOffset,
-                  color: useBackgroundGradient ? backgroundSecondColor : backgroundColor
-                }
+                { offset: backgroundSecondColorOffset, color: backgroundSecondColor }
               ]
             },
           },
@@ -105,10 +102,7 @@ export default function App() {
               rotation: dotsRotation,
               colorStops: [
                 { offset: dotsColorOffset, color: dotsColor },
-                {
-                  offset: dotsSecondColorOffset,
-                  color: useDotsGradient ? dotsSecondColor : dotsColor
-                }
+                { offset: dotsSecondColorOffset, color: dotsSecondColor }
               ]
             },
           },
@@ -119,10 +113,7 @@ export default function App() {
               rotation: cornerSquaresRotation,
               colorStops: [
                 { offset: cornerSquaresColorOffset, color: cornerSquaresColor },
-                {
-                  offset: cornerSquaresSecondColorOffset,
-                  color: useCornerSquaresGradient ? cornerSquaresSecondColor : cornerSquaresColor
-                }
+                { offset: cornerSquaresSecondColorOffset, color: cornerSquaresSecondColor }
               ]
             },
           },
@@ -133,10 +124,7 @@ export default function App() {
               rotation: cornerDotsRotation,
               colorStops: [
                 { offset: cornerDotsColorOffset, color: cornerDotsColor },
-                {
-                  offset: cornerDotsSecondColorOffset,
-                  color: useCornerDotsGradient ? cornerDotsSecondColor : cornerDotsColor
-                }
+                { offset: cornerDotsSecondColorOffset, color: cornerDotsSecondColor }
               ]
             },
           },
@@ -248,11 +236,31 @@ export default function App() {
                     readOnly
                   />
                   <GradientSettings
-                    colorOffset={[dotsColorOffset, setDotsColorOffset]}
-                    rotation={[dotsRotation, setDotsRotation]}
-                    secondColor={[dotsSecondColor, setDotsSecondColor]}
-                    secondColorOffset={[dotsSecondColorOffset, setDotsSecondColorOffset]}
-                    type={[dotsGradientType, setDotsGradientType]}
+                    colorOffset={[dotsColorOffset, value => {
+                      setDotsColorOffset(value)
+                      !useCornerSquaresStyle && setCornerSquaresColorOffset(value)
+                      !useCornerDotsStyle && setCornerSquaresColorOffset(value)
+                    }]}
+                    rotation={[dotsRotation, value => {
+                      setDotsRotation(value)
+                      !useCornerSquaresStyle && setCornerSquaresRotation(value)
+                      !useCornerDotsStyle && setCornerDotsRotation(value)
+                    }]}
+                    secondColor={[dotsSecondColor, value => {
+                      setDotsSecondColor(value)
+                      !useCornerSquaresStyle && setCornerSquaresSecondColor(value)
+                      !useCornerDotsStyle && setCornerDotsSecondColor(value)
+                    }]}
+                    secondColorOffset={[dotsSecondColorOffset, value => {
+                      setDotsSecondColorOffset(value)
+                      !useCornerSquaresStyle && setCornerSquaresSecondColorOffset(value)
+                      !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
+                    }]}
+                    type={[dotsGradientType, value => {
+                      setDotsGradientType(value)
+                      !useCornerSquaresStyle && setCornerSquaresGradientType(value)
+                      !useCornerDotsStyle && setCornerDotsGradientType(value)
+                    }]}
                     useGradient={useDotsGradient}
                   />
                 </>
@@ -285,11 +293,26 @@ export default function App() {
                     readOnly
                   />
                   <GradientSettings
-                    colorOffset={[cornerSquaresColorOffset, setCornerSquaresColorOffset]}
-                    rotation={[cornerSquaresRotation, setCornerSquaresRotation]}
-                    secondColor={[cornerSquaresSecondColor, setCornerSquaresSecondColor]}
-                    secondColorOffset={[cornerSquaresSecondColorOffset, setCornerSquaresSecondColorOffset]}
-                    type={[cornerSquaresGradientType, setCornerSquaresGradientType]}
+                    colorOffset={[cornerSquaresColorOffset, value => {
+                      setCornerSquaresColorOffset(value)
+                      !useCornerDotsStyle && setCornerDotsColorOffset(value)
+                    }]}
+                    rotation={[cornerSquaresRotation, value => {
+                      setCornerSquaresRotation(value)
+                      !useCornerDotsStyle && setCornerDotsRotation(value)
+                    }]}
+                    secondColor={[cornerSquaresSecondColor, value => {
+                      setCornerSquaresSecondColor(value)
+                      !useCornerDotsStyle && setCornerDotsSecondColor(value)
+                    }]}
+                    secondColorOffset={[cornerSquaresSecondColorOffset, value => {
+                      setCornerSquaresSecondColorOffset(value)
+                      !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
+                    }]}
+                    type={[cornerSquaresGradientType, value => {
+                      setCornerSquaresGradientType(value)
+                      !useCornerDotsStyle && setCornerDotsGradientType(value)
+                    }]}
                     useGradient={useCornerSquaresGradient}
                   />
                 </>
