@@ -2,16 +2,6 @@ import { Flex, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepp
 import { ColorPicker, Copy } from "components/buttons"
 import { useState } from "react"
 
-type InputProps = {
-  title: string,
-  value: string,
-  callback?: (any) => void,
-  readOnly?: boolean,
-  colorPickerButton?: boolean,
-  copyButton?: boolean,
-  styles?: StyleProps,
-}
-
 type TextProps = {
   type: "text",
   alphabet?: string,
@@ -30,7 +20,18 @@ type SelectProps = {
   options?: string[],
 }
 
-export default function InputField(props: InputProps & (TextProps | NumberProps | SelectProps)) {
+type InputFieldProps = {
+  title: string,
+  value: string,
+  callback?: (any) => void,
+  readOnly?: boolean,
+  colorPickerButton?: boolean,
+  copyButton?: boolean,
+  styles?: StyleProps,
+} & (TextProps | NumberProps | SelectProps)
+
+
+export default function InputField(props: InputFieldProps) {
   const { type, title, value, callback, readOnly, colorPickerButton, copyButton, styles } = props
   const { alphabet, includedInAlphabet } = type === "text" ? props : { alphabet: "", includedInAlphabet: false }
   const { minValue, maxValue, step } = type === "number" ? props : { minValue: Number.MIN_SAFE_INTEGER, maxValue: Number.MAX_SAFE_INTEGER, step: 1 }

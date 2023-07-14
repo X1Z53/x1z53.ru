@@ -1,12 +1,11 @@
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex } from "@chakra-ui/react"
+import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Spinner } from "@chakra-ui/react"
 import { ThemeToggleButton } from "components/buttons"
-import { getDatabase } from "modules/hooks"
+import { ModalProps } from "components/ui"
+import { getDatabase } from "features/hooks"
 import Link from "next/link"
 
-export default function Sidebar({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
-  const pages = getDatabase("pages").sort((a, b) =>
-    a.name < b.name ? -1 : a.name > b.name ? 1 : 0
-  )
+export default function Sidebar({ isOpen, onClose }: ModalProps) {
+  const { data: pages, isLoading } = getDatabase("pages")
 
   return <Drawer isOpen={isOpen} onClose={onClose} placement="left">
     <DrawerOverlay />
@@ -14,7 +13,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean, onClose:
       <DrawerHeader><ThemeToggleButton /></DrawerHeader>
       <DrawerBody>
         <Flex direction="column" align="center">
-          {pages.map(({ name, title }) =>
+          {isLoading ? <Spinner /> : pages.map(({ name, title }) =>
             <Link key={name} href={"/" + name} onClick={onClose}>
               <Button variant="ghost">{title}</Button>
             </Link>

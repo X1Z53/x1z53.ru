@@ -2,7 +2,13 @@ import { Button, Icon, Popover, PopoverArrow, PopoverBody, PopoverContent, Popov
 import { SketchPicker } from "react-color"
 import { MdOutlineColorize } from "react-icons/md"
 
-export default function ColorPicker({ styles, value, callback }: { styles?: StyleProps, value: string, callback: (any) => void }) {
+type ColorPickerButtonProps = {
+  styles?: StyleProps,
+  value: string,
+  callback: (any) => void
+}
+
+export default function ColorPickerButton({ styles, value, callback }: ColorPickerButtonProps) {
   return <Popover>
     <PopoverTrigger>
       <Button {...styles}>

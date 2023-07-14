@@ -1,39 +1,27 @@
-import { Heading, SimpleGrid, Text } from "@chakra-ui/react"
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { CheckBox, InputField, ToggleButtonGroup } from "components/form"
-import { getDatabase, useToggle } from "modules/hooks"
+import { getDatabase, useToggle } from "features/hooks"
 import { useEffect, useState } from "react"
 
-export default function TextConverter() {
-  const convertersParams = getDatabase("converters") || { title: "", description: "" }
-  const { title, description } = convertersParams
+export default function Binary() {
+  const { data, isLoading } = getDatabase("converters")
   const buttons = ["Текст в Биты", "Биты в Текст"]
   const [method, setMethod] = useState(buttons[0])
   const [addUpToEightChars, toggleAddUpToEightChars] = useToggle(true)
   const [addSpacesBetween, toggleAddSpacesBetween] = useToggle(true)
   const [text, setText] = useState("Hello, World!")
   const [result, setResult] = useState("")
-  function textToBinary(text) {
-    const result = []
-    for (const char of text) {
-      const charCode = char.charCodeAt(0)
-      const binaryCode = charCode.toString(2)
-      const normalizedBinaryCode = addUpToEightChars ? binaryCode.padStart(8, "0") : binaryCode
-      result.push(normalizedBinaryCode)
-    }
-    return addSpacesBetween ? result.join(" ") : result.join("")
-  }
-
-  function binaryToText(text) {
-    const result = []
-    for (const char of text.split(" ")) {
-      result.push(String.fromCharCode(parseInt(char, 2)))
-    }
-    return result.join("")
-  }
 
   useEffect(() => {
-    setResult(buttons.indexOf(method) ? binaryToText(text) : textToBinary(text))
+    setResult(
+      buttons.indexOf(method)
+        ? text.split(" ").map(char => String.fromCharCode(parseInt(char, 2))).join("")
+        : text.split("").map(char => char.charCodeAt(0).toString(2).padStart(8 * Number(addUpToEightChars), "0")).join(addSpacesBetween ? " " : "")
+    )
   }, [text, method, addSpacesBetween, addUpToEightChars])
+
+  if (isLoading) return <Spinner />
+  const { title, description } = data.find(({ name }) => name === "binary")
 
   return <>
     <Heading>{title}</Heading>

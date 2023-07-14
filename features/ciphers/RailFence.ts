@@ -1,7 +1,10 @@
 // Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
 
-export default function RailFence({ text, key, isDecrypt }) {
-  if (!parseInt(key)) return "keyError"
+export default function RailFence({ text, key, isDecrypt, setKey }) {
+  if (!parseInt(key)) {
+    setKey("3")
+    key = 3
+  }
   key = Number(key)
 
   const rails = []

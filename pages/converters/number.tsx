@@ -1,20 +1,21 @@
-import { Heading, SimpleGrid, Text } from "@chakra-ui/react"
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { InputField } from "components/form"
-import { getDatabase } from "modules/hooks"
+import { getDatabase } from "features/hooks"
 import { useEffect, useState } from "react"
 
-export default function NumberConverter() {
-  const convertersParams = getDatabase("converters") || { title: "", description: "" }
-  const { title, description } = convertersParams
+export default function Number() {
   const [number, setNumber] = useState("123456")
   const [sourceBase, setSourceBase] = useState(10)
   const [targetBase, setTargetBase] = useState(2)
   const [result, setResult] = useState("")
 
   useEffect(() => {
-    if (targetBase) setResult(parseInt(number, sourceBase).toString(targetBase))
-    else setResult("")
+    setResult(parseInt(number, sourceBase).toString(targetBase))
   }, [number, sourceBase, targetBase])
+
+  const { data, isLoading } = getDatabase("converters")
+  if (isLoading) return <Spinner />
+  const { title, description } = data.find(({ name }) => name === "number")
 
   return <>
     <Heading>{title}</Heading>

@@ -1,11 +1,9 @@
-import { Heading, SimpleGrid, Text } from "@chakra-ui/react"
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { InputField, ToggleButtonGroup } from "components/form"
-import { getDatabase } from "modules/hooks"
+import { getDatabase } from "features/hooks"
 import { useEffect, useState } from "react"
 
-export default function Base64Converter() {
-  const convertersParams = getDatabase("converters") || { title: "", description: "" }
-  const { title, description } = convertersParams
+export default function Base64() {
   const buttons = ["Текст в Base64", "Base64 в Текст"]
   const [method, setMethod] = useState(buttons[0])
   const [text, setText] = useState("Hello, World!")
@@ -15,6 +13,10 @@ export default function Base64Converter() {
     try { setResult(buttons.indexOf(method) ? atob(text) : btoa(text)) }
     catch { setResult("") }
   }, [text, method])
+
+  const { data, isLoading } = getDatabase("converters")
+  if (isLoading) return <Spinner />
+  const { title, description } = data.find(({ name }) => name === "base64")
 
   return <>
     <Heading>{title}</Heading>

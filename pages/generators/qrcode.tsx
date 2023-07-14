@@ -1,11 +1,11 @@
-import { Box, SimpleGrid } from "@chakra-ui/react"
-import { GradientSettings } from "components/buttons"
+import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
+import { GradientSettings } from "components/ui"
 import { CheckBox, InputField } from "components/form"
-import { useToggle } from "modules/hooks"
+import { getDatabase, useToggle } from "features/hooks"
 import { CornerDotType, CornerSquareType, DotType, GradientType, TypeNumber } from "qr-code-styling"
 import { useEffect, useRef, useState } from "react"
 
-export default function App() {
+export default function QRCode() {
   const [text, setText] = useState("Hello, World!")
   const [qrType, setQrType] = useState<TypeNumber>(0)
   const [useMargin, toggleUseMargin] = useToggle(true)
@@ -142,8 +142,14 @@ export default function App() {
     cornerDotsType, useCornerDotsGradient, cornerDotsColor, cornerDotsColorOffset, cornerDotsGradientType, cornerDotsRotation, cornerDotsSecondColor, cornerDotsSecondColorOffset,
   ])
 
+  const { data, isLoading } = getDatabase("generators")
+  if (isLoading) return <Spinner />
+  const { title, description } = data.find(({ name }) => name === "qrcode")
+
   return (
     <>
+      <Heading>{title}</Heading>
+      <Text paddingBottom="4">{description}</Text>
       <SimpleGrid columns={[1, 1, 2]} spacing={4} marginBottom={4}>
         <InputField type="text" title="Текст" value={text} callback={setText} />
         <InputField type="number" title="Тип QR-кода" minValue={0} maxValue={40} value={qrType.toString()} callback={setQrType} />

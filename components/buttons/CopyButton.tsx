@@ -2,7 +2,12 @@ import { Button, Icon, StyleProps, Tooltip } from "@chakra-ui/react"
 import { useState } from "react"
 import { BsFillClipboard2Fill } from "react-icons/bs"
 
-export default function Copy({ styles, value }: { styles?: StyleProps, value: string }) {
+type CopyButtonProps = {
+  styles?: StyleProps,
+  value: string
+}
+
+export default function CopyButton({ styles, value }: CopyButtonProps) {
   const [copied, setCopied] = useState(0)
   return <Tooltip
     closeOnClick={false} hasArrow backgroundColor="gray.700" color="white"

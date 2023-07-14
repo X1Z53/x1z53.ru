@@ -1,7 +1,8 @@
+import { Spinner } from "@chakra-ui/react"
 import { CardGrid } from "components/layout"
-import getDatabase from "modules/hooks/getDatabase"
+import { getDatabase } from "features/hooks"
 
-export default function CiphersIndexPage() {
-  const converters = getDatabase("converters")
-  return <CardGrid cards={converters} />
+export default function Converters() {
+  const { data, isLoading } = getDatabase("converters")
+  return isLoading ? <Spinner /> : <CardGrid cards={data} />
 }
