@@ -2,4 +2,4 @@ export { default as getDatabase } from "./getDatabase"
 export { default as getUrl } from "./getUrl"
 export { default as sortObjectArray } from "./sortObjectArray"
 export { default as useToggle } from "./useToggle"
-
+export { default as naturalSort } from "./naturalSort"

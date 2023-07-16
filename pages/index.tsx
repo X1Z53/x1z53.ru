@@ -4,7 +4,7 @@ import { getDatabase } from "features/hooks"
 
 export default function Index() {
   const { data, isLoading } = getDatabase("pages")
-  const databases = ["ciphers", "converters", "generators"]
+  const databases = ["ciphers", "converters", "generators", "textTools"]
   // const databases = data?.map(({ name }) => name)
   const titles = databases
     .map(name => ({

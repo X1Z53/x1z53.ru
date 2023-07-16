@@ -3,31 +3,32 @@ import { ColorPicker, Copy } from "components/buttons"
 import { useState } from "react"
 
 type TextProps = {
-  type: "text",
-  alphabet?: string,
-  includedInAlphabet?: boolean,
+  type: "text"
+  alphabet?: string
+  includedInAlphabet?: boolean
 }
 
 type NumberProps = {
-  type: "number",
-  minValue?: number,
-  maxValue?: number,
-  step?: number,
+  type: "number"
+  minValue?: number
+  maxValue?: number
+  step?: number
 }
 
 type SelectProps = {
-  type: "select",
-  options?: string[],
+  type: "select"
+  options?: string[]
 }
 
 type InputFieldProps = {
-  title: string,
-  value: string,
-  callback?: (any) => void,
-  readOnly?: boolean,
-  colorPickerButton?: boolean,
-  copyButton?: boolean,
-  styles?: StyleProps,
+  title: string
+  value: string
+  callback?: (any) => void
+  readOnly?: boolean
+  colorPickerButton?: boolean
+  copyButton?: boolean
+  styles?: StyleProps
+  minHeight?: string
 } & (TextProps | NumberProps | SelectProps)
 
 
@@ -37,7 +38,7 @@ export default function InputField(props: InputFieldProps) {
   const { minValue, maxValue, step } = type === "number" ? props : { minValue: Number.MIN_SAFE_INTEGER, maxValue: Number.MAX_SAFE_INTEGER, step: 1 }
   const { options } = type === "select" ? props : { options: [] }
 
-  const minHeight = "40px"
+  const minHeight = props.minHeight || "40px"
   const [height, setHeight] = useState(minHeight)
 
   const middleStyles = {
@@ -103,7 +104,9 @@ export default function InputField(props: InputFieldProps) {
           onChange={event => { callback(event.target.value) }}
         >
           {options.map(
-            option => <option key={option} value={option}>{option}</option>
+            option => <option key={option} value={option}>{
+              option === "\n" ? "Перенос строки"
+                : option === " " ? "Пробел" : option}</option>
           )}
         </Select> : <></>
       }
