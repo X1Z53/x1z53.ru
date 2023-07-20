@@ -1,6 +1,6 @@
 // Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
 
-export default function Vigenere({ text, key, alphabet, isDecrypt }) {
+export default function Vigenere({text, key, alphabet, isDecrypt}) {
   if (!text || !key || typeof key !== "string" || !alphabet) return ""
   const lower = alphabet.toLowerCase()
   const upper = alphabet.toUpperCase()

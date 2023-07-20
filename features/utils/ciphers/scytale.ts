@@ -1,10 +1,6 @@
 // Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
 
-export default function Scytale({ text, key, isDecrypt, setKey }) {
-  if (!parseInt(key)) {
-    setKey("3")
-    key = 3
-  }
+export default function Scytale({text, key, isDecrypt}) {
   key = Number(key)
 
   const result = []

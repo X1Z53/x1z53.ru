@@ -1,0 +1,18 @@
+[
+    {
+        "name": "converters",
+        "title": "Конвертеры"
+    },
+    {
+        "name": "generators",
+        "title": "Генераторы"
+    },
+    {
+        "name": "ciphers",
+        "title": "Шифры"
+    },
+    {
+        "name": "textTools",
+        "title": "Текстовые инструменты"
+    }
+]

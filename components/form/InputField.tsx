@@ -17,7 +17,7 @@ type NumberProps = {
 
 type SelectProps = {
   type: "select"
-  options?: string[]
+  options?: string[] | object[]
 }
 
 type InputFieldProps = {
@@ -103,10 +103,12 @@ export default function InputField(props: InputFieldProps) {
           value={value}
           onChange={event => { callback(event.target.value) }}
         >
-          {options.map(
-            option => <option key={option} value={option}>{
-              option === "\n" ? "Перенос строки"
-                : option === " " ? "Пробел" : option}</option>
+          {typeof options[0] !== "object" ? options.map(
+            option => <option key={option} value={option}>{option}</option>
+          ) : options.map(
+            option => <option key={option.name} value={option.name}>
+              {option.title}
+            </option>
           )}
         </Select> : <></>
       }

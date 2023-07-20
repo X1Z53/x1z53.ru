@@ -1,12 +1,12 @@
-import { HamburgerIcon } from "@chakra-ui/icons"
-import { IconButton, useDisclosure } from "@chakra-ui/react"
+import { Button, Icon, useDisclosure } from "@chakra-ui/react"
 import { Sidebar } from "components/ui"
+import { BsList } from "react-icons/bs"
 
 export default function SidebarButton() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return <>
-    <IconButton icon={<HamburgerIcon boxSize={6} />} onClick={onOpen} aria-label="Sidebar"/>
+    <Button variant="ghost" onClick={onOpen}><Icon boxSize={6} as={BsList} /></Button>
     <Sidebar onClose={onClose} isOpen={isOpen} />
   </>
 }

@@ -1,16 +1,15 @@
-import { Spinner } from "@chakra-ui/react"
 import { CardGrid } from "components/layout"
-import { getDatabase } from "features/hooks"
+import * as allDatabases from "databases"
+
 
 export default function Index() {
-  const { data, isLoading } = getDatabase("pages")
-  const databases = ["ciphers", "converters", "generators", "textTools"]
-  // const databases = data?.map(({ name }) => name)
-  const titles = databases
-    .map(name => ({
-      [name]: getDatabase(name).data?.map(({ title }) => title).join(", ")
-    }))
-    .reduce((result, current) => ({ ...result, ...current }))
-  const pages = data?.map(page => ({ ...page, description: titles[page.name] }))
-  return isLoading ? <Spinner /> : <CardGrid cards={pages} />
+  const { pages, ...databases } = allDatabases
+  
+  const descriptions = Object.keys(databases).map(databaseName => (
+    { [databaseName]: databases[databaseName].map(({ title }) => title).join(", ") }
+  )).reduce((accumulator, current) => ({...accumulator, ...current}))
+
+  const cards = pages.map((page) => ({...page, description: descriptions[page.name]}))
+  
+  return <CardGrid cards={cards} />
 }

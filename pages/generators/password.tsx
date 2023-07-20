@@ -1,6 +1,9 @@
-import { Button, Flex, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import { CheckBox, InputField } from "components/form"
-import { getDatabase, useToggle } from "features/hooks"
+import { PageCreator, StandardGrid } from "components/layout"
+import { generators } from "databases"
+import { useToggle } from "features/hooks"
+import { getDatabaseObject } from "features/utils"
 import { useEffect, useState } from "react"
 
 export default function Password() {
@@ -44,18 +47,14 @@ export default function Password() {
     alphabet
   ])
 
-  const { data, isLoading } = getDatabase("generators")
-  if (isLoading) return <Spinner />
-  const { title, description } = data.find(({ name }) => name === "password")
+  const generator = getDatabaseObject(generators, "password")
 
-  return <>
-    <Heading>{title}</Heading>
-    <Text paddingBottom="4">{description}</Text>
-    <SimpleGrid columns={[1, 1, 2]} spacing={4} marginBottom={4} alignItems="center">
+  return <PageCreator {...generator}>
+    <StandardGrid>
       <InputField type="number" title="Длина" value={length.toString()} callback={setLength} />
       <Button onClick={() => setResult(generatePassword())}>Сгенерировать</Button>
       <CheckBox title="Свой алфавит" value={useCustomAlphabet} callback={toggleUseCustomAlphabet} />
-    </SimpleGrid>
+    </StandardGrid>
     {
       useCustomAlphabet ? <InputField
         type="text"
@@ -63,15 +62,13 @@ export default function Password() {
         value={alphabet}
         callback={setAlphabet}
         styles={{ marginBottom: 4 }}
-      /> : <SimpleGrid columns={[1, 1, 2]} spacing={4} marginBottom={4}>
+      /> : <StandardGrid>
         <CheckBox title="Прописные буквы" value={useLowerCase} callback={toggleUseLowerCase} />
         <CheckBox title="Заглавные буквы" value={useUpperCase} callback={toggleUseUpperCase} />
         <CheckBox title="Цифры" value={useNumbers} callback={toggleUseNumbers} />
         <CheckBox title="Прописные буквы" value={useSpecialSymbols} callback={toggleUseSpecialSymbols} />
-      </SimpleGrid>
+      </StandardGrid>
     }
-    <Flex>
-      <InputField type="text" title="Результат" copyButton readOnly value={result} />
-    </Flex>
-  </>
+    <InputField type="text" title="Результат" copyButton readOnly value={result} />
+  </PageCreator>
 }

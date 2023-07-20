@@ -1,10 +1,11 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { InputField } from "components/form"
-import { getDatabase } from "features/hooks"
+import { PageCreator, StandardGrid } from "components/layout"
+import { generators } from "databases"
+import { getDatabaseObject } from "features/utils"
 import ky from "ky"
 import { useEffect, useState } from "react"
 
-export default function UrlShorter() {
+export default function shortUrl() {
   const [text, setText] = useState("x1z53.ru")
   const [result, setResult] = useState("")
 
@@ -14,16 +15,12 @@ export default function UrlShorter() {
       .catch(error => { console.error(error) })
   }, [text])
 
-  const { data, isLoading } = getDatabase("generators")
-  if (isLoading) return <Spinner />
-  const { title, description } = data.find(({ name }) => name === "urlShorter")
+  const generator = getDatabaseObject(generators, "shortUrl")
 
-  return <>
-    <Heading>{title}</Heading>
-    <Text paddingBottom={4}>{description}</Text>
-    <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+  return <PageCreator {...generator}>
+    <StandardGrid>
       <InputField type="text" title="Текст" value={text} callback={setText} />
       <InputField type="text" title="Результат" copyButton readOnly value={result} callback={setResult} />
-    </SimpleGrid>
-  </>
+    </StandardGrid>
+  </PageCreator>
 }

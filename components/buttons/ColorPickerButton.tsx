@@ -1,6 +1,6 @@
 import { Button, Icon, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Portal, StyleProps } from "@chakra-ui/react"
 import { SketchPicker } from "react-color"
-import { MdOutlineColorize } from "react-icons/md"
+import { BsEyedropper } from "react-icons/bs"
 
 type ColorPickerButtonProps = {
   styles?: StyleProps,
@@ -12,7 +12,7 @@ export default function ColorPickerButton({ styles, value, callback }: ColorPick
   return <Popover>
     <PopoverTrigger>
       <Button {...styles}>
-        <Icon boxSize={6} as={MdOutlineColorize} />
+        <Icon boxSize={6} as={BsEyedropper} />
       </Button>
     </PopoverTrigger>
     <Portal>

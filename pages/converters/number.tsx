@@ -1,6 +1,7 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { InputField } from "components/form"
-import { getDatabase } from "features/hooks"
+import { PageCreator, StandardGrid } from "components/layout"
+import { converters } from "databases"
+import { getDatabaseObject } from "features/utils"
 import { useEffect, useState } from "react"
 
 export default function Number() {
@@ -13,18 +14,14 @@ export default function Number() {
     setResult(parseInt(number, sourceBase).toString(targetBase))
   }, [number, sourceBase, targetBase])
 
-  const { data, isLoading } = getDatabase("converters")
-  if (isLoading) return <Spinner />
-  const { title, description } = data.find(({ name }) => name === "number")
+  const converter = getDatabaseObject(converters, "number")
 
-  return <>
-    <Heading>{title}</Heading>
-    <Text paddingBottom="4">{description}</Text>
-    <SimpleGrid columns={[1, 3]} spacing={4} marginBottom={4} alignItems="center">
+  return <PageCreator {...converter}>
+    <StandardGrid>
       <InputField type="text" title="Число" value={number} callback={setNumber} />
       <InputField type="number" title="Исходная система" minValue={2} maxValue={36} value={sourceBase.toString()} callback={setSourceBase} />
       <InputField type="number" title="Конечная система" minValue={2} maxValue={36} value={targetBase.toString()} callback={setTargetBase} />
-    </SimpleGrid>
+    </StandardGrid>
     <InputField type="text" title="Результат" readOnly copyButton value={result} />
-  </>
+  </PageCreator>
 }

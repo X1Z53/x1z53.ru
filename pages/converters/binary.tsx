@@ -1,10 +1,11 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
 import { CheckBox, InputField, ToggleButtonGroup } from "components/form"
-import { getDatabase, useToggle } from "features/hooks"
+import { PageCreator, StandardGrid } from "components/layout"
+import { converters } from "databases"
+import { useToggle } from "features/hooks"
+import { getDatabaseObject } from "features/utils"
 import { useEffect, useState } from "react"
 
 export default function Binary() {
-  const { data, isLoading } = getDatabase("converters")
   const buttons = ["Текст в Биты", "Биты в Текст"]
   const [method, setMethod] = useState(buttons[0])
   const [addUpToEightChars, toggleAddUpToEightChars] = useToggle(true)
@@ -20,13 +21,10 @@ export default function Binary() {
     )
   }, [text, method, addSpacesBetween, addUpToEightChars])
 
-  if (isLoading) return <Spinner />
-  const { title, description } = data.find(({ name }) => name === "binary")
+  const converter = getDatabaseObject(converters, "binary")
 
-  return <>
-    <Heading>{title}</Heading>
-    <Text paddingBottom="4">{description}</Text>
-    <SimpleGrid columns={[1, 2]} spacing={4} marginBottom={4} alignItems="center">
+  return <PageCreator {...converter}>
+    <StandardGrid>
       <InputField type="text" title="Число" value={text} callback={setText} />
       <ToggleButtonGroup buttons={buttons} callback={setMethod} />
       {
@@ -35,7 +33,7 @@ export default function Binary() {
           <CheckBox title="Использовать пробелы" value={addSpacesBetween} callback={toggleAddSpacesBetween} />
         </>
       }
-    </SimpleGrid>
+    </StandardGrid>
     <InputField type="text" title="Результат" readOnly copyButton value={result} />
-  </>
+  </PageCreator>
 }

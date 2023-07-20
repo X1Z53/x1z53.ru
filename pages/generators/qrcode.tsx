@@ -1,7 +1,10 @@
-import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
-import { GradientSettings } from "components/ui"
+import { Box, SimpleGrid } from "@chakra-ui/react"
 import { CheckBox, InputField } from "components/form"
-import { getDatabase, useToggle } from "features/hooks"
+import { PageCreator, StandardGrid } from "components/layout"
+import { GradientSettings } from "components/ui"
+import { generators } from "databases"
+import { useToggle } from "features/hooks"
+import { getDatabaseObject } from "features/utils"
 import { CornerDotType, CornerSquareType, DotType, GradientType, TypeNumber } from "qr-code-styling"
 import { useEffect, useRef, useState } from "react"
 
@@ -142,223 +145,217 @@ export default function QRCode() {
     cornerDotsType, useCornerDotsGradient, cornerDotsColor, cornerDotsColorOffset, cornerDotsGradientType, cornerDotsRotation, cornerDotsSecondColor, cornerDotsSecondColorOffset,
   ])
 
-  const { data, isLoading } = getDatabase("generators")
-  if (isLoading) return <Spinner />
-  const { title, description } = data.find(({ name }) => name === "qrcode")
+  const generator = getDatabaseObject(generators, "qrcode")
 
-  return (
-    <>
-      <Heading>{title}</Heading>
-      <Text paddingBottom="4">{description}</Text>
-      <SimpleGrid columns={[1, 1, 2]} spacing={4} marginBottom={4}>
-        <InputField type="text" title="Текст" value={text} callback={setText} />
-        <InputField type="number" title="Тип QR-кода" minValue={0} maxValue={40} value={qrType.toString()} callback={setQrType} />
-        <CheckBox title="Отсуп по краям" value={useMargin} callback={toggleUseMargin} />
-        <CheckBox title="Дополнительные настройки" value={useCustomStyles} callback={toggleUseCustomStyles} />
-        {
-          useCustomStyles && <>
-            <CheckBox title="Встроить изображение" value={useImage} callback={toggleUseImage} />
-            <SimpleGrid spacing={4}>
-              {
-                useImage && <>
-                  <Box />
-                  <InputField
-                    type="text"
-                    title="Ссылка на изображение"
-                    value={imageUrl}
-                    callback={setImageUrl}
-                  />
-                  <CheckBox
-                    title="Скрыть точки за изображением"
-                    value={hideBackgroundDots}
-                    callback={toggleHideBackgroundDots}
-                  />
-                  <InputField
-                    type="number"
-                    title="Размер изображения"
-                    value={imageSize.toString()}
-                    callback={setImageSize}
-                    step={0.1}
-                  />
-                  <InputField
-                    type="number"
-                    title="Отступ изображения"
-                    value={imageMargin.toString()}
-                    callback={setImageMargin}
-                  />
-                </>
-              }
-            </SimpleGrid>
-            <CheckBox title="Настройка фона" value={useBackground} callback={toggleUseBackground} />
-            <SimpleGrid spacing={4}>
-              {
-                useBackground && <>
-                  <CheckBox title="Использовать градиент" callback={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
-                  <InputField
-                    type="text"
-                    title="Цвет фона"
-                    value={backgroundColor}
-                    callback={color => { setBackgroundColor(color.hex) }}
-                    colorPickerButton
-                    readOnly
-                  />
-                  <GradientSettings
-                    colorOffset={[backgroundColorOffset, setBackgroundColorOffset]}
-                    rotation={[backgroundRotation, setBackgroundRotation]}
-                    secondColor={[backgroundSecondColor, setBackgroundSecondColor]}
-                    secondColorOffset={[backgroundSecondColorOffset, setBackgroundSecondColorOffset]}
-                    type={[backgroundGradientType, setBackgroundGradientType]}
-                    useGradient={useBackgroundGradient}
-                  />
-                </>
-              }
-            </SimpleGrid>
-            <CheckBox title="Настройка стиля точек" value={useDotsStyle} callback={toggleUseDotsStyle} />
-            <SimpleGrid spacing={4}>
-              {
-                useDotsStyle && <>
-                  <InputField
-                    type="select"
-                    title="Тип точек"
-                    value={dotsType}
-                    callback={type => {
-                      setDotsType(type as DotType)
-                      !useCornerSquaresStyle && setCornerSquaresType(type as CornerSquareType)
-                      !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
-                    }}
-                    options={dotsTypes}
-                  />
-                  <CheckBox title="Использовать градиент" callback={toggleUseDotsGradient} value={useDotsGradient} />
-                  <InputField
-                    type="text"
-                    title="Цвет точек"
-                    value={dotsColor}
-                    callback={color => {
-                      setDotsColor(color.hex)
-                      !useCornerSquaresStyle && setCornerSquaresColor(color.hex)
-                      !useCornerDotsStyle && setCornerDotsColor(color.hex)
-                    }}
-                    colorPickerButton
-                    readOnly
-                  />
-                  <GradientSettings
-                    colorOffset={[dotsColorOffset, value => {
-                      setDotsColorOffset(value)
-                      !useCornerSquaresStyle && setCornerSquaresColorOffset(value)
-                      !useCornerDotsStyle && setCornerSquaresColorOffset(value)
-                    }]}
-                    rotation={[dotsRotation, value => {
-                      setDotsRotation(value)
-                      !useCornerSquaresStyle && setCornerSquaresRotation(value)
-                      !useCornerDotsStyle && setCornerDotsRotation(value)
-                    }]}
-                    secondColor={[dotsSecondColor, value => {
-                      setDotsSecondColor(value)
-                      !useCornerSquaresStyle && setCornerSquaresSecondColor(value)
-                      !useCornerDotsStyle && setCornerDotsSecondColor(value)
-                    }]}
-                    secondColorOffset={[dotsSecondColorOffset, value => {
-                      setDotsSecondColorOffset(value)
-                      !useCornerSquaresStyle && setCornerSquaresSecondColorOffset(value)
-                      !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
-                    }]}
-                    type={[dotsGradientType, value => {
-                      setDotsGradientType(value)
-                      !useCornerSquaresStyle && setCornerSquaresGradientType(value)
-                      !useCornerDotsStyle && setCornerDotsGradientType(value)
-                    }]}
-                    useGradient={useDotsGradient}
-                  />
-                </>
-              }
-            </SimpleGrid>
-            <CheckBox title="Настройка угловых квадратов" value={useCornerSquaresStyle} callback={toggleUseCornerSquaresStyle} />
-            <SimpleGrid spacing={4}>
-              {
-                useCornerSquaresStyle && <>
-                  <InputField
-                    type="select"
-                    title="Тип угловых квадратов"
-                    value={cornerSquaresType}
-                    callback={type => {
-                      setCornerSquaresType(type as CornerSquareType)
-                      !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
-                    }}
-                    options={cornerSquareTypes}
-                  />
-                  <CheckBox title="Использовать градиент" callback={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
-                  <InputField
-                    type="text"
-                    title="Цвет угловых квадратов"
-                    value={cornerSquaresColor}
-                    callback={color => {
-                      setCornerSquaresColor(color.hex)
-                      !useCornerDotsStyle && setCornerDotsColor(color.hex)
-                    }}
-                    colorPickerButton
-                    readOnly
-                  />
-                  <GradientSettings
-                    colorOffset={[cornerSquaresColorOffset, value => {
-                      setCornerSquaresColorOffset(value)
-                      !useCornerDotsStyle && setCornerDotsColorOffset(value)
-                    }]}
-                    rotation={[cornerSquaresRotation, value => {
-                      setCornerSquaresRotation(value)
-                      !useCornerDotsStyle && setCornerDotsRotation(value)
-                    }]}
-                    secondColor={[cornerSquaresSecondColor, value => {
-                      setCornerSquaresSecondColor(value)
-                      !useCornerDotsStyle && setCornerDotsSecondColor(value)
-                    }]}
-                    secondColorOffset={[cornerSquaresSecondColorOffset, value => {
-                      setCornerSquaresSecondColorOffset(value)
-                      !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
-                    }]}
-                    type={[cornerSquaresGradientType, value => {
-                      setCornerSquaresGradientType(value)
-                      !useCornerDotsStyle && setCornerDotsGradientType(value)
-                    }]}
-                    useGradient={useCornerSquaresGradient}
-                  />
-                </>
-              }
-            </SimpleGrid>
-            <CheckBox title="Настройка стиля угловых точек" value={useCornerDotsStyle} callback={toggleUseCornerDotsStyle} />
-            <SimpleGrid spacing={4}>
-              {
-                useCornerDotsStyle && <>
-                  <InputField
-                    type="select"
-                    title="Тип угловых точек"
-                    value={cornerDotsType}
-                    callback={type => { setCornerDotsType(type as CornerDotType) }}
-                    options={cornerDotTypes}
-                  />
-                  <CheckBox title="Использовать градиент" callback={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
-                  <InputField
-                    type="text"
-                    title="Цвет угловых точек"
-                    value={cornerDotsColor}
-                    callback={color => { setCornerDotsColor(color.hex) }}
-                    colorPickerButton
-                    readOnly
-                  />
-                  <GradientSettings
-                    colorOffset={[cornerDotsColorOffset, setCornerDotsColorOffset]}
-                    rotation={[cornerDotsRotation, setCornerDotsRotation]}
-                    secondColor={[cornerDotsSecondColor, setCornerDotsSecondColor]}
-                    secondColorOffset={[cornerDotsSecondColorOffset, setCornerDotsSecondColorOffset]}
-                    type={[cornerDotsGradientType, setCornerDotsGradientType]}
-                    useGradient={useCornerDotsGradient}
-                  />
-                </>
-              }
-            </SimpleGrid>
-          </>
-        }
-      </SimpleGrid>
-      <Box ref={ref} />
-    </>
-  )
+  return <PageCreator {...generator}>
+    <StandardGrid>
+      <InputField type="text" title="Текст" value={text} callback={setText} />
+      <InputField type="number" title="Тип QR-кода" minValue={0} maxValue={40} value={qrType.toString()} callback={setQrType} />
+      <CheckBox title="Отсуп по краям" value={useMargin} callback={toggleUseMargin} />
+      <CheckBox title="Дополнительные настройки" value={useCustomStyles} callback={toggleUseCustomStyles} />
+      {
+        useCustomStyles && <>
+          <CheckBox title="Встроить изображение" value={useImage} callback={toggleUseImage} />
+          <SimpleGrid spacing={4}>
+            {
+              useImage && <>
+                <Box />
+                <InputField
+                  type="text"
+                  title="Ссылка на изображение"
+                  value={imageUrl}
+                  callback={setImageUrl}
+                />
+                <CheckBox
+                  title="Скрыть точки за изображением"
+                  value={hideBackgroundDots}
+                  callback={toggleHideBackgroundDots}
+                />
+                <InputField
+                  type="number"
+                  title="Размер изображения"
+                  value={imageSize.toString()}
+                  callback={setImageSize}
+                  step={0.1}
+                />
+                <InputField
+                  type="number"
+                  title="Отступ изображения"
+                  value={imageMargin.toString()}
+                  callback={setImageMargin}
+                />
+              </>
+            }
+          </SimpleGrid>
+          <CheckBox title="Настройка фона" value={useBackground} callback={toggleUseBackground} />
+          <SimpleGrid spacing={4}>
+            {
+              useBackground && <>
+                <CheckBox title="Использовать градиент" callback={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
+                <InputField
+                  type="text"
+                  title="Цвет фона"
+                  value={backgroundColor}
+                  callback={color => { setBackgroundColor(color.hex) }}
+                  colorPickerButton
+                  readOnly
+                />
+                <GradientSettings
+                  colorOffset={[backgroundColorOffset, setBackgroundColorOffset]}
+                  rotation={[backgroundRotation, setBackgroundRotation]}
+                  secondColor={[backgroundSecondColor, setBackgroundSecondColor]}
+                  secondColorOffset={[backgroundSecondColorOffset, setBackgroundSecondColorOffset]}
+                  type={[backgroundGradientType, setBackgroundGradientType]}
+                  useGradient={useBackgroundGradient}
+                />
+              </>
+            }
+          </SimpleGrid>
+          <CheckBox title="Настройка стиля точек" value={useDotsStyle} callback={toggleUseDotsStyle} />
+          <SimpleGrid spacing={4}>
+            {
+              useDotsStyle && <>
+                <InputField
+                  type="select"
+                  title="Тип точек"
+                  value={dotsType}
+                  callback={type => {
+                    setDotsType(type as DotType)
+                    !useCornerSquaresStyle && setCornerSquaresType(type as CornerSquareType)
+                    !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
+                  }}
+                  options={dotsTypes}
+                />
+                <CheckBox title="Использовать градиент" callback={toggleUseDotsGradient} value={useDotsGradient} />
+                <InputField
+                  type="text"
+                  title="Цвет точек"
+                  value={dotsColor}
+                  callback={color => {
+                    setDotsColor(color.hex)
+                    !useCornerSquaresStyle && setCornerSquaresColor(color.hex)
+                    !useCornerDotsStyle && setCornerDotsColor(color.hex)
+                  }}
+                  colorPickerButton
+                  readOnly
+                />
+                <GradientSettings
+                  colorOffset={[dotsColorOffset, value => {
+                    setDotsColorOffset(value)
+                    !useCornerSquaresStyle && setCornerSquaresColorOffset(value)
+                    !useCornerDotsStyle && setCornerSquaresColorOffset(value)
+                  }]}
+                  rotation={[dotsRotation, value => {
+                    setDotsRotation(value)
+                    !useCornerSquaresStyle && setCornerSquaresRotation(value)
+                    !useCornerDotsStyle && setCornerDotsRotation(value)
+                  }]}
+                  secondColor={[dotsSecondColor, value => {
+                    setDotsSecondColor(value)
+                    !useCornerSquaresStyle && setCornerSquaresSecondColor(value)
+                    !useCornerDotsStyle && setCornerDotsSecondColor(value)
+                  }]}
+                  secondColorOffset={[dotsSecondColorOffset, value => {
+                    setDotsSecondColorOffset(value)
+                    !useCornerSquaresStyle && setCornerSquaresSecondColorOffset(value)
+                    !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
+                  }]}
+                  type={[dotsGradientType, value => {
+                    setDotsGradientType(value)
+                    !useCornerSquaresStyle && setCornerSquaresGradientType(value)
+                    !useCornerDotsStyle && setCornerDotsGradientType(value)
+                  }]}
+                  useGradient={useDotsGradient}
+                />
+              </>
+            }
+          </SimpleGrid>
+          <CheckBox title="Настройка угловых квадратов" value={useCornerSquaresStyle} callback={toggleUseCornerSquaresStyle} />
+          <SimpleGrid spacing={4}>
+            {
+              useCornerSquaresStyle && <>
+                <InputField
+                  type="select"
+                  title="Тип угловых квадратов"
+                  value={cornerSquaresType}
+                  callback={type => {
+                    setCornerSquaresType(type as CornerSquareType)
+                    !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
+                  }}
+                  options={cornerSquareTypes}
+                />
+                <CheckBox title="Использовать градиент" callback={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
+                <InputField
+                  type="text"
+                  title="Цвет угловых квадратов"
+                  value={cornerSquaresColor}
+                  callback={color => {
+                    setCornerSquaresColor(color.hex)
+                    !useCornerDotsStyle && setCornerDotsColor(color.hex)
+                  }}
+                  colorPickerButton
+                  readOnly
+                />
+                <GradientSettings
+                  colorOffset={[cornerSquaresColorOffset, value => {
+                    setCornerSquaresColorOffset(value)
+                    !useCornerDotsStyle && setCornerDotsColorOffset(value)
+                  }]}
+                  rotation={[cornerSquaresRotation, value => {
+                    setCornerSquaresRotation(value)
+                    !useCornerDotsStyle && setCornerDotsRotation(value)
+                  }]}
+                  secondColor={[cornerSquaresSecondColor, value => {
+                    setCornerSquaresSecondColor(value)
+                    !useCornerDotsStyle && setCornerDotsSecondColor(value)
+                  }]}
+                  secondColorOffset={[cornerSquaresSecondColorOffset, value => {
+                    setCornerSquaresSecondColorOffset(value)
+                    !useCornerDotsStyle && setCornerDotsSecondColorOffset(value)
+                  }]}
+                  type={[cornerSquaresGradientType, value => {
+                    setCornerSquaresGradientType(value)
+                    !useCornerDotsStyle && setCornerDotsGradientType(value)
+                  }]}
+                  useGradient={useCornerSquaresGradient}
+                />
+              </>
+            }
+          </SimpleGrid>
+          <CheckBox title="Настройка стиля угловых точек" value={useCornerDotsStyle} callback={toggleUseCornerDotsStyle} />
+          <SimpleGrid spacing={4}>
+            {
+              useCornerDotsStyle && <>
+                <InputField
+                  type="select"
+                  title="Тип угловых точек"
+                  value={cornerDotsType}
+                  callback={type => { setCornerDotsType(type as CornerDotType) }}
+                  options={cornerDotTypes}
+                />
+                <CheckBox title="Использовать градиент" callback={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
+                <InputField
+                  type="text"
+                  title="Цвет угловых точек"
+                  value={cornerDotsColor}
+                  callback={color => { setCornerDotsColor(color.hex) }}
+                  colorPickerButton
+                  readOnly
+                />
+                <GradientSettings
+                  colorOffset={[cornerDotsColorOffset, setCornerDotsColorOffset]}
+                  rotation={[cornerDotsRotation, setCornerDotsRotation]}
+                  secondColor={[cornerDotsSecondColor, setCornerDotsSecondColor]}
+                  secondColorOffset={[cornerDotsSecondColorOffset, setCornerDotsSecondColorOffset]}
+                  type={[cornerDotsGradientType, setCornerDotsGradientType]}
+                  useGradient={useCornerDotsGradient}
+                />
+              </>
+            }
+          </SimpleGrid>
+        </>
+      }
+    </StandardGrid>
+    <Box ref={ref} />
+  </PageCreator>
 }

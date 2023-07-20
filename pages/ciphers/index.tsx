@@ -1,8 +1,12 @@
-import { Spinner } from "@chakra-ui/react"
 import { CardGrid } from "components/layout"
-import { getDatabase } from "features/hooks"
+import { Description } from "components/seo"
+import { ciphers } from "databases"
 
 export default function Ciphers() {
-  const { data, isLoading } = getDatabase("ciphers")
-  return isLoading ? <Spinner /> : <CardGrid cards={data} />
+  return <>
+    <Description description={
+      "Изучайте мир шифров и криптографии. Узнайте о шифра и криптографических методах. Расшифруйте тайные послания и познайте искусство защиты информации. Простые и удобные инструменты ждут вас!"
+    } />
+    <CardGrid cards={ciphers} />
+  </>
 }
