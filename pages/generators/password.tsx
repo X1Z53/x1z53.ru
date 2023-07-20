@@ -51,22 +51,22 @@ export default function Password() {
 
   return <PageCreator {...generator}>
     <StandardGrid>
-      <InputField type="number" title="Длина" value={length.toString()} callback={setLength} />
+      <InputField type="number" title="Длина" value={length.toString()} onChange={setLength} />
       <Button onClick={() => setResult(generatePassword())}>Сгенерировать</Button>
-      <CheckBox title="Свой алфавит" value={useCustomAlphabet} callback={toggleUseCustomAlphabet} />
+      <CheckBox title="Свой алфавит" value={useCustomAlphabet} onChange={toggleUseCustomAlphabet} />
     </StandardGrid>
     {
       useCustomAlphabet ? <InputField
         type="text"
         title="Алфавит"
         value={alphabet}
-        callback={setAlphabet}
+        onChange={setAlphabet}
         styles={{ marginBottom: 4 }}
       /> : <StandardGrid>
-        <CheckBox title="Прописные буквы" value={useLowerCase} callback={toggleUseLowerCase} />
-        <CheckBox title="Заглавные буквы" value={useUpperCase} callback={toggleUseUpperCase} />
-        <CheckBox title="Цифры" value={useNumbers} callback={toggleUseNumbers} />
-        <CheckBox title="Прописные буквы" value={useSpecialSymbols} callback={toggleUseSpecialSymbols} />
+        <CheckBox title="Прописные буквы" value={useLowerCase} onChange={toggleUseLowerCase} />
+        <CheckBox title="Заглавные буквы" value={useUpperCase} onChange={toggleUseUpperCase} />
+        <CheckBox title="Цифры" value={useNumbers} onChange={toggleUseNumbers} />
+        <CheckBox title="Прописные буквы" value={useSpecialSymbols} onChange={toggleUseSpecialSymbols} />
       </StandardGrid>
     }
     <InputField type="text" title="Результат" copyButton readOnly value={result} />

@@ -19,8 +19,8 @@ export default function Base64() {
 
   return <PageCreator {...converter}>
     <StandardGrid>
-      <InputField type="text" title="Текст" value={text} callback={setText} />
-      <ToggleButtonGroup buttons={buttons} callback={setMethod} />
+      <InputField type="text" title="Текст" value={text} onChange={setText} />
+      <ToggleButtonGroup {...{buttons}} onChange={setMethod} />
     </StandardGrid>
     <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </PageCreator>

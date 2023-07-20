@@ -7,6 +7,6 @@ export default function LoginButton() {
 
   return <>
     <Button variant="ghost" onClick={onOpen}><Icon boxSize={6} as={BsPersonCircle} /></Button>
-    <Login isOpen={isOpen} onClose={onClose} />
+    <Login {...{ isOpen, onClose }} />
   </>
 }

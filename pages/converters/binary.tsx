@@ -25,12 +25,12 @@ export default function Binary() {
 
   return <PageCreator {...converter}>
     <StandardGrid>
-      <InputField type="text" title="Число" value={text} callback={setText} />
-      <ToggleButtonGroup buttons={buttons} callback={setMethod} />
+      <InputField type="text" title="Число" value={text} onChange={setText} />
+      <ToggleButtonGroup {...{buttons}} onChange={setMethod} />
       {
         !buttons.indexOf(method) && <>
-          <CheckBox title="Дополонять до 8 цифр" value={addUpToEightChars} callback={toggleAddUpToEightChars} />
-          <CheckBox title="Использовать пробелы" value={addSpacesBetween} callback={toggleAddSpacesBetween} />
+          <CheckBox title="Дополонять до 8 цифр" value={addUpToEightChars} onChange={toggleAddUpToEightChars} />
+          <CheckBox title="Использовать пробелы" value={addSpacesBetween} onChange={toggleAddSpacesBetween} />
         </>
       }
     </StandardGrid>

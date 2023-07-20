@@ -149,13 +149,13 @@ export default function QRCode() {
 
   return <PageCreator {...generator}>
     <StandardGrid>
-      <InputField type="text" title="Текст" value={text} callback={setText} />
-      <InputField type="number" title="Тип QR-кода" minValue={0} maxValue={40} value={qrType.toString()} callback={setQrType} />
-      <CheckBox title="Отсуп по краям" value={useMargin} callback={toggleUseMargin} />
-      <CheckBox title="Дополнительные настройки" value={useCustomStyles} callback={toggleUseCustomStyles} />
+      <InputField type="text" title="Текст" value={text} onChange={setText} />
+      <InputField type="number" title="Тип QR-кода" min={0} max={40} value={qrType.toString()} onChange={setQrType} />
+      <CheckBox title="Отсуп по краям" value={useMargin} onChange={toggleUseMargin} />
+      <CheckBox title="Дополнительные настройки" value={useCustomStyles} onChange={toggleUseCustomStyles} />
       {
         useCustomStyles && <>
-          <CheckBox title="Встроить изображение" value={useImage} callback={toggleUseImage} />
+          <CheckBox title="Встроить изображение" value={useImage} onChange={toggleUseImage} />
           <SimpleGrid spacing={4}>
             {
               useImage && <>
@@ -164,39 +164,39 @@ export default function QRCode() {
                   type="text"
                   title="Ссылка на изображение"
                   value={imageUrl}
-                  callback={setImageUrl}
+                  onChange={setImageUrl}
                 />
                 <CheckBox
                   title="Скрыть точки за изображением"
                   value={hideBackgroundDots}
-                  callback={toggleHideBackgroundDots}
+                  onChange={toggleHideBackgroundDots}
                 />
                 <InputField
                   type="number"
                   title="Размер изображения"
                   value={imageSize.toString()}
-                  callback={setImageSize}
+                  onChange={setImageSize}
                   step={0.1}
                 />
                 <InputField
                   type="number"
                   title="Отступ изображения"
                   value={imageMargin.toString()}
-                  callback={setImageMargin}
+                  onChange={setImageMargin}
                 />
               </>
             }
           </SimpleGrid>
-          <CheckBox title="Настройка фона" value={useBackground} callback={toggleUseBackground} />
+          <CheckBox title="Настройка фона" value={useBackground} onChange={toggleUseBackground} />
           <SimpleGrid spacing={4}>
             {
               useBackground && <>
-                <CheckBox title="Использовать градиент" callback={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
+                <CheckBox title="Использовать градиент" onChange={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
                 <InputField
                   type="text"
                   title="Цвет фона"
                   value={backgroundColor}
-                  callback={color => { setBackgroundColor(color.hex) }}
+                  onChange={color => { setBackgroundColor(color.hex) }}
                   colorPickerButton
                   readOnly
                 />
@@ -211,7 +211,7 @@ export default function QRCode() {
               </>
             }
           </SimpleGrid>
-          <CheckBox title="Настройка стиля точек" value={useDotsStyle} callback={toggleUseDotsStyle} />
+          <CheckBox title="Настройка стиля точек" value={useDotsStyle} onChange={toggleUseDotsStyle} />
           <SimpleGrid spacing={4}>
             {
               useDotsStyle && <>
@@ -219,19 +219,19 @@ export default function QRCode() {
                   type="select"
                   title="Тип точек"
                   value={dotsType}
-                  callback={type => {
+                  onChange={type => {
                     setDotsType(type as DotType)
                     !useCornerSquaresStyle && setCornerSquaresType(type as CornerSquareType)
                     !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
                   }}
                   options={dotsTypes}
                 />
-                <CheckBox title="Использовать градиент" callback={toggleUseDotsGradient} value={useDotsGradient} />
+                <CheckBox title="Использовать градиент" onChange={toggleUseDotsGradient} value={useDotsGradient} />
                 <InputField
                   type="text"
                   title="Цвет точек"
                   value={dotsColor}
-                  callback={color => {
+                  onChange={color => {
                     setDotsColor(color.hex)
                     !useCornerSquaresStyle && setCornerSquaresColor(color.hex)
                     !useCornerDotsStyle && setCornerDotsColor(color.hex)
@@ -270,7 +270,7 @@ export default function QRCode() {
               </>
             }
           </SimpleGrid>
-          <CheckBox title="Настройка угловых квадратов" value={useCornerSquaresStyle} callback={toggleUseCornerSquaresStyle} />
+          <CheckBox title="Настройка угловых квадратов" value={useCornerSquaresStyle} onChange={toggleUseCornerSquaresStyle} />
           <SimpleGrid spacing={4}>
             {
               useCornerSquaresStyle && <>
@@ -278,18 +278,18 @@ export default function QRCode() {
                   type="select"
                   title="Тип угловых квадратов"
                   value={cornerSquaresType}
-                  callback={type => {
+                  onChange={type => {
                     setCornerSquaresType(type as CornerSquareType)
                     !useCornerDotsStyle && setCornerDotsType(type as CornerDotType)
                   }}
                   options={cornerSquareTypes}
                 />
-                <CheckBox title="Использовать градиент" callback={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
+                <CheckBox title="Использовать градиент" onChange={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
                 <InputField
                   type="text"
                   title="Цвет угловых квадратов"
                   value={cornerSquaresColor}
-                  callback={color => {
+                  onChange={color => {
                     setCornerSquaresColor(color.hex)
                     !useCornerDotsStyle && setCornerDotsColor(color.hex)
                   }}
@@ -322,7 +322,7 @@ export default function QRCode() {
               </>
             }
           </SimpleGrid>
-          <CheckBox title="Настройка стиля угловых точек" value={useCornerDotsStyle} callback={toggleUseCornerDotsStyle} />
+          <CheckBox title="Настройка стиля угловых точек" value={useCornerDotsStyle} onChange={toggleUseCornerDotsStyle} />
           <SimpleGrid spacing={4}>
             {
               useCornerDotsStyle && <>
@@ -330,15 +330,15 @@ export default function QRCode() {
                   type="select"
                   title="Тип угловых точек"
                   value={cornerDotsType}
-                  callback={type => { setCornerDotsType(type as CornerDotType) }}
+                  onChange={type => { setCornerDotsType(type as CornerDotType) }}
                   options={cornerDotTypes}
                 />
-                <CheckBox title="Использовать градиент" callback={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
+                <CheckBox title="Использовать градиент" onChange={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
                 <InputField
                   type="text"
                   title="Цвет угловых точек"
                   value={cornerDotsColor}
-                  callback={color => { setCornerDotsColor(color.hex) }}
+                  onChange={color => { setCornerDotsColor(color.hex) }}
                   colorPickerButton
                   readOnly
                 />

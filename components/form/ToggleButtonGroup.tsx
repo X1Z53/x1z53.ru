@@ -3,10 +3,10 @@ import { useState } from "react"
 
 type ToggleButtonGroupProps = {
   buttons: string[],
-  callback: (any: string) => void
+  onChange: (any: string) => void
 }
 
-export default function ToggleButtonGroup({ buttons, callback }: ToggleButtonGroupProps) {
+export default function ToggleButtonGroup({ buttons, onChange }: ToggleButtonGroupProps) {
   const [selected, setSelected] = useState(buttons[0])
   return <ButtonGroup isAttached variant="outline">
     {buttons.map(buttonName =>
@@ -15,7 +15,7 @@ export default function ToggleButtonGroup({ buttons, callback }: ToggleButtonGro
         colorScheme={selected === buttonName ? "" : "gray"}
         onClick={() => {
           setSelected(buttonName)
-          callback(buttonName)
+          onChange(buttonName)
         }}
       >
         {buttonName}

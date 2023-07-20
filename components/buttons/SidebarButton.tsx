@@ -7,6 +7,6 @@ export default function SidebarButton() {
 
   return <>
     <Button variant="ghost" onClick={onOpen}><Icon boxSize={6} as={BsList} /></Button>
-    <Sidebar onClose={onClose} isOpen={isOpen} />
+    <Sidebar {...{ isOpen, onClose }} />
   </>
 }

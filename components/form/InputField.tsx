@@ -1,6 +1,6 @@
 import { Flex, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, StyleProps, Textarea } from "@chakra-ui/react"
 import { ColorPicker, Copy } from "components/buttons"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type TextProps = {
   type: "text"
@@ -10,8 +10,8 @@ type TextProps = {
 
 type NumberProps = {
   type: "number"
-  minValue?: number
-  maxValue?: number
+  min?: number
+  max?: number
   step?: number
 }
 
@@ -23,7 +23,7 @@ type SelectProps = {
 type InputFieldProps = {
   title: string
   value: string
-  callback?: (any) => void
+  onChange?: (any) => void
   readOnly?: boolean
   colorPickerButton?: boolean
   copyButton?: boolean
@@ -31,11 +31,10 @@ type InputFieldProps = {
   minHeight?: string
 } & (TextProps | NumberProps | SelectProps)
 
-
 export default function InputField(props: InputFieldProps) {
-  const { type, title, value, callback, readOnly, colorPickerButton, copyButton, styles } = props
+  const { type, title, value, onChange, readOnly, colorPickerButton, copyButton, styles } = props
   const { alphabet, includedInAlphabet } = type === "text" ? props : { alphabet: "", includedInAlphabet: false }
-  const { minValue, maxValue, step } = type === "number" ? props : { minValue: Number.MIN_SAFE_INTEGER, maxValue: Number.MAX_SAFE_INTEGER, step: 1 }
+  const { min, max, step } = type === "number" ? props : { min: Number.MIN_SAFE_INTEGER, max: Number.MAX_SAFE_INTEGER, step: 1 }
   const { options } = type === "select" ? props : { options: [] }
 
   const minHeight = props.minHeight || "40px"
@@ -55,12 +54,19 @@ export default function InputField(props: InputFieldProps) {
     borderTopRightRadius: [0, 0, 6]
   }
 
+  const ref = useRef(null)
+  useEffect(() => {
+    if (ref.current) {
+      const { scrollHeight } = ref.current
+      setHeight(scrollHeight > parseInt(minHeight) ? `${scrollHeight}px` : minHeight)
+    }
+  })
+
   return <InputGroup {...styles} flexDirection={["column", "column", "row"]}>
     <InputLeftAddon
+      {...{ minHeight, height }}
       borderBottomLeftRadius={[0, 0, 6]}
       borderTopRightRadius={[6, 6, 0]}
-      minHeight={minHeight}
-      height={height}
       margin="0"
     >
       {title}
@@ -68,30 +74,22 @@ export default function InputField(props: InputFieldProps) {
     <Flex width="100%">
       {
         type === "text" ? <Textarea
+          {...{ ref, minHeight, height, readOnly, value }}
           {...middleStyles}
-          minHeight={minHeight}
-          height={height}
           focusBorderColor="gray"
-          readOnly={readOnly}
-          value={value}
-          onMouseMove={event => {
-            setHeight(event.currentTarget.style.height + "px")
-          }}
+          resize="none"
+          overflow="hidden"
           onChange={event => {
-            callback(includedInAlphabet
+            onChange(includedInAlphabet
               ? event.target.value.split("").filter(i => alphabet.includes(i)).join("")
               : event.target.value
             )
           }}
         /> : type === "number" ? <NumberInput
-          step={step}
+          {...{ step, min, max, value, onChange }}
           width="100%"
           focusBorderColor="gray"
           defaultValue={3}
-          min={minValue}
-          max={maxValue}
-          value={value}
-          onChange={callback}
         >
           <NumberInputField {...middleStyles} />
           <NumberInputStepper>
@@ -100,8 +98,8 @@ export default function InputField(props: InputFieldProps) {
           </NumberInputStepper>
         </NumberInput> : type === "select" ? <Select
           {...middleStyles}
-          value={value}
-          onChange={event => { callback(event.target.value) }}
+          {...{ value }}
+          onChange={event => { onChange(event.target.value) }}
         >
           {typeof options[0] !== "object" ? options.map(
             option => <option key={option} value={option}>{option}</option>
@@ -113,19 +111,18 @@ export default function InputField(props: InputFieldProps) {
         </Select> : <></>
       }
       <InputRightAddon
-        minHeight={minHeight}
-        height={height}
+        {...{ minHeight, height }}
         borderTopRightRadius={[0, 0, 6]}
-        padding="0"
+        padding={0}
         border={0}
       >
         {
           copyButton &&
-          <Copy value={value} styles={rightStyles} />
+          <Copy {...{ value }} styles={rightStyles} />
         }
         {
           colorPickerButton &&
-          <ColorPicker styles={rightStyles} value={value} callback={callback} />
+          <ColorPicker {...{ value, onChange }} styles={rightStyles} />
         }
       </InputRightAddon>
     </Flex>

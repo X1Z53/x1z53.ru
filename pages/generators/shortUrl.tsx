@@ -19,8 +19,8 @@ export default function shortUrl() {
 
   return <PageCreator {...generator}>
     <StandardGrid>
-      <InputField type="text" title="Текст" value={text} callback={setText} />
-      <InputField type="text" title="Результат" copyButton readOnly value={result} callback={setResult} />
+      <InputField type="text" title="Текст" value={text} onChange={setText} />
+      <InputField type="text" title="Результат" copyButton readOnly value={result} onChange={setResult} />
     </StandardGrid>
   </PageCreator>
 }

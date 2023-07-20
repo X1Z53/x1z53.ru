@@ -18,9 +18,9 @@ export default function Number() {
 
   return <PageCreator {...converter}>
     <StandardGrid>
-      <InputField type="text" title="Число" value={number} callback={setNumber} />
-      <InputField type="number" title="Исходная система" minValue={2} maxValue={36} value={sourceBase.toString()} callback={setSourceBase} />
-      <InputField type="number" title="Конечная система" minValue={2} maxValue={36} value={targetBase.toString()} callback={setTargetBase} />
+      <InputField type="text" title="Число" value={number} onChange={setNumber} />
+      <InputField type="number" title="Исходная система" min={2} max={36} value={sourceBase.toString()} onChange={setSourceBase} />
+      <InputField type="number" title="Конечная система" min={2} max={36} value={targetBase.toString()} onChange={setTargetBase} />
     </StandardGrid>
     <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </PageCreator>

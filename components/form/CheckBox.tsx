@@ -4,10 +4,10 @@ import { useToggle } from "features/hooks"
 type CheckBoxProps = {
   title: string,
   value: boolean,
-  callback: (any) => void
+  onChange: (any) => void
 }
 
-export default function CheckBox({ title, value, callback }: CheckBoxProps) {
+export default function CheckBox({ title, value, onChange }: CheckBoxProps) {
   const [selected, toggleSelected] = useToggle(value)
   return <Flex>
     <Checkbox
@@ -15,7 +15,7 @@ export default function CheckBox({ title, value, callback }: CheckBoxProps) {
       colorScheme="gray"
       onChange={() => {
         toggleSelected()
-        callback(!selected)
+        onChange(!selected)
       }}
     >
       {title}

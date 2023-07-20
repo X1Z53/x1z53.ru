@@ -15,9 +15,9 @@ export default function Time() {
 
   return <PageCreator {...converter}>
     <StandardGrid>
-      <InputField type="select" title="Начальная система" value={sourceBase} callback={setSourceBase} options={bases} />
-      <InputField type="select" title="Концечная система" value={targetBase} callback={setTargetBase} options={bases} />
-      <InputField type="text" title="Время" value={time} callback={setTime} />
+      <InputField type="select" title="Начальная система" value={sourceBase} onChange={setSourceBase} options={bases} />
+      <InputField type="select" title="Концечная система" value={targetBase} onChange={setTargetBase} options={bases} />
+      <InputField type="text" title="Время" value={time} onChange={setTime} />
       <InputField type="text" title="Результат" value={result} readOnly copyButton />
     </StandardGrid>
   </PageCreator>

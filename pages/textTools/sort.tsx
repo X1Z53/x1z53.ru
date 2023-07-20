@@ -32,13 +32,13 @@ export default function Sort() {
 
   return <PageCreator {...textTool}>
     <StandardGrid>
-      <InputField title="Символ разделения" type="text" value={splitChar} callback={setSplitChar} />
-      <InputField title="Символ соединения" type="text" value={joinChar} callback={setJoinChar} />
-      <CheckBox title="Обратная сортировка" value={useReverse} callback={toggleUseReverse} />
-      <CheckBox title="Учёт регистра" value={useCaseSensitive} callback={toggleUseCaseSensitive} />
-      <CheckBox title="Естественная сортировка" value={useNatural} callback={toggleUseNatural} />
+      <InputField title="Символ разделения" type="text" value={splitChar} onChange={setSplitChar} />
+      <InputField title="Символ соединения" type="text" value={joinChar} onChange={setJoinChar} />
+      <CheckBox title="Обратная сортировка" value={useReverse} onChange={toggleUseReverse} />
+      <CheckBox title="Учёт регистра" value={useCaseSensitive} onChange={toggleUseCaseSensitive} />
+      <CheckBox title="Естественная сортировка" value={useNatural} onChange={toggleUseNatural} />
       <Box />
-      <InputField title="Текст" type="text" value={text} callback={setText} minHeight={inputFieldHeight} />
+      <InputField title="Текст" type="text" value={text} onChange={setText} minHeight={inputFieldHeight} />
       <InputField title="Результат" type="text" value={result} readOnly copyButton minHeight={inputFieldHeight} />
     </StandardGrid>
   </PageCreator>

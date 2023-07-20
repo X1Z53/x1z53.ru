@@ -5,10 +5,10 @@ import { BsEyedropper } from "react-icons/bs"
 type ColorPickerButtonProps = {
   styles?: StyleProps,
   value: string,
-  callback: (any) => void
+  onChange: (any) => void
 }
 
-export default function ColorPickerButton({ styles, value, callback }: ColorPickerButtonProps) {
+export default function ColorPickerButton({ styles, value, onChange }: ColorPickerButtonProps) {
   return <Popover>
     <PopoverTrigger>
       <Button {...styles}>
@@ -19,10 +19,7 @@ export default function ColorPickerButton({ styles, value, callback }: ColorPick
       <PopoverContent width="auto">
         <PopoverArrow />
         <PopoverBody>
-          <SketchPicker
-            color={value}
-            onChange={callback}
-          />
+          <SketchPicker {...{ onChange }} color={value} />
         </PopoverBody>
       </PopoverContent>
     </Portal>

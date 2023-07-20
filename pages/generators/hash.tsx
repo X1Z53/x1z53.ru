@@ -16,8 +16,8 @@ export default function HashGenerator() {
 
   return <PageCreator {...generator}>
     <StandardGrid>
-      <InputField title="Текст" type="text" value={text} callback={setText} />
-      <InputField title="Алгоритм" type="select" options={algorithms} value={algorithm} callback={setAlgorithm} />
+      <InputField title="Текст" type="text" value={text} onChange={setText} />
+      <InputField title="Алгоритм" type="select" options={algorithms} value={algorithm} onChange={setAlgorithm} />
     </StandardGrid>
     <InputField title="Результат" type="text" copyButton readOnly value={result} />
   </PageCreator>

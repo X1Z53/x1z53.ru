@@ -32,20 +32,20 @@ export default function Cipher({
 
   return <PageCreator {...cipherProps}>
     <StandardGrid>
-      <InputField type="text" title="Текст" value={text} callback={setText} />
-      {haveAlphabet && <InputField type="text" title="Алфавит" value={alphabet} callback={setAlphabet} />}
+      <InputField type="text" title="Текст" value={text} onChange={setText} />
+      {haveAlphabet && <InputField type="text" title="Алфавит" value={alphabet} onChange={setAlphabet} />}
       {
         haveKey && <InputField
+          {...{ alphabet }}
           type={numericKey ? "number" : "text"}
           title="Ключ"
           includedInAlphabet={!numericKey}
           value={key.toString()}
-          alphabet={alphabet}
-          minValue={2}
-          callback={setKey}
+          min={2}
+          onChange={setKey}
         />
       }
-      {haveDecrypt && <ToggleButtonGroup buttons={buttons} callback={setMethod} />}
+      {haveDecrypt && <ToggleButtonGroup {...{buttons}} onChange={setMethod} />}
     </StandardGrid>
     <InputField type="text" title="Результат" readOnly copyButton value={result} />
   </PageCreator>

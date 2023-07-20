@@ -12,7 +12,7 @@ export default function Login({isOpen, onClose}: ModalProps) {
       <ModalHeader textAlign="center">
         <Text color="red">В разработке</Text>
         <Heading>
-          <ToggleButtonGroup buttons={["Registration", "Login"]} callback={setSelected} />
+          <ToggleButtonGroup buttons={["Registration", "Login"]} onChange={setSelected} />
         </Heading>
       </ModalHeader>
       <ModalBody>

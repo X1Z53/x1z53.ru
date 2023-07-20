@@ -5,7 +5,7 @@ import { pages } from "databases"
 import Link from "next/link"
 
 export default function Sidebar({ isOpen, onClose }: ModalProps) {
-  return <Drawer isOpen={isOpen} onClose={onClose} placement="left">
+  return <Drawer {...{ isOpen, onClose }} placement="left">
     <DrawerOverlay />
     <DrawerContent>
       <DrawerHeader>
