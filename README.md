@@ -6,6 +6,7 @@ On site you can find:
 - Ciphers:
   - Atbash
   - Caesar
+  - Morse
   - Rail Fence
   - Scytale
   - Vigenere
@@ -16,7 +17,9 @@ On site you can find:
 - Generators
   - Password
   - QRCode
-  - Url Shorter
+  - Short Url
+- Text Tools
+  - Sort
 
 In the future, I hope some more useful tools will be added.
 
@@ -28,3 +31,4 @@ Sites I was inspired by
 - <a href="https://dcode.fr">dCode</a>
 - <a href="https://qr-code-styling.com">QRCode Styling</a>
 - <a href="https://rapidtables.com">RapidTables</a>
+- <a href="https://symbl.cc/">SYMBL</a>
