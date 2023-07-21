@@ -18,11 +18,11 @@ export default function Login({isOpen, onClose}: ModalProps) {
       <ModalBody>
         {
           selected === "Registration" ? <>
-            <Input variant="filled" type="name" placeholder="Имя пользователя" marginBottom="1" />
-            <Input variant="filled" type="email" placeholder="Email" marginBottom="1" />
+            <Input variant="filled" type="name" placeholder="Имя пользователя" marginBottom={1} />
+            <Input variant="filled" type="email" placeholder="Email" marginBottom={1} />
             <Input variant="filled" type="password" placeholder="Пароль" />
           </> : <>
-            <Input variant="filled" placeholder="Имя пользователя или Email" marginBottom="1" />
+            <Input variant="filled" placeholder="Имя пользователя или Email" marginBottom={1} />
             <Input variant="filled" type="password" placeholder="Пароль" />
           </>
         }

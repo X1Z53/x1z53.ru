@@ -11,7 +11,8 @@ export default function Number() {
   const [result, setResult] = useState("")
 
   useEffect(() => {
-    setResult(parseInt(number, sourceBase).toString(targetBase))
+    try { setResult(parseInt(number, sourceBase).toString(targetBase)) }
+    catch { setResult("") }
   }, [number, sourceBase, targetBase])
 
   const converter = getDatabaseObject(converters, "number")

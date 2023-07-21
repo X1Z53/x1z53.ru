@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <title>{path}</title>
     </Head>
     <Header />
-    <Container paddingY="5" maxWidth="container.xl">
+    <Container paddingY={5} maxWidth="container.xl">
       <Component {...pageProps} />
     </Container>
   </ChakraProvider>

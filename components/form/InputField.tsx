@@ -41,7 +41,7 @@ export default function InputField(props: InputFieldProps) {
   const [height, setHeight] = useState(minHeight)
 
   const middleStyles = {
-    borderTopLeftRadius: "0",
+    borderTopLeftRadius: 0,
     borderTopRightRadius: copyButton || colorPickerButton ? 0 : [0, 0, 6],
     borderBottomLeftRadius: [6, 6, 0],
     borderBottomRightRadius: copyButton || colorPickerButton ? 0 : 6
@@ -49,8 +49,8 @@ export default function InputField(props: InputFieldProps) {
   const rightStyles = {
     minHeight: minHeight,
     height: "100%",
-    borderTopLeftRadius: "0",
-    borderBottomLeftRadius: "0",
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
     borderTopRightRadius: [0, 0, 6]
   }
 
@@ -67,13 +67,13 @@ export default function InputField(props: InputFieldProps) {
       {...{ minHeight, height }}
       borderBottomLeftRadius={[0, 0, 6]}
       borderTopRightRadius={[6, 6, 0]}
-      margin="0"
+      margin={0}
     >
       {title}
     </InputLeftAddon>
     <Flex width="100%">
       {
-        type === "text" ? <Textarea
+        type === "text" && <Textarea
           {...{ ref, minHeight, height, readOnly, value }}
           {...middleStyles}
           focusBorderColor="gray"
@@ -85,7 +85,10 @@ export default function InputField(props: InputFieldProps) {
               : event.target.value
             )
           }}
-        /> : type === "number" ? <NumberInput
+        />
+      }
+      {
+        type === "number" && <NumberInput
           {...{ step, min, max, value, onChange }}
           width="100%"
           focusBorderColor="gray"
@@ -96,19 +99,21 @@ export default function InputField(props: InputFieldProps) {
             <NumberIncrementStepper />
             <NumberDecrementStepper />
           </NumberInputStepper>
-        </NumberInput> : type === "select" ? <Select
+        </NumberInput>
+      }
+      {
+        type === "select" && <Select
           {...middleStyles}
           {...{ value }}
+          focusBorderColor="gray"
           onChange={event => { onChange(event.target.value) }}
         >
-          {typeof options[0] !== "object" ? options.map(
-            option => <option key={option} value={option}>{option}</option>
-          ) : options.map(
-            option => <option key={option.name} value={option.name}>
-              {option.title}
+          {options.map(
+            option => <option key={option.name || option} value={option.name || option}  >
+              {option.title || option.name || option}
             </option>
           )}
-        </Select> : <></>
+        </Select>
       }
       <InputRightAddon
         {...{ minHeight, height }}
@@ -116,14 +121,8 @@ export default function InputField(props: InputFieldProps) {
         padding={0}
         border={0}
       >
-        {
-          copyButton &&
-          <Copy {...{ value }} styles={rightStyles} />
-        }
-        {
-          colorPickerButton &&
-          <ColorPicker {...{ value, onChange }} styles={rightStyles} />
-        }
+        {copyButton && <Copy {...{ value }} styles={rightStyles} />}
+        {colorPickerButton && <ColorPicker {...{ value, onChange }} styles={rightStyles} />}
       </InputRightAddon>
     </Flex>
   </InputGroup>
