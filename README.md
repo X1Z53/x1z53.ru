@@ -20,6 +20,7 @@ On site you can find:
   - Short Url
 - Text Tools
   - Sort
+  - Regsiter
 
 In the future, I hope some more useful tools will be added.
 
