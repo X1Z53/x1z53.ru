@@ -1,9 +1,7 @@
 import { Button } from "@chakra-ui/react"
-import { CheckBox, InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { CheckBox, InputField, PageCreator, StandardGrid } from "components"
 import { generators } from "databases"
-import { useToggle } from "features/hooks"
-import { getDatabaseObject } from "features/utils"
+import { getDatabaseObject, useToggle } from "features"
 import { useEffect, useState } from "react"
 
 export default function Password() {

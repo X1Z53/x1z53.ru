@@ -1,7 +1,6 @@
-import { InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid } from "components"
 import { generators } from "databases"
-import { generateHash, getDatabaseObject } from "features/utils"
+import { getDatabaseObject, hash } from "features"
 import { useEffect, useState } from "react"
 
 export default function HashGenerator() {
@@ -10,7 +9,7 @@ export default function HashGenerator() {
   const [text, setText] = useState("Hello, World!")
   const [result, setResult] = useState("")
 
-  useEffect(() => { setResult(generateHash(text, algorithm)) }, [text, algorithm])
+  useEffect(() => { setResult(hash(text, algorithm)) }, [text, algorithm])
 
   const generator = getDatabaseObject(generators, "hash")
 

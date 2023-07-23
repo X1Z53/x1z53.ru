@@ -1,4 +1,4 @@
-import { CardGrid } from "components/layout"
+import { CardGrid } from "components"
 import * as allDatabases from "databases"
 
 

@@ -10,7 +10,8 @@ type CardGridProps = {
 
 export default function CardGrid({ cardWidth = "300px", isExternal, cards }: CardGridProps) {
   const { asPath } = useRouter()
-  cards.sort(({ name: a }, { name: b }) => a > b ? 1 : a < b ? -1 : 0)
+  cards.sort(({ title: a }, { title: b }) => a > b ? 1 : a < b ? -1 : 0)
+  
   return <SimpleGrid spacing={4} templateColumns={`repeat(auto-fill, minmax(${cardWidth}, 1fr))`}>
     {cards.map(({ title, description, name, url }) => (
       <Card key={name} size="sm" justify="center">

@@ -1,5 +1,3 @@
-// Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
-
 export default function Caesar({text, alphabet, key, isDecrypt}) {
   key = Number(key)
 

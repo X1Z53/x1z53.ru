@@ -1,8 +1,7 @@
-import { InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid } from "components"
 import { converters } from "databases"
 import { bases, coefficients } from "databases/converters/length"
-import { getDatabaseObject } from "features/utils"
+import { getDatabaseObject } from "features"
 import { useState } from "react"
 
 export default function Length() {

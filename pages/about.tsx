@@ -1,5 +1,5 @@
 import { Heading } from "@chakra-ui/react"
-import { CardGrid } from "components/layout"
+import { CardGrid } from "components"
 
 export default function About() {
   const developer = [
@@ -42,13 +42,7 @@ export default function About() {
       url: "https://test.x1z53.ru"
     },
     {
-      name: "fileSubdomain",
-      title: "Субдомен для файлов",
-      description: "",
-      url: "https://files.x1z53.ru"
-    },
-    {
-      name: "fileSubdomain",
+      name: "imageSubdomain",
       title: "Субдомен для изображений",
       description: "",
       url: "https://images.x1z53.ru"

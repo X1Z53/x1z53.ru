@@ -6,7 +6,7 @@ import sha3 from "crypto-js/sha3"
 import sha384 from "crypto-js/sha384"
 import sha512 from "crypto-js/sha512"
 
-export default function generateHash(text: string, algorithm: string): string {
+export default function hash(text: string, algorithm: string): string {
   const algorithms = { md5, sha1, sha3, sha224, sha256, sha384, sha512 }
   return algorithms[algorithm](text).toString()
 }

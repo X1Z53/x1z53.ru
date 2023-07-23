@@ -1,7 +1,6 @@
-import { InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid } from "components"
 import { generators } from "databases"
-import { getDatabaseObject } from "features/utils"
+import { getDatabaseObject } from "features"
 import ky from "ky"
 import { useEffect, useState } from "react"
 
@@ -12,7 +11,6 @@ export default function shortUrl() {
   useEffect(() => {
     ky(`https://clck.ru/--?url=${text}`).text()
       .then(result => { setResult(result) })
-      .catch(error => { console.error(error) })
   }, [text])
 
   const generator = getDatabaseObject(generators, "shortUrl")

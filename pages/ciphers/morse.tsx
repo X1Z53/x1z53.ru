@@ -1,30 +1,39 @@
-import { InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid, ToggleButtonGroup } from "components"
 import { ciphers } from "databases"
 import { cyrillic, latin, symbols } from "databases/ciphers/morse"
-import { getDatabaseObject } from "features/utils"
-import { useState } from "react"
+import { getDatabaseObject, morse, splitApplyJoin } from "features"
+import { useEffect, useState } from "react"
 
 export default function Morse() {
-  const [text, setText] = useState("Hello, World!")
-
   const alphabet = [...cyrillic, ...latin, ...symbols]
+  const latinAlphabet = [...latin, ...symbols]
+  const cyrillicAlphabet = [...cyrillic, ...symbols]
+  const [text, setText] = useState("Hello, World!")
+  const encryptButtons = ["Зашифровать", "Расшифровать"]
+  const alphabetButtons = ["Латиница", "Кириллица"]
+  const [encryptButton, setEncryptButton] = useState(encryptButtons[0])
+  const [alphabetButton, setAlphabetButton] = useState(alphabetButtons[0])
+  const [result, setResult] = useState("")
 
-  const result = text
-    .split("")
-    .map(
-      symbol => alphabet.map(({ char }) => char).includes(symbol.toUpperCase())
-        ? alphabet.find(({ char }) => char === symbol.toUpperCase()).morse
-        : symbol
+  useEffect(() => {
+    setResult(
+      encryptButton === "Зашифровать"
+        ? splitApplyJoin(text, "", " ", morse, [1, alphabet])
+        : splitApplyJoin(text, " ", "", morse, [
+          0,
+          alphabetButton === "Латиница" ? latinAlphabet : cyrillicAlphabet
+        ])
     )
-    .join(" ")
+  }, [text, encryptButton, alphabetButton])
 
   const cipher = getDatabaseObject(ciphers, "morse")
 
   return <PageCreator {...cipher}>
     <StandardGrid>
       <InputField title="Текст" type="text" value={text} onChange={setText} alphabet={alphabet.map(({ char }) => char).join("")} />
-      <InputField title="Результат" type="text" readOnly copyButton value={result} />
+      <ToggleButtonGroup buttons={encryptButtons} onChange={setEncryptButton} />
+      {encryptButton === "Расшифровать" && <ToggleButtonGroup buttons={alphabetButtons} onChange={setAlphabetButton} />}
     </StandardGrid>
+    <InputField title="Результат" type="text" readOnly copyButton value={result} />
   </PageCreator>
 }

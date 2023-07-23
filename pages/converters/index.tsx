@@ -1,5 +1,4 @@
-import { CardGrid } from "components/layout"
-import { Description } from "components/seo"
+import { CardGrid, Description } from "components"
 import { converters } from "databases"
 
 export default function Converters() {

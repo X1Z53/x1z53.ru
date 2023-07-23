@@ -1,4 +1,4 @@
-export default function naturalSort(a: string, b: string, useCaseSensitive: boolean) {
+export default function sort(a: string, b: string, useCaseSensitive: boolean) {
   const numberRegex = /(^-?\d+(\.\d*)[df]?e?\d?$|^0x[0-9a-f]+$|\d+)/gi
 
   a = (useCaseSensitive ? a : a.toLowerCase()).replace(" ", "")

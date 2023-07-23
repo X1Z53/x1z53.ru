@@ -1,9 +1,7 @@
 import { Box } from "@chakra-ui/react"
-import { CheckBox, InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { CheckBox, InputField, PageCreator, StandardGrid } from "components"
 import { textTools } from "databases"
-import { useToggle } from "features/hooks"
-import { getDatabaseObject, naturalSort } from "features/utils"
+import { getDatabaseObject, sort, useToggle } from "features"
 import { useEffect, useState } from "react"
 
 export default function Sort() {
@@ -30,7 +28,7 @@ export default function Sort() {
     const parts = text.split(splitChar).map(part => part.trim()).sort()
 
     if (!useCaseSensitive) parts.sort((a, b) => a.localeCompare(b))
-    if (useNatural) parts.sort((a, b) => naturalSort(a, b, useCaseSensitive))
+    if (useNatural) parts.sort((a, b) => sort(a, b, useCaseSensitive))
     if (useReverse) parts.reverse()
 
     setResult(parts.join((useSpaceBeforeJoin ? " " : "") + joinChar + (useSpaceAfterJoin ? " " : "")))

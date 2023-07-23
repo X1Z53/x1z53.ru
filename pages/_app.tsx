@@ -1,5 +1,5 @@
 import { ChakraProvider, Container } from "@chakra-ui/react"
-import { Header } from "components/layout"
+import { Header } from "components"
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import { useRouter } from "next/router"

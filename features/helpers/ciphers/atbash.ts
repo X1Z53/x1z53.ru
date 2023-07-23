@@ -1,5 +1,3 @@
-// Python prototype (https://github.com/X1Z53/ciphers/blob/main/brief.py)
-
 export default function Atbash({text, alphabet}) {
   if (!text || !alphabet) return ""
 

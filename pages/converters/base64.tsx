@@ -1,7 +1,6 @@
-import { InputField, ToggleButtonGroup } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid, ToggleButtonGroup } from "components"
 import { converters } from "databases"
-import { getDatabaseObject } from "features/utils"
+import { getDatabaseObject } from "features"
 import { useEffect, useState } from "react"
 
 export default function Base64() {

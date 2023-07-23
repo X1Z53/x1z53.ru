@@ -1,7 +1,6 @@
-import { InputField } from "components/form"
-import { PageCreator, StandardGrid } from "components/layout"
+import { InputField, PageCreator, StandardGrid } from "components"
 import { textTools } from "databases"
-import { getDatabaseObject } from "features/utils"
+import { getDatabaseObject } from "features"
 import { useState } from "react"
 
 export default function ChangeRegister() {
