@@ -14,5 +14,9 @@
     {
         "name": "textTools",
         "title": "Текстовые инструменты"
+    },
+    {
+        "name": "fileReaders",
+        "title": "Чтение файлов"
     }
 ]

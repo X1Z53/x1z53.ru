@@ -8,13 +8,35 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
+          <style>
+            {`
+              body {
+                overflow: overlay
+              }
+          
+              ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px
+              }
+          
+              ::-webkit-scrollbar-thumb:hover {
+                background-color: #718096
+              }
+          
+              ::-webkit-scrollbar-thumb {
+                background-color: #4A5568;
+                border-radius: 20px;
+                border: 1px solid transparent;
+                background-clip: content-box;
+              }
+            `}
+          </style>
           <link rel="icon" type="image/png" href="https://images.x1z53.ru/x1z53.svg" />
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
-
           <script
             dangerouslySetInnerHTML={{
               __html: `

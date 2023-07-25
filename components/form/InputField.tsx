@@ -1,6 +1,7 @@
-import { Flex, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, StyleProps, Textarea } from "@chakra-ui/react"
-import { ColorPicker, Copy } from "components/buttons"
+import { Flex, Input, InputGroup, InputLeftAddon, InputRightAddon, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, StyleProps, Textarea } from "@chakra-ui/react"
+import { Clear, ColorPicker, Copy } from "components/buttons"
 import { useEffect, useRef, useState } from "react"
+import Dropzone from "react-dropzone"
 
 type TextProps = {
   type: "text"
@@ -20,6 +21,16 @@ type SelectProps = {
   options?: string[] | object[]
 }
 
+type DropzoneProps = {
+  type: "dropzone"
+  onLoad?: (any: ProgressEvent<FileReader>) => void
+  readAs?: string
+  accept?: { [key: string]: string[] }
+  fileNames?: string[]
+  setFileNames?: (any: string[]) => void
+  useClear?: () => void
+}
+
 type InputFieldProps = {
   title: string
   value: string
@@ -27,15 +38,17 @@ type InputFieldProps = {
   readOnly?: boolean
   colorPickerButton?: boolean
   copyButton?: boolean
+  clearButton?: boolean
   styles?: StyleProps
   minHeight?: string
-} & (TextProps | NumberProps | SelectProps)
+} & (TextProps | NumberProps | SelectProps | DropzoneProps)
 
 export default function InputField(props: InputFieldProps) {
-  const { type, title, value, onChange, readOnly, colorPickerButton, copyButton, styles } = props
+  const { type, title, value, onChange, readOnly, colorPickerButton, copyButton, clearButton, styles } = props
   const { alphabet, includedInAlphabet } = type === "text" ? props : { alphabet: "", includedInAlphabet: false }
   const { min, max, step } = type === "number" ? props : { min: Number.MIN_SAFE_INTEGER, max: Number.MAX_SAFE_INTEGER, step: 1 }
   const { options } = type === "select" ? props : { options: [] }
+  const { onLoad, readAs, accept, fileNames, setFileNames, useClear } = type === "dropzone" ? props : { onLoad: () => { }, readAs: "", accept: {}, fileNames: [], setFileNames: () => { }, useClear: () => { } }
 
   const minHeight = props.minHeight || "40px"
   const [height, setHeight] = useState(minHeight)
@@ -53,7 +66,6 @@ export default function InputField(props: InputFieldProps) {
     borderBottomLeftRadius: 0,
     borderTopRightRadius: [0, 0, 6]
   }
-
   const ref = useRef(null)
   useEffect(() => {
     if (ref.current) {
@@ -115,6 +127,33 @@ export default function InputField(props: InputFieldProps) {
           )}
         </Select>
       }
+      {
+        type === "dropzone" && <Dropzone {...{ accept }} onDrop={(files) => {
+          useClear()
+          setFileNames(files.map(({ name }) => name))
+          files.map(file => {
+            const reader = new FileReader()
+            reader.onload = onLoad
+            if (readAs === "string" || !readAs) reader.readAsText(file)
+            if (readAs === "binary") reader.readAsBinaryString(file)
+          })
+        }}>
+          {
+            ({ getRootProps, getInputProps }) => <>
+              <Textarea
+                {...{ ref, minHeight, height, readOnly, value }}
+                {...middleStyles}
+                {...getRootProps()}
+                resize="none"
+                readOnly
+                value={fileNames.join(", ") || value}
+                cursor="pointer"
+              />
+              <Input {...getInputProps()} width={0} margin={0} size="" />
+            </>
+          }
+        </Dropzone>
+      }
       <InputRightAddon
         {...{ minHeight, height }}
         borderTopRightRadius={[0, 0, 6]}
@@ -123,7 +162,8 @@ export default function InputField(props: InputFieldProps) {
       >
         {copyButton && <Copy {...{ value }} styles={rightStyles} />}
         {colorPickerButton && <ColorPicker {...{ value, onChange }} styles={rightStyles} />}
+        {clearButton && <Clear {...{ useClear }} styles={rightStyles} />}
       </InputRightAddon>
     </Flex>
-  </InputGroup>
+  </InputGroup >
 }

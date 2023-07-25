@@ -1,3 +1,4 @@
+export { default as Clear } from "./ClearButton"
 export { default as ColorPicker } from "./ColorPickerButton"
 export { default as Copy } from "./CopyButton"
 export { default as LoginButton } from "./LoginButton"

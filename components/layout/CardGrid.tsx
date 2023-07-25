@@ -1,5 +1,5 @@
-import { Card, CardBody, CardHeader, Heading, SimpleGrid } from "@chakra-ui/react"
-import Link from "next/link"
+import { Card, CardBody, CardHeader, Heading, LinkOverlay, SimpleGrid } from "@chakra-ui/react"
+import NextLink from "next/link"
 import { useRouter } from "next/router"
 
 type CardGridProps = {
@@ -15,14 +15,14 @@ export default function CardGrid({ cardWidth = "300px", isExternal, cards }: Car
   return <SimpleGrid spacing={4} templateColumns={`repeat(auto-fill, minmax(${cardWidth}, 1fr))`}>
     {cards.map(({ title, description, name, url }) => (
       <Card key={name} size="sm" justify="center">
-        <Link href={url || `${asPath.length - 1 ? asPath : ""}/${name}`} target={isExternal && "_blank"}>
+        <LinkOverlay as={NextLink} href={url || `${asPath.length - 1 ? asPath : ""}/${name}`} target={isExternal && "_blank"}>
           <CardHeader textAlign="center">
             <Heading size="md">{title}</Heading>
           </CardHeader>
           <CardBody textAlign="center">
             {description || url}
           </CardBody>
-        </Link>
+        </LinkOverlay>
       </Card>
     ))}
   </SimpleGrid >
