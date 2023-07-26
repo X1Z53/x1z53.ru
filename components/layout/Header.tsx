@@ -1,16 +1,16 @@
-import { Box, Center, Container, Flex, Image, useColorModeValue } from "@chakra-ui/react"
+import { Box, Center, Container, Flex, Image, Show, useColorModeValue } from "@chakra-ui/react"
 import { LoginButton, SidebarButton } from "components/buttons"
-import BackButton from "components/buttons/BackButton"
+import BreadCrumbs from "components/ui/BreadCrumbs"
 import Link from "next/link"
 
-export default function Header() {
+export default function Header({path}: {path: string[]}) {
   const background = useColorModeValue("gray.100", "gray.700")
 
   return <Box as="header" paddingY={2} backgroundColor={background}>
     <Container maxWidth="container.xl" position="relative">
       <Flex position="absolute" left={4} top={1}>
         <SidebarButton />
-        <BackButton />
+        <Show above="md"><BreadCrumbs {...{path}} /></Show>
       </Flex>
       <Flex position="absolute" right={4} top={1}>
         <LoginButton />
