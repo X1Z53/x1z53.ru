@@ -19,7 +19,7 @@ export default function Sort() {
   const [useCaseSensitive, toggleUseCaseSensitive] = useToggle(false)
   const [useNatural, toggleUseNatural] = useToggle(false)
   const [useSpaceBeforeJoin, toggleUseSpaceBeforaJoin] = useToggle(true)
-  const [useSpaceAfterJoin, toggleUseSpaceAfterJoin] = useToggle(true)
+  const [useSpaceAfterJoin, toggleUseSpaceAfterJoin] = useToggle(false)
 
   const [text, setText] = useState("Hello, World!")
   const [result, setResult] = useState("")
@@ -27,8 +27,10 @@ export default function Sort() {
   useEffect(() => {
     const parts = text.split(splitChar).map(part => part.trim()).sort()
 
-    if (!useCaseSensitive) parts.sort((a, b) => a.localeCompare(b))
     if (useNatural) parts.sort((a, b) => sort(a, b, useCaseSensitive))
+    if (!useNatural && useCaseSensitive) parts.sort((a, b) => a.localeCompare(b))
+    if (!useNatural && !useCaseSensitive) parts.sort()
+
     if (useReverse) parts.reverse()
 
     setResult(parts.join((useSpaceBeforeJoin ? " " : "") + joinChar + (useSpaceAfterJoin ? " " : "")))
