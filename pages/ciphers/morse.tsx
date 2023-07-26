@@ -26,9 +26,7 @@ export default function Morse() {
     )
   }, [text, encryptButton, alphabetButton])
 
-  const cipher = getDatabaseObject(ciphers, "morse")
-
-  return <PageCreator {...cipher}>
+  return <PageCreator {...getDatabaseObject(ciphers, "morse")}>
     <StandardGrid>
       <InputField title="Текст" type="text" value={text} onChange={setText} alphabet={alphabet.map(({ char }) => char).join("")} />
       <ToggleButtonGroup buttons={encryptButtons} onChange={setEncryptButton} />

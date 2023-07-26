@@ -10,9 +10,7 @@ export default function Time() {
   const [targetBase, setTargetBase] = useState("day")
   const result = String(Number(time) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
 
-  const converter = getDatabaseObject(converters, "time")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "time")}>
     <StandardGrid>
       <InputField type="select" title="Начальная система" value={sourceBase} onChange={setSourceBase} options={bases} />
       <InputField type="select" title="Концечная система" value={targetBase} onChange={setTargetBase} options={bases} />

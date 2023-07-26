@@ -34,9 +34,7 @@ export default function Sort() {
     setResult(parts.join((useSpaceBeforeJoin ? " " : "") + joinChar + (useSpaceAfterJoin ? " " : "")))
   }, [text, splitChar, useNatural, useReverse, useCaseSensitive, joinChar, useSpaceBeforeJoin, useSpaceAfterJoin])
 
-  const textTool = getDatabaseObject(textTools, "sort")
-
-  return <PageCreator {...textTool}>
+  return <PageCreator {...getDatabaseObject(textTools, "sort")}>
     <StandardGrid>
       <InputField title="Символ разделения" type="select" options={chars} value={splitChar} onChange={setSplitChar} />
       <InputField title="Символ соединения" type="select" options={chars} value={joinChar} onChange={setJoinChar} />

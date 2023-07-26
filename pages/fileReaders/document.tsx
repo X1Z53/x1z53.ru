@@ -19,10 +19,10 @@ export default function File() {
       clearButton
       readAs="binary"
       onLoad={(event) => {
-        const document = new Docxtemplater(new PizZip(event.target.result))
+        const document = new Docxtemplater(new PizZip(event.target.result), {delimiters: {start: "12op1j2po1j2poj1po", end: "op21j4po21jp4oj1op24j"}})
         setTexts(current => [...current, document.getFullText()])
       }}  
-      accept={{"application/vnd.openxmlformats-officedocument.wordprocessingml.document": []}}
+      // accept={{"application/vnd.openxmlformats-officedocument.wordprocessingml.document": []}}
       useClear={() => {
         setTexts([])
         setFileNames([])

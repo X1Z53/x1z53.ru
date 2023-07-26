@@ -10,9 +10,7 @@ export default function Length() {
   const [targetBase, setTargetBase] = useState("centimeter")
   const result = String(Number(weight) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
 
-  const converter = getDatabaseObject(converters, "length")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "length")}>
     <StandardGrid>
       <InputField type="select" title="Начальная система" value={sourceBase} onChange={setSourceBase} options={bases} />
       <InputField type="select" title="Концечная система" value={targetBase} onChange={setTargetBase} options={bases} />

@@ -28,9 +28,7 @@ export default function Cipher({
   const [alphabet, setAlphabet] = useState("abcdefghijklmnopqrstuvwxyz")
   const result = cipher({ text, alphabet, key, isDecrypt: buttons.indexOf(method) })
 
-  const cipherProps = getDatabaseObject(ciphers, name)
-
-  return <PageCreator {...cipherProps}>
+  return <PageCreator {...getDatabaseObject(ciphers, name)}>
     <StandardGrid>
       <InputField type="text" title="Текст" value={text} onChange={setText} />
       {haveAlphabet && <InputField type="text" title="Алфавит" value={alphabet} onChange={setAlphabet} />}

@@ -13,9 +13,7 @@ export default function shortUrl() {
       .then(result => { setResult(result) })
   }, [text])
 
-  const generator = getDatabaseObject(generators, "shortUrl")
-
-  return <PageCreator {...generator}>
+  return <PageCreator {...getDatabaseObject(generators, "shortUrl")}>
     <StandardGrid>
       <InputField type="text" title="Текст" value={text} onChange={setText} />
       <InputField type="text" title="Результат" copyButton readOnly value={result} onChange={setResult} />

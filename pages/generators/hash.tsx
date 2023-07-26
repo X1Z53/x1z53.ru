@@ -11,9 +11,7 @@ export default function HashGenerator() {
 
   useEffect(() => { setResult(hash(text, algorithm)) }, [text, algorithm])
 
-  const generator = getDatabaseObject(generators, "hash")
-
-  return <PageCreator {...generator}>
+  return <PageCreator {...getDatabaseObject(generators, "hash")}>
     <StandardGrid>
       <InputField title="Текст" type="text" value={text} onChange={setText} />
       <InputField title="Алгоритм" type="select" options={algorithms} value={algorithm} onChange={setAlgorithm} />

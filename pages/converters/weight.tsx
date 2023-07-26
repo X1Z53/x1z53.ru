@@ -10,9 +10,7 @@ export default function Weight() {
   const [targetBase, setTargetBase] = useState("pound")
   const result = String(Number(weight) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
 
-  const converter = getDatabaseObject(converters, "weight")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "weight")}>
     <StandardGrid>
       <InputField type="select" title="Начальная система" value={sourceBase} onChange={setSourceBase} options={bases} />
       <InputField type="select" title="Концечная система" value={targetBase} onChange={setTargetBase} options={bases} />

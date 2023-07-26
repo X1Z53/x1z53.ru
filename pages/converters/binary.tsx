@@ -19,9 +19,7 @@ export default function Binary() {
     )
   }, [text, method, addSpacesBetween, addUpToEightChars])
 
-  const converter = getDatabaseObject(converters, "binary")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "binary")}>
     <StandardGrid>
       <InputField type="text" title="Число" value={text} onChange={setText} />
       <ToggleButtonGroup {...{buttons}} onChange={setMethod} />

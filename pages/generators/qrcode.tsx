@@ -142,9 +142,7 @@ export default function QRCode() {
     cornerDotsType, useCornerDotsGradient, cornerDotsColor, cornerDotsColorOffset, cornerDotsGradientType, cornerDotsRotation, cornerDotsSecondColor, cornerDotsSecondColorOffset,
   ])
 
-  const generator = getDatabaseObject(generators, "qrcode")
-
-  return <PageCreator {...generator}>
+  return <PageCreator {...getDatabaseObject(generators, "qrcode")}>
     <StandardGrid>
       <InputField type="text" title="Текст" value={text} onChange={setText} />
       <InputField type="number" title="Тип QR-кода" min={0} max={40} value={qrType.toString()} onChange={setQrType} />

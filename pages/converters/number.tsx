@@ -14,9 +14,7 @@ export default function Number() {
     catch { setResult("") }
   }, [number, sourceBase, targetBase])
 
-  const converter = getDatabaseObject(converters, "number")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "number")}>
     <StandardGrid>
       <InputField type="text" title="Число" value={number} onChange={setNumber} />
       <InputField type="number" title="Исходная система" min={2} max={36} value={sourceBase.toString()} onChange={setSourceBase} />

@@ -45,9 +45,7 @@ export default function Password() {
     alphabet
   ])
 
-  const generator = getDatabaseObject(generators, "password")
-
-  return <PageCreator {...generator}>
+  return <PageCreator {...getDatabaseObject(generators, "password")}>
     <StandardGrid>
       <InputField type="number" title="Длина" value={length.toString()} onChange={setLength} />
       <Button onClick={() => setResult(generatePassword())}>Сгенерировать</Button>

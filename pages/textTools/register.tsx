@@ -29,8 +29,7 @@ export default function ChangeRegister() {
     })
     .join(" ")
 
-  const textTool = getDatabaseObject(textTools, "changeRegister")
-  return <PageCreator {...textTool}>
+  return <PageCreator {...getDatabaseObject(textTools, "changeRegister")}>
     <StandardGrid>
       <InputField type="text" title="Текст" value={text} onChange={setText} />
       <InputField type="select" title="Изменение" value={button} onChange={setButton} options={buttons} />

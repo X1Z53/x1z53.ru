@@ -14,9 +14,7 @@ export default function Base64() {
     catch { setResult("") }
   }, [text, method])
 
-  const converter = getDatabaseObject(converters, "base64")
-
-  return <PageCreator {...converter}>
+  return <PageCreator {...getDatabaseObject(converters, "base64")}>
     <StandardGrid>
       <InputField type="text" title="Текст" value={text} onChange={setText} />
       <ToggleButtonGroup {...{buttons}} onChange={setMethod} />
