@@ -6,7 +6,7 @@ const theme = extendTheme({ config: { initialColorMode: "dark" } })
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html>
+      <Html lang="ru">
         <Head>
           <style>
             {`

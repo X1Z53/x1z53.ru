@@ -22,5 +22,9 @@
     {
         "name": "musicTools",
         "title": "Инструменты для музыки"
+    },
+    {
+        "name": "about",
+        "title": "О сайте"
     }
 ]

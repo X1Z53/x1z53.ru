@@ -1,4 +1,4 @@
-import { Button, Icon, StyleProps, Tooltip } from "@chakra-ui/react"
+import { IconButton, StyleProps, Tooltip } from "@chakra-ui/react"
 import { useState } from "react"
 import { BsFillClipboard2Fill } from "react-icons/bs"
 
@@ -8,16 +8,23 @@ type CopyButtonProps = {
 }
 
 export default function CopyButton({ styles, value }: CopyButtonProps) {
-  const [copied, setCopied] = useState(0)
+  const [copied, setCopied] = useState(false)
+
   return <Tooltip
-    closeOnClick={false} hasArrow backgroundColor="gray.700" color="white"
-    label={copied ? "Text in your clipboard" : "Click for copy"}
+    onClose={() => { setCopied(false) }}
+    closeOnClick={false}
+    hasArrow
+    color="white"
+    label={copied ? "Текст скопирован" : "Нажмите, чтобы скопировать"}
   >
-    <Button onClick={() => {
-      setCopied(1)
-      navigator.clipboard.writeText(value)
-    }} {...styles}>
-      <Icon boxSize={6} as={BsFillClipboard2Fill} />
-    </Button>
+    <IconButton
+      {...styles}
+      onClick={() => {
+        setCopied(true)
+        navigator.clipboard.writeText(value)
+      }}
+      icon={<BsFillClipboard2Fill />}
+      aria-label="Скопировать"
+    />
   </Tooltip>
 }

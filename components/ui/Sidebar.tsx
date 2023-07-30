@@ -14,6 +14,7 @@ export default function Sidebar({ isOpen, onClose }: ModalProps) {
       <DrawerBody>
         <Flex direction="column" alignItems="center">
           {pages.map(({ name, title }) =>
+            name !== "about" &&
             <Link key={name} href={"/" + name} onClick={onClose}>
               <Button variant="ghost">{title}</Button>
             </Link>
@@ -24,7 +25,7 @@ export default function Sidebar({ isOpen, onClose }: ModalProps) {
         <Link href={"/about"} onClick={onClose}>
           <Button variant="ghost">О сайте</Button>
         </Link>
-        <Text>Designed by X1Z53</Text>
+        <Text>Дизайн X1Z53</Text>
       </DrawerFooter>
     </DrawerContent>
   </Drawer>

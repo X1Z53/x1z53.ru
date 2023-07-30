@@ -52,12 +52,13 @@ export default function InputField(props: InputFieldProps) {
 
   const minHeight = props.minHeight || "40px"
   const [height, setHeight] = useState(minHeight)
+  const haveButton = copyButton || colorPickerButton || clearButton
 
   const middleStyles = {
     borderTopLeftRadius: 0,
-    borderTopRightRadius: copyButton || colorPickerButton ? 0 : [0, 0, 6],
+    borderTopRightRadius: haveButton ? 0 : [0, 0, 6],
     borderBottomLeftRadius: [6, 6, 0],
-    borderBottomRightRadius: copyButton || colorPickerButton ? 0 : 6
+    borderBottomRightRadius: haveButton ? 0 : 6
   }
   const rightStyles = {
     minHeight: minHeight,
@@ -128,16 +129,18 @@ export default function InputField(props: InputFieldProps) {
         </Select>
       }
       {
-        type === "dropzone" && <Dropzone {...{ accept }} onDrop={(files) => {
-          useClear()
-          setFileNames(files.map(({ name }) => name))
-          files.map(file => {
-            const reader = new FileReader()
-            reader.onload = onLoad
-            if (readAs === "string" || !readAs) reader.readAsText(file)
-            if (readAs === "binary") reader.readAsBinaryString(file)
-          })
-        }}>
+        type === "dropzone" && <Dropzone
+          {...{ accept }}
+          onDrop={(files) => {
+            useClear()
+            setFileNames(files.map(({ name }) => name))
+            files.map(file => {
+              const reader = new FileReader()
+              reader.onload = onLoad
+              if (readAs === "string" || !readAs) reader.readAsText(file)
+              if (readAs === "binary") reader.readAsBinaryString(file)
+            })
+          }}>
           {
             ({ getRootProps, getInputProps }) => <>
               <Textarea
@@ -154,16 +157,18 @@ export default function InputField(props: InputFieldProps) {
           }
         </Dropzone>
       }
-      <InputRightAddon
-        {...{ minHeight, height }}
-        borderTopRightRadius={[0, 0, 6]}
-        padding={0}
-        border={0}
-      >
-        {copyButton && <Copy {...{ value }} styles={rightStyles} />}
-        {colorPickerButton && <ColorPicker {...{ value, onChange }} styles={rightStyles} />}
-        {clearButton && <Clear {...{ useClear }} styles={rightStyles} />}
-      </InputRightAddon>
+      {
+        haveButton && <InputRightAddon
+          {...{ minHeight, height }}
+          borderTopRightRadius={[0, 0, 6]}
+          padding={0}
+          border={0}
+        >
+          {copyButton && <Copy {...{ value }} styles={rightStyles} />}
+          {colorPickerButton && <ColorPicker {...{ value, onChange }} styles={rightStyles} />}
+          {clearButton && <Clear {...{ useClear }} styles={rightStyles} />}
+        </InputRightAddon>
+      }
     </Flex>
   </InputGroup >
 }

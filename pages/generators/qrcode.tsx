@@ -91,7 +91,7 @@ export default function QRCode() {
               rotation: backgroundRotation,
               colorStops: [
                 { offset: backgroundColorOffset, color: backgroundColor },
-                { offset: backgroundSecondColorOffset, color: backgroundSecondColor }
+                { offset: backgroundSecondColorOffset, color: useBackgroundGradient ? backgroundSecondColor : backgroundColor }
               ]
             },
           },
@@ -102,7 +102,7 @@ export default function QRCode() {
               rotation: dotsRotation,
               colorStops: [
                 { offset: dotsColorOffset, color: dotsColor },
-                { offset: dotsSecondColorOffset, color: dotsSecondColor }
+                { offset: dotsSecondColorOffset, color: useDotsGradient ? dotsSecondColor : dotsColor }
               ]
             },
           },
@@ -113,7 +113,7 @@ export default function QRCode() {
               rotation: cornerSquaresRotation,
               colorStops: [
                 { offset: cornerSquaresColorOffset, color: cornerSquaresColor },
-                { offset: cornerSquaresSecondColorOffset, color: cornerSquaresSecondColor }
+                { offset: cornerSquaresSecondColorOffset, color: useCornerSquaresGradient ? cornerSquaresSecondColor : cornerSquaresColor }
               ]
             },
           },
@@ -124,7 +124,7 @@ export default function QRCode() {
               rotation: cornerDotsRotation,
               colorStops: [
                 { offset: cornerDotsColorOffset, color: cornerDotsColor },
-                { offset: cornerDotsSecondColorOffset, color: cornerDotsSecondColor }
+                { offset: cornerDotsSecondColorOffset, color: useCornerDotsGradient ? cornerDotsSecondColor : cornerDotsColor }
               ]
             },
           },
