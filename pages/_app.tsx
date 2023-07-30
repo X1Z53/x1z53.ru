@@ -1,5 +1,6 @@
 import { ChakraProvider, Container } from "@chakra-ui/react"
 import { Header } from "components"
+import Footer from "components/layout/Footer"
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import { useRouter } from "next/router"
@@ -11,8 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <title>{path.join(" > ") || "Главная"}</title>
     </Head>
     <Header {...{ path }} />
-    <Container paddingY={5} maxWidth="container.xl">
+    <Container minHeight="80vh" paddingY={5} maxWidth="container.xl">
       <Component {...pageProps} />
     </Container>
+    <Footer />
   </ChakraProvider>
 }

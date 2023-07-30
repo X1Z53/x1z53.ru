@@ -22,6 +22,10 @@ export default function Password() {
   const [length, setLength] = useState(12)
   const [result, setResult] = useState("")
 
+  const generatePassword = () => Array.from({ length: length },
+    () => alphabet[Math.floor(Math.random() * alphabet.length)]
+  ).join("")
+
   useEffect(() => {
     setAlphabet(
       (useLowerCase ? lower : "")
@@ -29,18 +33,16 @@ export default function Password() {
       + (useNumbers ? numbers : "")
       + (useSpecialSymbols ? specialSymbols : "")
     )
-  }, [useCustomAlphabet])
-
-  const generatePassword = () => Array.from({ length: length },
-    () => alphabet[Math.floor(Math.random() * alphabet.length)]
-  ).join("")
-
-  useEffect(() => { setResult(generatePassword()) }, [
-    length,
+  }, [
+    useCustomAlphabet,
     useLowerCase,
     useUpperCase,
     useNumbers,
-    useSpecialSymbols,
+    useSpecialSymbols
+  ])
+
+  useEffect(() => { setResult(generatePassword()) }, [
+    length,
     useCustomAlphabet,
     alphabet
   ])
@@ -52,18 +54,20 @@ export default function Password() {
       <CheckBox title="Свой алфавит" value={useCustomAlphabet} onChange={toggleUseCustomAlphabet} />
     </StandardGrid>
     {
-      useCustomAlphabet ? <InputField
-        type="text"
-        title="Алфавит"
-        value={alphabet}
-        onChange={setAlphabet}
-        styles={{ marginBottom: 4 }}
-      /> : <StandardGrid>
-        <CheckBox title="Прописные буквы" value={useLowerCase} onChange={toggleUseLowerCase} />
-        <CheckBox title="Заглавные буквы" value={useUpperCase} onChange={toggleUseUpperCase} />
-        <CheckBox title="Цифры" value={useNumbers} onChange={toggleUseNumbers} />
-        <CheckBox title="Прописные буквы" value={useSpecialSymbols} onChange={toggleUseSpecialSymbols} />
-      </StandardGrid>
+      useCustomAlphabet
+        ? <InputField
+          type="text"
+          title="Алфавит"
+          value={alphabet}
+          onChange={setAlphabet}
+          styles={{ marginBottom: 4 }}
+        />
+        : <StandardGrid>
+          <CheckBox title="Прописные буквы" value={useLowerCase} onChange={toggleUseLowerCase} />
+          <CheckBox title="Заглавные буквы" value={useUpperCase} onChange={toggleUseUpperCase} />
+          <CheckBox title="Цифры" value={useNumbers} onChange={toggleUseNumbers} />
+          <CheckBox title="Специальные символы" value={useSpecialSymbols} onChange={toggleUseSpecialSymbols} />
+        </StandardGrid>
     }
     <InputField type="text" title="Результат" copyButton readOnly value={result} />
   </PageCreator>

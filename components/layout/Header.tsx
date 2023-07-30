@@ -1,6 +1,6 @@
 import { Box, Center, Container, Flex, Image, Show, useColorModeValue } from "@chakra-ui/react"
 import { LoginButton, SidebarButton } from "components/buttons"
-import BreadCrumbs from "components/ui/BreadCrumbs"
+import { BreadCrumbs } from "components/layout"
 import Link from "next/link"
 
 export default function Header({path}: {path: string[]}) {

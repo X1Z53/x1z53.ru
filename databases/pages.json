@@ -18,5 +18,9 @@
     {
         "name": "fileReaders",
         "title": "Чтение файлов"
+    },
+    {
+        "name": "musicTools",
+        "title": "Инструменты для музыки"
     }
 ]

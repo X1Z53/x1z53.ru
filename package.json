@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap",
+    "buildTest": "next build && next-sitemap --config test.next-sitemap.config.js",
     "start": "next start"
   },
   "overrides": {
@@ -16,10 +17,12 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@vkontakte/icons": "^2.51.0",
     "crypto-js": "^4.1.1",
     "docxtemplater": "^3.37.12",
-    "eslint": "^8.45.0",
-    "framer-motion": "^10.13.1",
+    "eslint": "^8.46.0",
+    "framer-motion": "^10.15.0",
+    "howler": "^2.2.3",
     "ky": "^0.33.3",
     "next": "^13.4.12",
     "next-sitemap": "^4.1.8",
@@ -30,6 +33,7 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-icons": "^4.10.1",
+    "tonal": "^5.0.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "devDependencies": {
@@ -40,7 +44,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
-    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react": "^7.33.1",
     "typescript": "^5.1.6"
   }
 }

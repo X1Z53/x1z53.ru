@@ -75,14 +75,14 @@ export default function InputField(props: InputFieldProps) {
   })
 
   return <InputGroup {...styles} flexDirection={["column", "column", "row"]}>
-    <InputLeftAddon
+    {title && <InputLeftAddon
       {...{ minHeight, height }}
       borderBottomLeftRadius={[0, 0, 6]}
       borderTopRightRadius={[6, 6, 0]}
       margin={0}
     >
       {title}
-    </InputLeftAddon>
+    </InputLeftAddon>}
     <Flex width="100%">
       {
         type === "text" && <Textarea

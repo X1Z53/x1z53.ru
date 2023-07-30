@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://x1z53.ru
+Host: https://test.x1z53.ru
 
 # Sitemaps
-Sitemap: https://x1z53.ru/sitemap.xml
+Sitemap: https://test.x1z53.ru/sitemap.xml
