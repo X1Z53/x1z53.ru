@@ -1,6 +1,6 @@
 import { InputField, PageGenerator, StandardGrid } from "components"
 import { generators } from "databases"
-import { getDatabaseObject, hash } from "modules"
+import { getDatabaseObject, getLocaled, hash } from "modules"
 import { useEffect, useState } from "react"
 
 export default function HashGenerator() {
@@ -11,7 +11,7 @@ export default function HashGenerator() {
 
   useEffect(() => { setResult(hash(text, algorithm)) }, [text, algorithm])
 
-  return <PageGenerator {...getDatabaseObject(generators, "hash")}>
+  return <PageGenerator {...getDatabaseObject(getLocaled(generators), "hash")}>
     <StandardGrid>
       <InputField title="Текст" type="text" value={text} onChange={setText} />
       <InputField title="Алгоритм" type="select" options={algorithms} value={algorithm} onChange={setAlgorithm} />

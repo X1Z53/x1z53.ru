@@ -18,7 +18,7 @@ export default function ConverterPageGenerator({
   const [value, setValue] = useState("1")
   const [sourceBase, setSourceBase] = useState(defaultSourcBase)
   const [targetBase, setTargetBase] = useState(defaultTargetBase)
-  const result = String(Number(length) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
+  const result = String(Number(value) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
 
   return <PageGenerator {...getDatabaseObject(getLocaled(converters), name)}>
     <StandardGrid>
