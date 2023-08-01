@@ -1,5 +1,5 @@
-import { CipherPageCreator } from "components"
+import { CipherPageGenerator } from "components"
 
 export default function Atbash() {
-  return <CipherPageCreator name="atbash" haveAlphabet />
+  return <CipherPageGenerator name="atbash" haveAlphabet />
 }

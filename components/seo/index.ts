@@ -1,1 +1,3 @@
 export { default as Description } from "./Description"
+export { default as Head } from "./Head"
+

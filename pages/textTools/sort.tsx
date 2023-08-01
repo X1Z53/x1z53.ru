@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
-import { CheckBox, InputField, PageCreator, StandardGrid } from "components"
+import { CheckBox, InputField, PageGenerator, StandardGrid } from "components"
 import { textTools } from "databases"
-import { getDatabaseObject, sort, useToggle } from "features"
+import { getDatabaseObject, getLocaled, sort, useToggle } from "modules"
 import { useEffect, useState } from "react"
 
 export default function Sort() {
@@ -36,18 +36,46 @@ export default function Sort() {
     setResult(parts.join((useSpaceBeforeJoin ? " " : "") + joinChar + (useSpaceAfterJoin ? " " : "")))
   }, [text, splitChar, useNatural, useReverse, useCaseSensitive, joinChar, useSpaceBeforeJoin, useSpaceAfterJoin])
 
-  return <PageCreator {...getDatabaseObject(textTools, "sort")}>
+  const {
+    splitCharTitle, joinCharTitle, reverseTitle, caseSensitiveTitle, naturalTitle,
+    spaceBeforeJoinTitle, spaceAfterJoinTitle, textTitle, resultTitle
+  } = getLocaled({
+    ru: {
+      splitCharTitle: "Символ разделения",
+      joinCharTitle: "Символ соединения",
+      reverseTitle: "Обратная сортировка",
+      caseSensitiveTitle: "Учёт регистра",
+      naturalTitle: "Естественная сортировка",
+      spaceBeforeJoinTitle: "Пробел до соединителя",
+      spaceAfterJoinTitle: "Пробел после соединителя",
+      textTitle: "Текст",
+      resultTitle: "Результат"
+    },
+    en: {
+      splitCharTitle: "Split char",
+      joinCharTitle: "Join char",
+      reverseTitle: "Reverse",
+      caseSensitiveTitle: "Case sensitive",
+      naturalTitle: "Natural sort",
+      spaceBeforeJoinTitle: "Space before join",
+      spaceAfterJoinTitle: "Space after join",
+      textTitle: "Text",
+      resultTitle: "Result"
+    }
+  })
+
+  return <PageGenerator {...getDatabaseObject(getLocaled(textTools), "sort")}>
     <StandardGrid>
-      <InputField title="Символ разделения" type="select" options={chars} value={splitChar} onChange={setSplitChar} />
-      <InputField title="Символ соединения" type="select" options={chars} value={joinChar} onChange={setJoinChar} />
-      <CheckBox title="Обратная сортировка" value={useReverse} onChange={toggleUseReverse} />
-      <CheckBox title="Учёт регистра" value={useCaseSensitive} onChange={toggleUseCaseSensitive} />
-      <CheckBox title="Естественная сортировка" value={useNatural} onChange={toggleUseNatural} />
-      <CheckBox title="Пробел до соединителя" value={useSpaceBeforeJoin} onChange={toggleUseSpaceBeforaJoin} />
-      <CheckBox title="Пробел после соединителя" value={useSpaceAfterJoin} onChange={toggleUseSpaceAfterJoin} />
+      <InputField title={splitCharTitle} type="select" options={chars} value={splitChar} onChange={setSplitChar} />
+      <InputField title={joinCharTitle} type="select" options={chars} value={joinChar} onChange={setJoinChar} />
+      <CheckBox title={reverseTitle} value={useReverse} onChange={toggleUseReverse} />
+      <CheckBox title={caseSensitiveTitle} value={useCaseSensitive} onChange={toggleUseCaseSensitive} />
+      <CheckBox title={naturalTitle} value={useNatural} onChange={toggleUseNatural} />
+      <CheckBox title={spaceBeforeJoinTitle} value={useSpaceBeforeJoin} onChange={toggleUseSpaceBeforaJoin} />
+      <CheckBox title={spaceAfterJoinTitle} value={useSpaceAfterJoin} onChange={toggleUseSpaceAfterJoin} />
       <Box />
-      <InputField title="Текст" type="text" value={text} onChange={setText} />
-      <InputField title="Результат" type="text" value={result} readOnly copyButton />
+      <InputField title={textTitle} type="text" value={text} onChange={setText} />
+      <InputField title={resultTitle} type="text" value={result} readOnly copyButton />
     </StandardGrid>
-  </PageCreator>
+  </PageGenerator>
 }

@@ -1,12 +1,7 @@
-import { IconButton, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Portal, StyleProps } from "@chakra-ui/react"
+import { IconButton, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Portal } from "@chakra-ui/react"
 import { SketchPicker } from "react-color"
 import { BsEyedropper } from "react-icons/bs"
-
-type ColorPickerButtonProps = {
-  styles?: StyleProps,
-  value: string,
-  onChange: (any) => void
-}
+import { ColorPickerButtonProps } from "types"
 
 export default function ColorPickerButton({ styles, value, onChange }: ColorPickerButtonProps) {
   return <Popover>

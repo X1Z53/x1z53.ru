@@ -1,0 +1,17 @@
+[
+    {
+        "description": "A simple password generator with the ability to customize the characters that the password will contain",
+        "name": "password",
+        "title": "Password Generator"
+    },
+    {
+        "description": "QR code generator with customization",
+        "name": "qrcode",
+        "title": "QR code generator"
+    },
+    {
+        "description": "Link shortener via clck.ru",
+        "name": "shortUrl",
+        "title": "Short URL generator"
+    }
+]

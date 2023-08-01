@@ -1,11 +1,11 @@
 import { Button, Heading, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react"
-import { ToggleButtonGroup } from "components/form"
-import { ModalProps } from "components/ui"
+import { ToggleButtonGroup } from "components"
 import { useState } from "react"
+import { LoginProps } from "types"
 
-export default function Login({isOpen, onClose}: ModalProps) {
+export default function Login({ isOpen, onClose }: LoginProps) {
   const [selected, setSelected] = useState("Registration")
-  
+
   return <Modal isOpen={isOpen} onClose={onClose} isCentered>
     <ModalOverlay />
     <ModalContent>

@@ -1,16 +1,15 @@
 import { CardGrid } from "components"
-import * as allDatabases from "databases"
+import * as allDatabases from "databases/pages"
+import { getLocaled, getReduced } from "modules"
 
 
 export default function Index() {
-  const { pages, ...databases } = allDatabases
-
-  const descriptions = Object
-    .keys(databases)
-    .map(databaseName => (
+  const { pages, ...databases } = getReduced(Object.keys(allDatabases).map(database => ({ [database]: getLocaled(allDatabases[database]) })))
+  const descriptions = getReduced(
+    Object.keys(databases).map(databaseName => (
       { [databaseName]: databases[databaseName].map(({ title }) => title).join(", ") }
     ))
-    .reduce((accumulator, current) => ({ ...accumulator, ...current }))
+  )
 
   const cards = pages
     .map((page) => page.name !== "about" && ({ ...page, description: descriptions[page.name] }))

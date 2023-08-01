@@ -1,5 +1,5 @@
 import { IconButton, useDisclosure } from "@chakra-ui/react"
-import { Login } from "components/ui"
+import { Login } from "components"
 import { BsPersonCircle } from "react-icons/bs"
 
 export default function LoginButton() {

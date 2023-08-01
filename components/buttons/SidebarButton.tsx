@@ -1,5 +1,5 @@
 import { IconButton, useDisclosure } from "@chakra-ui/react"
-import { Sidebar } from "components/ui"
+import { Sidebar } from "components"
 import { BsList } from "react-icons/bs"
 
 export default function SidebarButton() {

@@ -1,5 +1,5 @@
-import { CipherPageCreator } from "components"
+import { CipherPageGenerator } from "components"
 
 export default function Caesar() {
-  return <CipherPageCreator name="caesar" haveAlphabet haveKey numericKey haveDecrypt/>
+  return <CipherPageGenerator name="caesar" haveAlphabet haveKey numericKey haveDecrypt/>
 }

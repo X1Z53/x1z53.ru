@@ -1,0 +1,17 @@
+[
+    {
+        "description": "Text sorting with the ability to change the direction and type of sorting, as well as the separation and connection symbol of the text",
+        "name": "sort",
+        "title": "Text sort"
+    },
+    {
+        "description": "With this tool you will be able to change the case of your text",
+        "name": "register",
+        "title": "Register change"
+    },
+    {
+        "description": "The functionality of this tool will allow you to count the number of characters, words, without spaces and without punctuation marks",
+        "name": "counter",
+        "title": "Counter"
+    }
+]

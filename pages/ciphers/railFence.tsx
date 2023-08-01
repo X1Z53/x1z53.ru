@@ -1,5 +1,5 @@
-import { CipherPageCreator } from "components"
+import { CipherPageGenerator } from "components"
 
 export default function Cipher() {
-  return <CipherPageCreator name="railFence" haveDecrypt haveKey numericKey />
+  return <CipherPageGenerator name="railFence" haveDecrypt haveKey numericKey />
 }

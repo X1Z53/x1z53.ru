@@ -1,0 +1,38 @@
+[
+    {
+        "name": "ton",
+        "title": "Ton, t"
+    },
+    {
+        "name": "centner",
+        "title": "Centner, cwt"
+    },
+    {
+        "name": "kilogram",
+        "title": "Kilogram, kg"
+    },
+    {
+        "name": "gram",
+        "title": "Gram, g"
+    },
+    {
+        "name": "miligram",
+        "title": "Miligram, mg"
+    },
+    {
+        "name": "pound",
+        "title": "Pound, lb"
+    },
+    {
+        "name": "pood",
+        "title": "Pood"
+    },
+    {
+        "name": "ounce",
+        "title": "Ounce, oz"
+    },
+    {
+        "name": "carat",
+        "title": "Carat, ct"
+    }
+]

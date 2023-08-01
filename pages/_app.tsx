@@ -1,31 +1,32 @@
-import { ChakraProvider, Container } from "@chakra-ui/react"
-import { Header } from "components"
-import { Footer } from "components/layout"
-import * as databases from "databases"
-import { getDatabaseObject } from "features"
-import type { AppProps } from "next/app"
-import Head from "next/head"
+import { Box, ChakraProvider, Container, extendTheme } from "@chakra-ui/react"
+import { Footer, Header } from "components"
+import { AppProps } from "next/app"
+import { Fira_Code } from "next/font/google"
 import { useRouter } from "next/router"
+import { createContext } from "react"
+
+
+const font = Fira_Code({
+  subsets: ["latin", "cyrillic"],
+  display: "swap"
+})
+export const LocaleContext = createContext("ru")
 
 export default function App({ Component, pageProps }: AppProps) {
-  const path = useRouter().asPath.split("/").slice(1)
-  const titles = Object.values(databases).map(database => database.map(({ name, title }) => ({ name, title }))).flat()
-  const title = path[0] ? path
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .map(
-      pathPart => getDatabaseObject(titles, pathPart[0]?.toLowerCase() + pathPart.slice(1))?.title || pathPart
-    ) : ["Главная"]
-
-  return <ChakraProvider>
-    <Head>
-      <title>
-        {title.join(" > ")}
-      </title>
-    </Head>
-    <Header {...{ path, title }} />
-    <Container minHeight="80dvh" paddingY={5} maxWidth="container.xl">
-      <Component {...pageProps} />
-    </Container>
-    <Footer />
+  return <ChakraProvider theme={extendTheme({
+    fonts: {
+      body: font.style.fontFamily,
+      heading: font.style.fontFamily
+    }
+  })}>
+    <LocaleContext.Provider value={useRouter().locale}>
+      <Box>
+        <Header />
+        <Container minHeight={"80vh"} paddingY={5} maxWidth="container.xl">
+          <Component {...pageProps} />
+        </Container>
+        <Footer />
+      </Box>
+    </LocaleContext.Provider>
   </ChakraProvider>
 }
