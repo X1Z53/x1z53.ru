@@ -1,10 +1,11 @@
 import { Box } from "@chakra-ui/react"
 import { CheckBox, InputField, PageGenerator, StandardGrid } from "components"
 import { textTools } from "databases"
-import { getDatabaseObject, getLocaled, sort, useToggle } from "modules"
+import { getLocaledTitles, sort, useToggle } from "modules"
 import { useEffect, useState } from "react"
 
 export default function Sort() {
+  const titles = getLocaledTitles()
   const chars = [
     { name: "," },
     { name: "\n", title: "Перенос строки" },
@@ -36,46 +37,18 @@ export default function Sort() {
     setResult(parts.join((useSpaceBeforeJoin ? " " : "") + joinChar + (useSpaceAfterJoin ? " " : "")))
   }, [text, splitChar, useNatural, useReverse, useCaseSensitive, joinChar, useSpaceBeforeJoin, useSpaceAfterJoin])
 
-  const {
-    splitCharTitle, joinCharTitle, reverseTitle, caseSensitiveTitle, naturalTitle,
-    spaceBeforeJoinTitle, spaceAfterJoinTitle, textTitle, resultTitle
-  } = getLocaled({
-    ru: {
-      splitCharTitle: "Символ разделения",
-      joinCharTitle: "Символ соединения",
-      reverseTitle: "Обратная сортировка",
-      caseSensitiveTitle: "Учёт регистра",
-      naturalTitle: "Естественная сортировка",
-      spaceBeforeJoinTitle: "Пробел до соединителя",
-      spaceAfterJoinTitle: "Пробел после соединителя",
-      textTitle: "Текст",
-      resultTitle: "Результат"
-    },
-    en: {
-      splitCharTitle: "Split char",
-      joinCharTitle: "Join char",
-      reverseTitle: "Reverse",
-      caseSensitiveTitle: "Case sensitive",
-      naturalTitle: "Natural sort",
-      spaceBeforeJoinTitle: "Space before join",
-      spaceAfterJoinTitle: "Space after join",
-      textTitle: "Text",
-      resultTitle: "Result"
-    }
-  })
-
-  return <PageGenerator {...getDatabaseObject(getLocaled(textTools), "sort")}>
+  return <PageGenerator database={textTools} name="sort">
     <StandardGrid>
-      <InputField title={splitCharTitle} type="select" options={chars} value={splitChar} onChange={setSplitChar} />
-      <InputField title={joinCharTitle} type="select" options={chars} value={joinChar} onChange={setJoinChar} />
-      <CheckBox title={reverseTitle} value={useReverse} onChange={toggleUseReverse} />
-      <CheckBox title={caseSensitiveTitle} value={useCaseSensitive} onChange={toggleUseCaseSensitive} />
-      <CheckBox title={naturalTitle} value={useNatural} onChange={toggleUseNatural} />
-      <CheckBox title={spaceBeforeJoinTitle} value={useSpaceBeforeJoin} onChange={toggleUseSpaceBeforaJoin} />
-      <CheckBox title={spaceAfterJoinTitle} value={useSpaceAfterJoin} onChange={toggleUseSpaceAfterJoin} />
+      <InputField title={titles.splitChar} type="select" options={chars} value={splitChar} onChange={setSplitChar} />
+      <InputField title={titles.joinChar} type="select" options={chars} value={joinChar} onChange={setJoinChar} />
+      <CheckBox title={titles.reverseSort} value={useReverse} onChange={toggleUseReverse} />
+      <CheckBox title={titles.caseSensitive} value={useCaseSensitive} onChange={toggleUseCaseSensitive} />
+      <CheckBox title={titles.naturalSort} value={useNatural} onChange={toggleUseNatural} />
+      <CheckBox title={titles.spaceBeforeJoin} value={useSpaceBeforeJoin} onChange={toggleUseSpaceBeforaJoin} />
+      <CheckBox title={titles.spaceAfterJoin} value={useSpaceAfterJoin} onChange={toggleUseSpaceAfterJoin} />
       <Box />
-      <InputField title={textTitle} type="text" value={text} onChange={setText} />
-      <InputField title={resultTitle} type="text" value={result} readOnly copyButton />
+      <InputField title={titles.text} type="text" value={text} onChange={setText} />
+      <InputField title={titles.result} type="text" value={result} readOnly copyButton />
     </StandardGrid>
   </PageGenerator>
 }

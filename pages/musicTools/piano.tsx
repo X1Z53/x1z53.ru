@@ -1,7 +1,7 @@
 import { CheckBox, PageGenerator, StandardGrid } from "components"
 import { musicTools } from "databases"
 import { Howl } from "howler"
-import { getDatabaseObject, getLocaled, useToggle } from "modules"
+import { getLocaledTitles, useToggle } from "modules"
 import { useEffect, useState } from "react"
 import { note } from "tonal"
 
@@ -52,10 +52,21 @@ function Key({ styles, x, toDisplay, note, shortcut }: { styles: { stroke: strin
   })
 
   return <g textAnchor="middle">
-    <rect {...styles} {...{ x }} fill={clicked ? "yellow" : styles.fill} onMouseDown={() => {
-      setClicked(true)
-      soundEngine.play(toDisplay.at(-1).replace("B", "Bb").replace("H", "B"))
-    }} onMouseUp={() => { setClicked(false) }} />
+    <rect
+      {...styles}
+      {...{ x }}
+      fill={clicked ? "yellow" : styles.fill}
+      onMouseDown={() => {
+        setClicked(true)
+        soundEngine.play(toDisplay.at(-1).replace("B", "Bb").replace("H", "B"))
+      }}
+      onTouchStart={() => {
+        setClicked(true)
+        soundEngine.play(toDisplay.at(-1).replace("B", "Bb").replace("H", "B"))
+      }}
+      onMouseUp={() => { setClicked(false) }}
+      onTouchEnd={() => { setClicked(false) }}
+    />
     {toDisplay.map((note, index) =>
       <text
         pointerEvents={"none"}
@@ -71,6 +82,8 @@ function Key({ styles, x, toDisplay, note, shortcut }: { styles: { stroke: strin
 }
 
 export default function Piano() {
+  const titles = getLocaledTitles()
+
   const allNotes = "CDEFGAH".split("")
   const [sharps, flats] = [["C#", "D#", "F#", "G#", "A#"], ["Db", "Eb", "Gb", "Ab", "B"]]
   const [startNote, startOctave] = ["C", "2"]
@@ -93,26 +106,21 @@ export default function Piano() {
 
   const whiteKey = {
     stroke: "black",
-    fill: "currentColor",
+    fill: "white",
     width: 80,
     height: 400
   }
   const blackKey = {
-    stroke: "currentColor",
+    stroke: "white",
     fill: "black",
     width: whiteKey.width * 0.9,
     height: whiteKey.height / 2
   }
 
-  const { showNotesTitle, showShortcutsTitle } = getLocaled({
-    ru: { showNotesTitle: "Показывать ноты", showShortcutsTitle: "Показывать шорткаты" },
-    en: { showNotesTitle: "Show notes", showShortcutsTitle: "Show shortcuts"}
-  })
-
-  return <PageGenerator {...getDatabaseObject(getLocaled(musicTools), "piano")}>
+  return <PageGenerator database={musicTools} name="piano">
     <StandardGrid>
-      <CheckBox onChange={toggleShowNotes} title={showNotesTitle} value={showNotes} />
-      <CheckBox onChange={toggleShowShortcuts} title={showShortcutsTitle} value={showShortcuts} />
+      <CheckBox onChange={toggleShowNotes} title={titles.showNotes} value={showNotes} />
+      <CheckBox onChange={toggleShowShortcuts} title={titles.showShortcuts} value={showShortcuts} />
     </StandardGrid>
     <svg viewBox={`0 0 ${notes.length * whiteKey.width} ${whiteKey.height}`}>
       {notes.map((note, index) =>

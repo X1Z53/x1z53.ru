@@ -17,7 +17,8 @@ export default function App({ Component, pageProps }: AppProps) {
     fonts: {
       body: font.style.fontFamily,
       heading: font.style.fontFamily
-    }
+    },
+    config: { initialColorMode: "dark" }
   })}>
     <LocaleContext.Provider value={useRouter().locale}>
       <Box>

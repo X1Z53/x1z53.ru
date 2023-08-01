@@ -1,13 +1,15 @@
 import { CheckBox, InputField, PageGenerator, StandardGrid, ToggleButtonGroup } from "components"
 import { converters } from "databases"
-import { getDatabaseObject, getLocaled, useToggle } from "modules"
+import { getLocaled, getLocaledTitles, useToggle } from "modules"
 import { useEffect, useState } from "react"
 
 export default function Binary() {
-  const { textTitle, resultTitle, complementUpToEightCharsTitle, addSpacesBetweenTitle, buttons } = getLocaled({
-    ru: { textTitle: "Текст", resultTitle: "Результат", complementUpToEightCharsTitle: "Дополнять до 8 цифр", addSpacesBetweenTitle: "Использовать пробелы", buttons: ["Текст в Биты", "Биты в Текст"] },
-    en: { textTitle: "Text", resultTitle: "Result", complementUpToEightCharsTitle: "Complement up to 8 digits", addSpacesBetweenTitle: "Use spaces", buttons: ["Text to Bites", "Bites to Text"] }
+  const { buttons } = getLocaled({
+    ru: { buttons: ["Текст в Биты", "Биты в Текст"] },
+    en: { buttons: ["Text to Bites", "Bites to Text"] }
   })
+  const titles = getLocaledTitles()
+
   const [method, setMethod] = useState(buttons[0])
   const [complementUpToEightChars, toggleComplementUpToEightChars] = useToggle(true)
   const [addSpacesBetween, toggleAddSpacesBetween] = useToggle(true)
@@ -22,17 +24,17 @@ export default function Binary() {
     )
   }, [text, method, addSpacesBetween, complementUpToEightChars])
 
-  return <PageGenerator {...getDatabaseObject(getLocaled(converters), "binary")}>
+  return <PageGenerator database={converters} name="binary">
     <StandardGrid>
-      <InputField type="text" title={textTitle} value={text} onChange={setText} />
+      <InputField type="text" title={titles.text} value={text} onChange={setText} />
       <ToggleButtonGroup {...{buttons}} onChange={setMethod} />
       {
         !buttons.indexOf(method) && <>
-          <CheckBox title={complementUpToEightCharsTitle} value={complementUpToEightChars} onChange={toggleComplementUpToEightChars} />
-          <CheckBox title={addSpacesBetweenTitle} value={addSpacesBetween} onChange={toggleAddSpacesBetween} />
+          <CheckBox title={titles.complementUpToEightChars} value={complementUpToEightChars} onChange={toggleComplementUpToEightChars} />
+          <CheckBox title={titles.addSpaces} value={addSpacesBetween} onChange={toggleAddSpacesBetween} />
         </>
       }
     </StandardGrid>
-    <InputField type="text" title={resultTitle} readOnly copyButton value={result} />
+    <InputField type="text" title={titles.result} readOnly copyButton value={result} />
   </PageGenerator>
 }

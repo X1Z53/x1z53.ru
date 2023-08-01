@@ -1,7 +1,7 @@
 import { Box, Button, Center } from "@chakra-ui/react"
 import { CheckBox, InputField, PageGenerator, StandardGrid } from "components"
 import { generators } from "databases"
-import { getDatabaseObject, getLocaled, useToggle } from "modules"
+import { getLocaledTitles, useToggle } from "modules"
 import { CornerDotType, CornerSquareType, DotType, GradientType, TypeNumber } from "qr-code-styling"
 import { useEffect, useRef, useState } from "react"
 
@@ -22,22 +22,7 @@ function GradientSettings({
   rotation,
   type
 }: GradientSettingsProps) {
-  const { offsetTitle, secondTitle, secondOffsetTitle, rotationTitle, typeTitle } = getLocaled({
-    ru: {
-      offsetTitle: "Сдвиг первого цвета",
-      secondTitle: "Цвет градиента",
-      secondOffsetTitle: "Сдвиг второго цвета",
-      rotationTitle: "Поворот градиента",
-      typeTitle: "Тип градиента"
-    },
-    en: {
-      offsetTitle: "First color offset",
-      secondTitle: "Gradient folor",
-      secondOffsetTitle: "Second color offset",
-      rotationTitle: "Gradient rotation",
-      typeTitle: "Gradient type"
-    }
-  })
+  const titles = getLocaledTitles()
   const types = ["linear", "radial"]
 
   return <>
@@ -45,7 +30,7 @@ function GradientSettings({
       useGradient && <>
         <InputField
           type="number"
-          title={offsetTitle}
+          title={titles.firstColorOffset}
           value={colorOffset[0].toString()}
           onChange={colorOffset[1]}
           step={0.1}
@@ -53,14 +38,14 @@ function GradientSettings({
           max={1} />
         <InputField
           type="text"
-          title={secondTitle}
+          title={titles.gradientColor}
           value={secondColor[0]}
           onChange={color => { secondColor[1](color.hex) }}
           colorPickerButton
           readOnly />
         <InputField
           type="number"
-          title={secondOffsetTitle}
+          title={titles.gradientColorOffset}
           value={secondColorOffset[0].toString()}
           onChange={secondColorOffset[1]}
           step={0.1}
@@ -68,7 +53,7 @@ function GradientSettings({
           max={1} />
         <InputField
           type="number"
-          title={rotationTitle}
+          title={titles.gradientRotation}
           value={rotation[0].toString()}
           onChange={rotation[1]}
           step={0.1}
@@ -76,7 +61,7 @@ function GradientSettings({
           max={6.3} />
         <InputField
           type="select"
-          title={typeTitle}
+          title={titles.gradientType}
           value={type[0]}
           options={types}
           onChange={type[1]} />
@@ -87,6 +72,8 @@ function GradientSettings({
 
 
 export default function QRCode() {
+  const titles = getLocaledTitles()
+
   const [text, setText] = useState("Hello, World!")
   const [qrType, setQrType] = useState<TypeNumber>(0)
   const [useMargin, toggleUseMargin] = useToggle(true)
@@ -230,72 +217,13 @@ export default function QRCode() {
   ])
 
 
-  const {
-    fileTitle, textTitle, qrcodeTypeTitle, marginTitle, customSettingsTitle,
-    embedImageTitle, imageUrlTitle, hideBackgroundDotsTitle, imageSizeTitle, imageMarginTitle,
-    backgroundOptionsTitle, backgroundColorTitle,
-    dotsStyleTitle, dotsTypeTitle, dotsColorTitle,
-    cornerSquaresOptionsTitle, cornerSquaresTypeTitle, cornerSquaresColorTitle,
-    cornerDotsOptionsTitle, cornerDotsTypeTitle, cornerDotsColorTitle,
-    gradientTitle
-  } = getLocaled({
-    ru: {
-      fileTitle: "Файл",
-      textTitle: "Текст",
-      qrcodeTypeTitle: "Тип QR-кода",
-      marginTitle: "Отступ по краям",
-      customSettingsTitle: "Дополнительные настройки",
-      embedImageTitle: "Встроить изображение",
-      imageUrlTitle: "Ссылка на изображение",
-      hideBackgroundDotsTitle: "Скрыть точки за изображением",
-      imageSizeTitle: "Размер изображения",
-      imageMarginTitle: "Отступ изображения",
-      backgroundOptionsTitle: "Настройка фона",
-      backgroundColorTitle: "Цвет фона",
-      dotsStyleTitle: "Настройка стиля точек",
-      dotsTypeTitle: "Тип точек",
-      dotsColorTitle: "Цвет точек",
-      cornerSquaresOptionsTitle: "Настройка угловых квадратов",
-      cornerSquaresTypeTitle: "Тип угловых квадратов",
-      cornerSquaresColorTitle: "Цвет угловых квадратов",
-      cornerDotsOptionsTitle: "Настройки угловых точек",
-      cornerDotsTypeTitle: "Тип угловых точек",
-      cornerDotsColorTitle: "Цвет угловых точек",
-      gradientTitle: "Использовать градиент"
-    },
-    en: {
-      fileTitle: "File",
-      textTitle: "Text",
-      qrcodeTypeTitle: "QR code type",
-      marginTitle: "Indentantion at edges",
-      customSettingsTitle: "Custom settings",
-      embedImageTitle: "Embed image",
-      imageUrlTitle: "Image URL",
-      hideBackgroundDotsTitle: "Hide background dots",
-      imageSizeTitle: "Image size",
-      imageMarginTitle: "Image indentantion",
-      backgroundOptionsTitle: "Background settings",
-      backgroundColorTitle: "Background color",
-      dotsStyleTitle: "Dots style",
-      dotsTypeTitle: "Dots type",
-      dotsColorTitle: "Dots color",
-      cornerSquaresOptionsTitle: "Corner squares options",
-      cornerSquaresTypeTitle: "Corner squares type",
-      cornerSquaresColorTitle: "Corner squares color",
-      cornerDotsOptionsTitle: "Corner dots options",
-      cornerDotsTypeTitle: "Corner dots type",
-      cornerDotsColorTitle: "Corner dots color",
-      gradientTitle: "Use gradient"
-    }
-  })
-
-  return <PageGenerator {...getDatabaseObject(getLocaled(generators), "qrcode")}>
+  return <PageGenerator database={generators} name="qrcode">
     <Center>
       <StandardGrid columns={1}>
         <Center>
           <Box ref={ref} />
         </Center>
-        <InputField title={fileTitle} styles={{ width: "auto" }} type="group">
+        <InputField title={titles.file} styles={{ width: "auto" }} type="group">
           <InputField value={fileName} onChange={setFileName} type="text" styles={{ borderRightRadius: "0" }} />
           <InputField type="select" options={extensions} value={extension} onChange={setExtension} />
         </InputField>
@@ -303,51 +231,51 @@ export default function QRCode() {
       </StandardGrid>
     </Center>
     <StandardGrid>
-      <InputField type="text" title={textTitle} value={text} onChange={setText} />
-      <InputField type="number" title={qrcodeTypeTitle} min={0} max={40} value={qrType.toString()} onChange={setQrType} />
-      <CheckBox title={marginTitle} value={useMargin} onChange={toggleUseMargin} />
-      <CheckBox title={customSettingsTitle} value={useCustomStyles} onChange={toggleUseCustomStyles} />
+      <InputField type="text" title={titles.text} value={text} onChange={setText} />
+      <InputField type="number" title={titles.qrcodeType} min={0} max={40} value={qrType.toString()} onChange={setQrType} />
+      <CheckBox title={titles.marginsAtEdges} value={useMargin} onChange={toggleUseMargin} />
+      <CheckBox title={titles.additionalOptions} value={useCustomStyles} onChange={toggleUseCustomStyles} />
       {
         useCustomStyles && <>
-          <CheckBox title={embedImageTitle} value={useImage} onChange={toggleUseImage} />
+          <CheckBox title={titles.embedImage} value={useImage} onChange={toggleUseImage} />
           <StandardGrid columns={1}>
             {
               useImage && <>
                 <CheckBox
-                  title={hideBackgroundDotsTitle}
+                  title={titles.hideBackgroundDots}
                   value={hideBackgroundDots}
                   onChange={toggleHideBackgroundDots}
                 />
                 <InputField
                   type="text"
-                  title={imageUrlTitle}
+                  title={titles.imageUrl}
                   value={imageUrl}
                   onChange={setImageUrl}
                 />
                 <InputField
                   type="number"
-                  title={imageSizeTitle}
+                  title={titles.imageSize}
                   value={imageSize.toString()}
                   onChange={setImageSize}
                   step={0.1}
                 />
                 <InputField
                   type="number"
-                  title={imageMarginTitle}
+                  title={titles.imageMargins}
                   value={imageMargin.toString()}
                   onChange={setImageMargin}
                 />
               </>
             }
           </StandardGrid>
-          <CheckBox title={backgroundOptionsTitle} value={useBackground} onChange={toggleUseBackground} />
+          <CheckBox title={titles.backgroundOptions} value={useBackground} onChange={toggleUseBackground} />
           <StandardGrid columns={1}>
             {
               useBackground && <>
-                <CheckBox title={gradientTitle} onChange={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
+                <CheckBox title={titles.useGradient} onChange={toggleUseBackgtoundGradient} value={useBackgroundGradient} />
                 <InputField
                   type="text"
-                  title={backgroundColorTitle}
+                  title={titles.backgroundColor}
                   value={backgroundColor}
                   onChange={color => { setBackgroundColor(color.hex) }}
                   colorPickerButton
@@ -364,14 +292,14 @@ export default function QRCode() {
               </>
             }
           </StandardGrid>
-          <CheckBox title={dotsStyleTitle} value={useDotsStyle} onChange={toggleUseDotsStyle} />
+          <CheckBox title={titles.dotsOptions} value={useDotsStyle} onChange={toggleUseDotsStyle} />
           <StandardGrid columns={1}>
             {
               useDotsStyle && <>
-                <CheckBox title={gradientTitle} onChange={toggleUseDotsGradient} value={useDotsGradient} />
+                <CheckBox title={titles.useGradient} onChange={toggleUseDotsGradient} value={useDotsGradient} />
                 <InputField
                   type="select"
-                  title={dotsTypeTitle}
+                  title={titles.dotsType}
                   value={dotsType}
                   onChange={type => {
                     setDotsType(type as DotType)
@@ -382,7 +310,7 @@ export default function QRCode() {
                 />
                 <InputField
                   type="text"
-                  title={dotsColorTitle}
+                  title={titles.dotsColor}
                   value={dotsColor}
                   onChange={color => {
                     setDotsColor(color.hex)
@@ -423,14 +351,14 @@ export default function QRCode() {
               </>
             }
           </StandardGrid>
-          <CheckBox title={cornerSquaresOptionsTitle} value={useCornerSquaresStyle} onChange={toggleUseCornerSquaresStyle} />
+          <CheckBox title={titles.cornerSquaresOptions} value={useCornerSquaresStyle} onChange={toggleUseCornerSquaresStyle} />
           <StandardGrid columns={1}>
             {
               useCornerSquaresStyle && <>
-                <CheckBox title={gradientTitle} onChange={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
+                <CheckBox title={titles.useGradient} onChange={toggleUseCornerSquaresGradient} value={useCornerSquaresGradient} />
                 <InputField
                   type="select"
-                  title={cornerSquaresTypeTitle}
+                  title={titles.cornerSquaresType}
                   value={cornerSquaresType}
                   onChange={type => {
                     setCornerSquaresType(type as CornerSquareType)
@@ -440,7 +368,7 @@ export default function QRCode() {
                 />
                 <InputField
                   type="text"
-                  title={cornerSquaresColorTitle}
+                  title={titles.cornerSquaresColor}
                   value={cornerSquaresColor}
                   onChange={color => {
                     setCornerSquaresColor(color.hex)
@@ -475,21 +403,21 @@ export default function QRCode() {
               </>
             }
           </StandardGrid>
-          <CheckBox title={cornerDotsOptionsTitle} value={useCornerDotsStyle} onChange={toggleUseCornerDotsStyle} />
+          <CheckBox title={titles.cornerDotsOptions} value={useCornerDotsStyle} onChange={toggleUseCornerDotsStyle} />
           <StandardGrid columns={1}>
             {
               useCornerDotsStyle && <>
-                <CheckBox title={gradientTitle} onChange={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
+                <CheckBox title={titles.useGradient} onChange={toggleUseCornerDotsGradient} value={useCornerDotsGradient} />
                 <InputField
                   type="select"
-                  title={cornerDotsTypeTitle}
+                  title={titles.cornerDotsType}
                   value={cornerDotsType}
                   onChange={type => { setCornerDotsType(type as CornerDotType) }}
                   options={cornerDotTypes}
                 />
                 <InputField
                   type="text"
-                  title={cornerDotsColorTitle}
+                  title={titles.cornerDotsColor}
                   value={cornerDotsColor}
                   onChange={color => { setCornerDotsColor(color.hex) }}
                   colorPickerButton

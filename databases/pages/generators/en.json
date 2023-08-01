@@ -13,5 +13,10 @@
         "description": "Link shortener via clck.ru",
         "name": "shortUrl",
         "title": "Short URL generator"
+    },
+    {
+        "description": "Hash generation using different algorithms",
+        "name": "hash",
+        "title": "Hash generator"
     }
 ]

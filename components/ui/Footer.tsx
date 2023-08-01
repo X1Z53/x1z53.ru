@@ -1,13 +1,14 @@
 import { Box, Center, IconButton, Text } from "@chakra-ui/react"
 import { Icon24LogoVkOutline } from "@vkontakte/icons"
 import { about as database } from "databases"
-import { getLocaled } from "modules"
+import { getLocaled, getLocaledTitles } from "modules"
 import Link from "next/link"
 import { BiLogoGithub, BiLogoTelegram } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
 
 export default function Footer() {
   const about = getLocaled(database)
+  const { footer } = getLocaledTitles()
 
   const icons = {
     vk: <Icon24LogoVkOutline />,
@@ -18,7 +19,7 @@ export default function Footer() {
 
   return <Box as="footer">
     <Center flexDirection="column">
-      <Text>{getLocaled({ ru: "Возникла ошибка? Напиши мне", en: "An error occurred? Write me" })}</Text>
+      <Text>{footer}</Text>
       <Box>
         {
           about.map(({ category, name, title, url }) =>

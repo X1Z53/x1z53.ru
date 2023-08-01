@@ -1,28 +1,26 @@
-import { Button, Center, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Heading, Show, Text } from "@chakra-ui/react"
+import { Button, Center, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Heading, Show, Text } from "@chakra-ui/react"
 import { pages as database } from "databases"
-import { getLocaled } from "modules"
+import { getLocaled, getLocaledTitles } from "modules"
 import Link from "next/link"
 import { SidebarProps } from "types"
 import Controls from "./Controls"
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const { navigationTitle, designTitle, aboutTitle } = getLocaled({
-    ru: { navigationTitle: "Навигация", designTitle: "Дизайн X1Z53", aboutTitle: "О сайте" },
-    en: { navigationTitle: "Navigation", designTitle: "Designed by X1Z53", aboutTitle: "About" }
-  })
+  const titles = getLocaledTitles()
   const pages = getLocaled(database)
 
   return <Drawer {...{ isOpen, onClose }} placement="left">
     <DrawerOverlay />
     <DrawerContent>
       <DrawerHeader>
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-around">
           <Show below="md"><Controls /></Show>
+          <DrawerCloseButton />
         </Flex>
       </DrawerHeader>
       <DrawerHeader>
         <Center>
-          <Heading size="md">{navigationTitle}</Heading>
+          <Heading size="md">{titles.navigation}</Heading>
         </Center>
       </DrawerHeader>
       <DrawerBody>
@@ -39,9 +37,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       </DrawerBody>
       <DrawerFooter justifyContent="space-between">
         <Link href={"/about"} onClick={onClose}>
-          <Button variant="ghost">{aboutTitle}</Button>
+          <Button variant="ghost">{titles.about}</Button>
         </Link>
-        <Text>{designTitle}</Text>
+        <Text>{titles.createdBy}</Text>
       </DrawerFooter>
     </DrawerContent>
   </Drawer>

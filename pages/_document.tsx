@@ -1,11 +1,10 @@
-import { ColorModeScript, extendTheme, Image } from "@chakra-ui/react"
+import { ColorModeScript, Image } from "@chakra-ui/react"
 import NextDocument, { Head, Html, Main, NextScript } from "next/document"
 
-const theme = extendTheme({ config: { initialColorMode: "dark" } })
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="ru">
+      <Html>
         <Head>
           <style>
             {`
@@ -13,27 +12,35 @@ export default class Document extends NextDocument {
                 overflow: overlay
               }
           
+              ::selection {
+                background: slateGray
+              }
+
+              ::-webkit-tap-highlight {
+                color: slateGray
+              }
+
               ::-webkit-scrollbar {
                 width: 8px;
                 height: 8px
               }
           
               ::-webkit-scrollbar-thumb:hover {
-                background-color: #718096
+                background-color: gray
               }
           
               ::-webkit-scrollbar-thumb {
-                background-color: #4A5568;
+                background-color: slateGray;
                 border-radius: 20px;
                 border: 1px solid transparent;
-                background-clip: content-box;
+                background-clip: content-box
               }
             `}
           </style>
           <link rel="icon" type="image/png" href="https://images.x1z53.ru/x1z53.svg" />
         </Head>
         <body>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <ColorModeScript />
           <Main />
           <NextScript />
           <script

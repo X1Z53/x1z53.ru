@@ -1,13 +1,15 @@
 import { InputField, PageGenerator, StandardGrid, ToggleButtonGroup } from "components"
-import { ciphers, morse as alphabets } from "databases"
-import { getDatabaseObject, getLocaled, morse } from "modules"
+import { morse as alphabets, ciphers } from "databases"
+import { getLocaled, getLocaledTitles, morse } from "modules"
 import { useEffect, useState } from "react"
 
 export default function Morse() {
-  const { textTitle, resultTitle, methodButtons, alphabetButtons } = getLocaled({
-    ru: { textTitle: "Текст", resultTitle: "Результат", methodButtons: ["Зашифровать", "Расшифровать"], alphabetButtons: ["Латиница", "Кириллица"] },
-    en: { textTitle: "Text", resultTitle: "Result", methodButtons: ["Encrypt", "Decrypt"], alphabetButtons: ["Latin", "Cyrillic"] }
+  const { methodButtons, alphabetButtons } = getLocaled({
+    ru: { methodButtons: ["Зашифровать", "Расшифровать"], alphabetButtons: ["Латиница", "Кириллица"] },
+    en: { methodButtons: ["Encrypt", "Decrypt"], alphabetButtons: ["Latin", "Cyrillic"] }
   })
+  const titles = getLocaledTitles()
+  
   const { cyrillic, latin, symbols } = alphabets
   const alphabet = [...cyrillic, ...latin, ...symbols]
   const latinAlphabet = [...latin, ...symbols]
@@ -25,10 +27,10 @@ export default function Morse() {
     )
   }, [text, methodButton, alphabetButton])
 
-  return <PageGenerator {...getDatabaseObject(getLocaled(ciphers), "morse")}>
+  return <PageGenerator database={ciphers} name="morse">
     <StandardGrid>
-      <InputField title={textTitle} type="text" value={text} onChange={setText} alphabet={alphabet.map(({ char }) => char).join("")} />
-      <InputField title={resultTitle} type="text" readOnly copyButton value={result} />
+      <InputField title={titles.text} type="text" value={text} onChange={setText} alphabet={alphabet.map(({ char }) => char).join("")} />
+      <InputField title={titles.result} type="text" readOnly copyButton value={result} />
       <ToggleButtonGroup buttons={methodButtons} onChange={setMethodButton} />
       {!!methodButtons.indexOf(methodButton) && <ToggleButtonGroup buttons={alphabetButtons} onChange={setAlphabetButton} />}
     </StandardGrid>

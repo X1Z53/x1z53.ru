@@ -1,21 +1,16 @@
 import { InputField, PageGenerator, StandardGrid } from "components"
 import { textTools } from "databases"
-import { getDatabaseObject, getLocaled } from "modules"
+import { getLocaled, getLocaledTitles } from "modules"
 import { useState } from "react"
 
 export default function ChangeRegister() {
-  const { buttons, textTitle, modificatorTitle, resultTitle } = getLocaled({
+  const titles = getLocaledTitles()
+  const { buttons } = getLocaled({
     ru: {
       buttons: ["Прописные", "Строчные", "Чередовать (со строчной)", "Чередовать (с прописной)", "Инверсия", "Случайный", "С заглавной буквы"],
-      textTitle: "Текст",
-      modificatorTitle: "Модификатор",
-      resultTitle: "Результат"
     },
     en: {
       buttons: ["Upper case", "Lower case", "Alternate (from lower)", "Alternate (from upper)", "Inversion", "Random", "With capital"],
-      textTitle: "Text",
-      modificatorTitle: "Modificator",
-      resultTitle: "Result"
     }
   })
   
@@ -43,11 +38,11 @@ export default function ChangeRegister() {
     })
     .join(" ")
 
-  return <PageGenerator {...getDatabaseObject(getLocaled(textTools), "changeRegister")}>
+  return <PageGenerator database={textTools} name="register">
     <StandardGrid>
-      <InputField type="text" title={textTitle} value={text} onChange={setText} />
-      <InputField type="select" title={modificatorTitle} value={button} onChange={setButton} options={buttons} />
+      <InputField type="text" title={titles.text} value={text} onChange={setText} />
+      <InputField type="select" title={titles.modificator} value={button} onChange={setButton} options={buttons} />
     </StandardGrid>
-    <InputField type="text" title={resultTitle} value={result} readOnly copyButton />
+    <InputField type="text" title={titles.result} value={result} readOnly copyButton />
   </PageGenerator>
 }
