@@ -10,7 +10,7 @@ export default function ConverterPageGenerator({
   defaultSourcBase, defaultTargetBase
 }: ConverterPageGeneratorProps) {
   const { bases: allBases, coefficients } = databases[name]
-  const bases = getLocaled(allBases)
+  const bases = getLocaled(allBases)  
   const { textTitle, resultTitle, startBaseTitle, targetBaseTitle } = getLocaled({
     ru: { textTitle: "Значение", resultTitle: "Результат", startBaseTitle: "Начальная система", targetBaseTitle: "Конечная система" },
     en: { textTitle: "Value", resultTitle: "Result", startBaseTitle: "Source base", targetBaseTitle: "Target base" }
