@@ -56,16 +56,11 @@ function Key({ styles, x, toDisplay, note, shortcut }: { styles: { stroke: strin
       {...styles}
       {...{ x }}
       fill={clicked ? "yellow" : styles.fill}
-      onMouseDown={() => {
+      onPointerDown={() => {
         setClicked(true)
         soundEngine.play(toDisplay.at(-1).replace("B", "Bb").replace("H", "B"))
       }}
-      onTouchStart={() => {
-        setClicked(true)
-        soundEngine.play(toDisplay.at(-1).replace("B", "Bb").replace("H", "B"))
-      }}
-      onMouseUp={() => { setClicked(false) }}
-      onTouchEnd={() => { setClicked(false) }}
+      onPointerUp={() => { setClicked(false) }}
     />
     {toDisplay.map((note, index) =>
       <text

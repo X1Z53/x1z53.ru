@@ -19,7 +19,7 @@ export default function Footer() {
 
   return <Box as="footer">
     <Center flexDirection="column">
-      <Text>{footer}</Text>
+      <Text userSelect="none">{footer}</Text>
       <Box>
         {
           about.map(({ category, name, title, url }) =>
