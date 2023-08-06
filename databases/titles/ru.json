@@ -262,5 +262,25 @@
     {
         "name": "algorithm",
         "title": "Алгоритм"
+    },
+    {
+        "name": "congratulations",
+        "title": "Поздравляем!"
+    },
+    {
+        "name": "youWon",
+        "title": "Вы выйграли!"
+    },
+    {
+        "name": "originalGame",
+        "title": "Посмотрите на оригинальную игру"
+    },
+    {
+        "name": "undo",
+        "title": "Отмена"
+    },
+    {
+        "name": "restart",
+        "title": "Перезапуск"
     }
 ]

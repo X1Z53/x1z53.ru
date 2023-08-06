@@ -9,7 +9,7 @@ export default function ToggleButtonGroup({ buttons, noSelect, noAdaptive, onCha
     {
       buttons.map((button, index) =>
         <Button
-          key={button}
+          key={index}
           colorScheme={selected === button && !noSelect ? "" : "gray"}
           onClick={() => {
             setSelected(button)

@@ -1,4 +1,3 @@
-import { StyleProps } from "@chakra-ui/react"
 
 export type CardGridProps = {
   cardWidth?: string,
@@ -8,5 +7,5 @@ export type CardGridProps = {
 export type StandardGridProps = {
   children: React.ReactNode
   columns?: number[] | number
-  styles?: StyleProps
+  styles?: any
 }

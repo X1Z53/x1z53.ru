@@ -26,5 +26,9 @@
     {
         "name": "about",
         "title": "О сайте"
+    },
+    {
+        "name": "games",
+        "title": "Игры"
     }
 ]

@@ -6,4 +6,4 @@ export * as generators from "./generators"
 export * as musicTools from "./musicTools"
 export * as pages from "./pages"
 export * as textTools from "./textTools"
-
+export * as games from "./games"

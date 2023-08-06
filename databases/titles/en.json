@@ -262,5 +262,25 @@
     {
         "name": "algorithm",
         "title": "Algotrithm"
+    },
+    {
+        "name": "congratulations",
+        "title": "Congratulations!"
+    },
+    {
+        "name": "youWon",
+        "title": "You won!"
+    },
+    {
+        "name": "originalGame",
+        "title": "Check original game"
+    },
+    {
+        "name": "undo",
+        "title": "Undo"
+    },
+    {
+        "name": "restart",
+        "title": "Restart"
     }
 ]
