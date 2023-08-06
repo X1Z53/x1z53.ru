@@ -1,1 +1,1 @@
-export * from "./gameReducer"
+export * from "./klondikeReducer"

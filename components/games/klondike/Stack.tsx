@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react"
-import { Card } from "modules/klondike/components"
+import { Card } from "components"
 import { useDrop } from "react-dnd"
-import { CardState, DraggedItem, Pile, PlayingCard } from "types"
+import { CardState, DraggedItem, PlayingCard, StackProps } from "types"
 
 const getDroppable = (item: DraggedItem, cards: PlayingCard[]): boolean => {
   if (cards.length === 0 && item && item.card && item.card.rank === 13) {
@@ -19,7 +19,7 @@ const getDroppable = (item: DraggedItem, cards: PlayingCard[]): boolean => {
   return false
 }
 
-export const Stack = ({ cards, index }: Pile) => {
+export const Stack = ({ cards, index, width }: StackProps) => {
   const nextState = CardState.Stack
   const [, drop] = useDrop({
     accept: "card",
@@ -32,10 +32,11 @@ export const Stack = ({ cards, index }: Pile) => {
   })
 
   return (
-    <Box ref={drop} width="10vw">
+    <Box ref={drop} {...{ width }}>
       {cards.map((card, index) =>
         <Flex key={card.id} position="relative" paddingBottom={"2vw"}>
           <Card
+            {...{ width }}
             card={card}
             isLastCard={index === cards.length - 1 ? true : false}
           />

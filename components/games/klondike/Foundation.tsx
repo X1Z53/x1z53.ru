@@ -1,5 +1,5 @@
 import { Box, Flex, Icon } from "@chakra-ui/react"
-import { Card } from "modules/klondike/components"
+import { Card } from "components"
 import { useDrop } from "react-dnd"
 import { BsSuitClub, BsSuitDiamond, BsSuitHeart, BsSuitSpade } from "react-icons/bs"
 import { useSelector } from "react-redux"
@@ -15,6 +15,7 @@ interface DraggedItem {
 interface FoundationProps {
   cards: PlayingCard[]
   index: number
+  width: string[]
   foundationSuit: string
   nextCard: number
 }
@@ -41,7 +42,7 @@ const suits = {
   heart: <Icon as={BsSuitHeart} fill="red" boxSize="4vw" />
 }
 
-export const Foundation = ({ cards, index, foundationSuit, nextCard }: FoundationProps) => {
+export const Foundation = ({ cards, index, foundationSuit, width, nextCard }: FoundationProps) => {
   const nextState = CardState.Foundation
   const stacks = useSelector<RootState, PlayingCard[][]>(selectStacks)
   const [, drop] = useDrop({
@@ -58,7 +59,7 @@ export const Foundation = ({ cards, index, foundationSuit, nextCard }: Foundatio
   })
 
   return (
-    <Box ref={drop} width="10vw" height="">
+    <Box ref={drop} {...{width}}>
       <Flex
         border="0.1vw solid black"
         userSelect="none"
@@ -73,7 +74,7 @@ export const Foundation = ({ cards, index, foundationSuit, nextCard }: Foundatio
         {suits[foundationSuit]}
       </Flex>
       {cards.map((card: PlayingCard, i: number) => (
-        <Card key={card.id} card={card} isLastCard={i === cards.length - 1 ? true : false} />
+        <Card {...{width}} key={card.id} card={card} isLastCard={i === cards.length - 1 ? true : false} />
       ))}
     </Box>
   )
