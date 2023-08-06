@@ -11,7 +11,7 @@ const createPreviewCards = (draggedCard: PlayingCard | null, stacks: PlayingCard
 }
 
 // eslint-disable-next-line react/display-name
-export const CardDragPreview = memo(({ stacks }: { stacks: PlayingCard[][] }) => {
+export const CardDragPreview = memo(({ stacks, width }: { stacks: PlayingCard[][], width }) => {
   const [draggedCard, setDraggedCard] = useState<PlayingCard | null>(null)
   const memoizedPreview = useMemo(() => createPreviewCards(draggedCard, stacks), [draggedCard, stacks])
 
@@ -23,23 +23,22 @@ export const CardDragPreview = memo(({ stacks }: { stacks: PlayingCard[][] }) =>
         {memoizedPreview.map((card, index) =>
           <Image
             {...style}
-            top={25 * index + "px"}
+            {...{ width }}
+            top={2 * index + "vw"}
             alt={item.card.id}
             key={card.id}
             src={`/cards/${card.id}.svg`}
-            width="10vw"
           />
         )}
       </Box>
       : <Image
+        {...style}
+        {...{ width }}
         alt={item.card.id}
         src={`/cards/${item.card.id}.svg`}
-        {...style}
-        width="10vw"
         zIndex={1}
       />
   }
 
   return <Preview generator={generatePreview} />
-}
-)
+})

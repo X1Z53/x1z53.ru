@@ -17,6 +17,7 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@vkontakte/icons": "^2.53.0",
     "crypto-js": "^4.1.1",
     "docxtemplater": "^3.37.12",
@@ -41,6 +42,7 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
+    "redux-devtools-extension": "^2.13.9",
     "redux-undo": "^1.1.0",
     "tonal": "^5.0.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"

@@ -2,24 +2,15 @@ import { Image } from "@chakra-ui/react"
 import { memo, useEffect } from "react"
 import { DragSourceMonitor, useDrag } from "react-dnd"
 import { getEmptyImage } from "react-dnd-html5-backend"
-import { useDispatch, useSelector } from "react-redux"
-import { Dispatch } from "redux"
-import { addCardsToFoundation, addCardsToStack, cardIsDragged, handleDoubleClick, turnCard } from "store/actions"
-import { selectNextFoundationCards } from "store/reducers"
+import { useDispatch } from "react-redux"
+import { addCardsToFoundation, addCardsToStack, cardIsDragged, turnCard } from "store/actions"
 import { CardState, PlayingCard } from "types"
-
-const checkDoubleClick = (card: PlayingCard, nextFoundationCards: string[], dispatch: Dispatch): void => {
-  if (nextFoundationCards.find(nextCard => nextCard === card.id)) {
-    dispatch(handleDoubleClick({ doubleClickedCard: card }))
-  }
-}
 
 // eslint-disable-next-line react/display-name
 export const Card = memo(
-  ({ card, isLastCard }: { card, isLastCard }) => {
+  ({ card, isLastCard, width }: { card, isLastCard, width }) => {
     const { hidden, id, index, type } = card
     const dispatch = useDispatch()
-    const nextFoundationCards = useSelector(selectNextFoundationCards)
     const [{ isDragging, item }, drag, preview] = useDrag({
       item: { type, card },
       type: type,
@@ -55,22 +46,16 @@ export const Card = memo(
     }, [preview])
 
     return <Image
+      {...{ width }}
       alt={card.id}
       ref={card.hidden ? null : drag}
       userSelect="none"
       src={hidden ? "/cards/back.svg" : `/cards/${id}.svg`}
       display={card.isDragging ? "none" : undefined}
-      width="10vw"
       cursor={!hidden ? "grab" : isLastCard && "pointer"}
       position="absolute"
+      draggable={card.hidden && false}
       onClick={hidden ? () => dispatch(turnCard({ index, id })) : undefined}
-      onDoubleClick={isLastCard ? (): void => checkDoubleClick(card, nextFoundationCards, dispatch) : undefined}
-      onDragStart={event => {
-        if (card.hidden) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-      }}
     />
   }
 )

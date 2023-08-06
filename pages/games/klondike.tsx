@@ -1,9 +1,7 @@
 import { Box, Button, Center, Flex, Icon, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react"
-import { PageGenerator } from "components"
+import { Card, CardDragPreview, Foundation, PageGenerator, Stack } from "components"
 import { games } from "databases"
-import { getLocaledTitles } from "modules"
-import { Card, CardDragPreview, Foundation, Stack } from "modules/klondike/components"
-import { createNewGame, suits } from "modules/klondike/utils"
+import { createNewGame, getLocaledTitles, suits } from "modules"
 import Link from "next/link"
 import { useEffect } from "react"
 import { IoReload } from "react-icons/io5"
@@ -14,7 +12,7 @@ import { GameActions, HistoryActions, clearHistory, drawCard, startNewGame, undo
 import { selectDeck, selectFoundations, selectStacks, selectWaste } from "store/reducers"
 import { PlayingCard } from "types"
 
-function Buttons() {
+function Buttons({ width }: { width }) {
   const { undo, restart } = getLocaledTitles()
   const dispatch = useDispatch<Dispatch<GameActions | HistoryActions>>()
   const handleUndoMove = () => dispatch(undoMove())
@@ -29,30 +27,36 @@ function Buttons() {
     dispatch(startNewGame(createNewGame()))
   }, [dispatch])
 
-  return <Flex flexDirection="column" width="10vw" alignItems="center" justifyContent="space-evenly">
+  return <Flex flexDirection="column" {...{ width }} alignItems="center" justifyContent="space-evenly">
     {[[handleUndoMove, undo], [handleStartNewGame, restart]].map(([func, text]: [() => void, string]) =>
-      <Button key={text} fontSize={"1vw"} height={["full", "full", "2vw"]} border="0.1vw solid white" width={["full", "full", "7vw"]} onClick={func}>{text}</Button>
+      <Button
+        key={text}
+        fontSize={"1vw"}
+        height={["full", "full", "2vw"]}
+        border="0.1vw solid white"
+        width={["full", "full", "7vw"]}
+        onClick={func}>
+        {text}
+      </Button>
     )}
   </Flex>
 }
 
-function DeckStack() {
+function DeckStack({ width }: { width }) {
   const deck = useSelector(selectDeck)
   const dispatch = useDispatch()
 
-  return deck.length ? <Image
+  return deck.length ? <Box {...{ width }} onClick={() => dispatch(drawCard())}>
+    <Image
+      {...{ width }}
+      alt="deck"
+      src={deck.length - 1 ? "/cards/deck.svg" : "/cards/back.svg"}
+      draggable={false}
+      userSelect="none"
+    />
+  </Box> : <Flex
+    {...{ width }}
     onClick={() => dispatch(drawCard())}
-    alt="deck"
-    src={deck.length - 1 ? "/cards/deck.svg" : "/cards/back.svg"}
-    onDragStart={event => {
-      event.preventDefault()
-      event.stopPropagation()
-    }}
-    userSelect="none"
-    width="10vw"
-  /> : <Flex
-    onClick={() => dispatch(drawCard())}
-    width="10vw"
     aspectRatio={225 / 325}
     border="0.1vw solid black"
     userSelect="none"
@@ -66,21 +70,22 @@ function DeckStack() {
     <Icon as={IoReload} fill="black" stroke="black" boxSize="4vw" />
   </Flex>
 }
-function DeckCard() {
+function DeckCard({ width }: { width }) {
   const waste = useSelector<RootState, PlayingCard[]>(selectWaste)
 
-  return <Box width="10vw">
+  return <Box {...{ width }}>
     {waste.length > 0 &&
-      waste.map((card, i) => <Card key={card.id} card={card} isLastCard={i === waste.length - 1} />)
+      waste.map((card, i) => <Card {...{ width }} key={card.id} card={card} isLastCard={i === waste.length - 1} />)
     }
   </Box>
 }
 
-function Homes() {
+function Homes({ width }: { width }) {
   const foundations = useSelector<RootState, PlayingCard[][]>(selectFoundations)
 
   return foundations.map((foundation, i) => (
     <Foundation
+      {...{ width }}
       key={i.toString()}
       cards={foundation}
       index={i}
@@ -90,11 +95,11 @@ function Homes() {
   ))
 }
 
-export default function Game() {
+export default function Klondike() {
   const { congratulations, youWon, originalGame } = getLocaledTitles()
   const stacks = useSelector<RootState, PlayingCard[][]>(selectStacks)
   const { onClose } = useDisclosure()
-
+  const width = {base: 95 / 7 + "vw", xl: "8vw"}
   const dispatch = useDispatch<Dispatch<GameActions | HistoryActions>>()
 
   const handleStartNewGame = () => {
@@ -120,19 +125,21 @@ export default function Game() {
         </ModalFooter>
       </ModalContent>
     </Modal>
-    <Center flexDirection="column" height="120vh" justifyContent="start">
-      <CardDragPreview stacks={stacks} />
-      <Flex width="70vw">
-        <DeckStack />
-        <DeckCard />
-        <Buttons />
-        <Homes />
-      </Flex>
-      <Flex>
-        {stacks.map((pile, i) => (
-          <Stack cards={pile} key={i.toString()} index={i} />
-        ))}
-      </Flex>
-    </Center>
+    <Flex height="120vh">
+      <Center justifyContent="start" flexDirection="column" width="full">
+        <CardDragPreview {...{ width }} stacks={stacks} />
+        <Flex>
+          <DeckStack {...{ width }} />
+          <DeckCard {...{ width }} />
+          <Buttons {...{ width }} />
+          <Homes {...{ width }} />
+        </Flex>
+        <Flex>
+          {stacks.map((pile, i) => (
+            <Stack {...{ width }} cards={pile} key={i} index={i} />
+          ))}
+        </Flex>
+      </Center>
+    </Flex>
   </PageGenerator>
 }

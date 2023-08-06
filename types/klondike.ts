@@ -32,7 +32,8 @@ export interface PreviewObject {
   style: CSSProperties
 }
 
-export interface Pile {
+export interface StackProps {
+  width
   cards: PlayingCard[]
   index: number
 }

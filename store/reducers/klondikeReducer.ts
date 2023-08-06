@@ -1,5 +1,5 @@
 import { produce } from "immer"
-import { suits } from "modules/klondike/utils"
+import { suits } from "modules"
 import { RootState } from "store"
 import { GameActionTypes, GameActions } from "store/actions"
 import { CardState, PlayingCard } from "types"
@@ -18,7 +18,7 @@ const initialState: GameState = {
   waste: []
 }
 
-export const gameReducer = (state = initialState, action: GameActions): GameState => {
+export const klondikeReducer = (state = initialState, action: GameActions): GameState => {
   switch (action.type) {
     case GameActionTypes.FoundationAddCards:
       return produce(state, draft => {
@@ -146,10 +146,8 @@ export const gameReducer = (state = initialState, action: GameActions): GameStat
   }
 }
 
-export const selectWaste = (state: RootState): PlayingCard[] => state.game.present.waste
-export const selectDeck = (state: RootState): PlayingCard[] => state.game.present.deck
-export const selectFoundations = (state: RootState): PlayingCard[][] => state.game.present.foundations
-export const selectStacks = (state: RootState): PlayingCard[][] => state.game.present.stacks
-export const selectNextFoundationCards = (state: RootState): string[] => {
-  return state.game.present.foundations.map((foundation, index) => `${foundation.length + 1}${suits[index]}`)
-}
+export const selectWaste = (state: RootState): PlayingCard[] => state.klondike.present.waste
+export const selectDeck = (state: RootState): PlayingCard[] => state.klondike.present.deck
+export const selectFoundations = (state: RootState): PlayingCard[][] => state.klondike.present.foundations
+export const selectStacks = (state: RootState): PlayingCard[][] => state.klondike.present.stacks
+export const selectNextFoundationCards = (state: RootState): string[] => state.klondike.present.foundations.map((foundation, index) => foundation.length + 1 + suits[index])
