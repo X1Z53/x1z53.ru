@@ -1,38 +1,38 @@
 [
-    {
-        "name": "ton",
-        "title": "Тонна, t"
-    },
-    {
-        "name": "centner",
-        "title": "Центнер, cwt"
-    },
-    {
-        "name": "kilogram",
-        "title": "Килограмм, kg"
-    },
-    {
-        "name": "gram",
-        "title": "Грамм, g"
-    },
-    {
-        "name": "miligram",
-        "title": "Миллиграмм, mg"
-    },
-    {
-        "name": "pound",
-        "title": "Фунт, lb"
-    },
-    {
-        "name": "pood",
-        "title": "Пуд"
-    },
-    {
-        "name": "ounce",
-        "title": "Унция, oz"
-    },
-    {
-        "name": "carat",
-        "title": "Карат, ct"
-    }
+  {
+    "name": "ton",
+    "title": "Тонна, t"
+  },
+  {
+    "name": "centner",
+    "title": "Центнер, cwt"
+  },
+  {
+    "name": "kilogram",
+    "title": "Килограмм, kg"
+  },
+  {
+    "name": "gram",
+    "title": "Грамм, g"
+  },
+  {
+    "name": "miligram",
+    "title": "Миллиграмм, mg"
+  },
+  {
+    "name": "pound",
+    "title": "Фунт, lb"
+  },
+  {
+    "name": "pood",
+    "title": "Пуд"
+  },
+  {
+    "name": "ounce",
+    "title": "Унция, oz"
+  },
+  {
+    "name": "carat",
+    "title": "Карат, ct"
+  }
 ]

@@ -1,78 +1,78 @@
 [
-    {
-        "name": "angstrom",
-        "title": "Angstrom, Å"
-    },
-    {
-        "name": "arshin",
-        "title": "Arshin"
-    },
-    {
-        "name": "cableLength",
-        "title": "Cable Length"
-    },
-    {
-        "name": "centimeter",
-        "title": "Centimeter, cm"
-    },
-    {
-        "name": "decimeter",
-        "title": "Decimeter, dm"
-    },
-    {
-        "name": "foot",
-        "title": "Foot, ft"
-    },
-    {
-        "name": "inch",
-        "title": "Inch, in"
-    },
-    {
-        "name": "kilometer",
-        "title": "Kilometer, km"
-    },
-    {
-        "name": "lightYear",
-        "title": "Light Year, ly"
-    },
-    {
-        "name": "meter",
-        "title": "Meter, m"
-    },
-    {
-        "name": "micrometer",
-        "title": "Micrometer (micron), μm"
-    },
-    {
-        "name": "mile",
-        "title": "Mile, mi"
-    },
-    {
-        "name": "parsec",
-        "title": "Parsec, pc"
-    },
-    {
-        "name": "nauticalMile",
-        "title": "Nautical Mile, nmi"
-    },
-    {
-        "name": "sazhen",
-        "title": "Sazhen"
-    },
-    {
-        "name": "span",
-        "title": "Span"
-    },
-    {
-        "name": "vershok",
-        "title": "Vershok"
-    },
-    {
-        "name": "verst",
-        "title": "Verst"
-    },
-    {
-        "name": "yard",
-        "title": "Yard, yd"
-    }
+  {
+    "name": "angstrom",
+    "title": "Angstrom, Å"
+  },
+  {
+    "name": "arshin",
+    "title": "Arshin"
+  },
+  {
+    "name": "cableLength",
+    "title": "Cable Length"
+  },
+  {
+    "name": "centimeter",
+    "title": "Centimeter, cm"
+  },
+  {
+    "name": "decimeter",
+    "title": "Decimeter, dm"
+  },
+  {
+    "name": "foot",
+    "title": "Foot, ft"
+  },
+  {
+    "name": "inch",
+    "title": "Inch, in"
+  },
+  {
+    "name": "kilometer",
+    "title": "Kilometer, km"
+  },
+  {
+    "name": "lightYear",
+    "title": "Light Year, ly"
+  },
+  {
+    "name": "meter",
+    "title": "Meter, m"
+  },
+  {
+    "name": "micrometer",
+    "title": "Micrometer (micron), μm"
+  },
+  {
+    "name": "mile",
+    "title": "Mile, mi"
+  },
+  {
+    "name": "parsec",
+    "title": "Parsec, pc"
+  },
+  {
+    "name": "nauticalMile",
+    "title": "Nautical Mile, nmi"
+  },
+  {
+    "name": "sazhen",
+    "title": "Sazhen"
+  },
+  {
+    "name": "span",
+    "title": "Span"
+  },
+  {
+    "name": "vershok",
+    "title": "Vershok"
+  },
+  {
+    "name": "verst",
+    "title": "Verst"
+  },
+  {
+    "name": "yard",
+    "title": "Yard, yd"
+  }
 ]

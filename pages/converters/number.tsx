@@ -12,16 +12,46 @@ export default function Number() {
   const [result, setResult] = useState("")
 
   useEffect(() => {
-    try { setResult(parseInt(number, sourceBase).toString(targetBase)) }
-    catch { setResult("") }
+    try {
+      setResult(parseInt(number, sourceBase).toString(targetBase))
+    } catch {
+      setResult("")
+    }
   }, [number, sourceBase, targetBase])
 
-  return <PageGenerator database={converters} name="number">
-    <StandardGrid>
-      <InputField type="text" title={titles.number} value={number} onChange={setNumber} />
-      <InputField type="number" title={titles.sourceBase} min={2} max={36} value={sourceBase.toString()} onChange={setSourceBase} />
-      <InputField type="number" title={titles.targetBase} min={2} max={36} value={targetBase.toString()} onChange={setTargetBase} />
-    </StandardGrid>
-    <InputField type="text" title={titles.result} readOnly copyButton value={result} />
-  </PageGenerator>
+  return (
+    <PageGenerator database={converters} name="number">
+      <StandardGrid>
+        <InputField
+          type="text"
+          title={titles.number}
+          value={number}
+          onChange={setNumber}
+        />
+        <InputField
+          type="number"
+          title={titles.sourceBase}
+          min={2}
+          max={36}
+          value={sourceBase.toString()}
+          onChange={setSourceBase}
+        />
+        <InputField
+          type="number"
+          title={titles.targetBase}
+          min={2}
+          max={36}
+          value={targetBase.toString()}
+          onChange={setTargetBase}
+        />
+      </StandardGrid>
+      <InputField
+        type="text"
+        title={titles.result}
+        readOnly
+        copyButton
+        value={result}
+      />
+    </PageGenerator>
+  )
 }

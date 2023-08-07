@@ -7,7 +7,8 @@ import { ConverterPageGeneratorProps } from "types"
 
 export default function ConverterPageGenerator({
   name,
-  defaultSourcBase, defaultTargetBase
+  defaultSourcBase,
+  defaultTargetBase,
 }: ConverterPageGeneratorProps) {
   const { bases: allBases, coefficients } = databases[name]
   const bases = getLocaled(allBases)
@@ -15,14 +16,42 @@ export default function ConverterPageGenerator({
   const [value, setValue] = useState("1")
   const [sourceBase, setSourceBase] = useState(defaultSourcBase)
   const [targetBase, setTargetBase] = useState(defaultTargetBase)
-  const result = String(Number(value) * coefficients.find(({ name }) => name === sourceBase)[targetBase])
+  const result = String(
+    Number(value) *
+      coefficients.find(({ name }) => name === sourceBase)[targetBase],
+  )
 
-  return <PageGenerator database={converters} {...{name}}>
-    <StandardGrid>
-      <InputField type="select" title={titles.sourceBase} value={sourceBase} onChange={setSourceBase} options={bases} />
-      <InputField type="select" title={titles.targetBase} value={targetBase} onChange={setTargetBase} options={bases} />
-      <InputField type="text" title={titles.value} value={value} onChange={setValue} />
-      <InputField type="text" title={titles.result} value={result} readOnly copyButton />
-    </StandardGrid>
-  </PageGenerator>
+  return (
+    <PageGenerator database={converters} {...{ name }}>
+      <StandardGrid>
+        <InputField
+          type="select"
+          title={titles.sourceBase}
+          value={sourceBase}
+          onChange={setSourceBase}
+          options={bases}
+        />
+        <InputField
+          type="select"
+          title={titles.targetBase}
+          value={targetBase}
+          onChange={setTargetBase}
+          options={bases}
+        />
+        <InputField
+          type="text"
+          title={titles.value}
+          value={value}
+          onChange={setValue}
+        />
+        <InputField
+          type="text"
+          title={titles.result}
+          value={result}
+          readOnly
+          copyButton
+        />
+      </StandardGrid>
+    </PageGenerator>
+  )
 }

@@ -1,54 +1,54 @@
 [
-    {
-        "name": "nanosecond",
-        "title": "Наносекунда, ns"
-    },
-    {
-        "name": "microsecond",
-        "title": "Микросекунда, μs"
-    },
-    {
-        "name": "milisecond",
-        "title": "Миллисекунда, ms"
-    },
-    {
-        "name": "second",
-        "title": "Секунда, s"
-    },
-    {
-        "name": "minute",
-        "title": "Минута, min"
-    },
-    {
-        "name": "hour",
-        "title": "Час, h"
-    },
-    {
-        "name": "day",
-        "title": "День, d"
-    },
-    {
-        "name": "week",
-        "title": "Неделя, wk"
-    },
-    {
-        "name": "decadeOfDays",
-        "title": "Декада дней"
-    },
-    {
-        "name": "year",
-        "title": "Год, yr"
-    },
-    {
-        "name": "decadeOfYears",
-        "title": "Декада лет"
-    },
-    {
-        "name": "century",
-        "title": "Век, c"
-    },
-    {
-        "name": "millennium",
-        "title": "Тысячелетие"
-    }
+  {
+    "name": "nanosecond",
+    "title": "Наносекунда, ns"
+  },
+  {
+    "name": "microsecond",
+    "title": "Микросекунда, μs"
+  },
+  {
+    "name": "milisecond",
+    "title": "Миллисекунда, ms"
+  },
+  {
+    "name": "second",
+    "title": "Секунда, s"
+  },
+  {
+    "name": "minute",
+    "title": "Минута, min"
+  },
+  {
+    "name": "hour",
+    "title": "Час, h"
+  },
+  {
+    "name": "day",
+    "title": "День, d"
+  },
+  {
+    "name": "week",
+    "title": "Неделя, wk"
+  },
+  {
+    "name": "decadeOfDays",
+    "title": "Декада дней"
+  },
+  {
+    "name": "year",
+    "title": "Год, yr"
+  },
+  {
+    "name": "decadeOfYears",
+    "title": "Декада лет"
+  },
+  {
+    "name": "century",
+    "title": "Век, c"
+  },
+  {
+    "name": "millennium",
+    "title": "Тысячелетие"
+  }
 ]

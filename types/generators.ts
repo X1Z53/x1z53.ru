@@ -6,8 +6,8 @@ export type CipherPageGeneratorProps = {
   haveAlphabet?: boolean
 }
 export type PageGeneratorProps = {
-  name: string,
-  database: any,
+  name: string
+  database: any
   children: React.ReactNode
 }
 export type ConverterPageGeneratorProps = {

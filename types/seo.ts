@@ -1,1 +1,1 @@
-export type DescriptionProps = {description: string}
+export type DescriptionProps = { description: string }

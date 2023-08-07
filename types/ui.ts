@@ -1,8 +1,9 @@
 export type RouterProps = {
-  path: string[], title: string[]
+  path: string[]
+  title: string[]
 }
 export type ModalProps = {
-  isOpen: boolean,
+  isOpen: boolean
   onClose: () => void
 }
 

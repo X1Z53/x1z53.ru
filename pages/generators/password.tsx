@@ -24,53 +24,88 @@ export default function Password() {
   const [length, setLength] = useState(12)
   const [result, setResult] = useState("")
 
-  const generatePassword = () => Array.from({ length: length },
-    () => alphabet[Math.floor(Math.random() * alphabet.length)]
-  ).join("")
+  const generatePassword = () =>
+    Array.from(
+      { length: length },
+      () => alphabet[Math.floor(Math.random() * alphabet.length)],
+    ).join("")
 
   useEffect(() => {
     setAlphabet(
-      (useLowerCase ? lower : "")
-      + (useUpperCase ? upper : "")
-      + (useNumbers ? numbers : "")
-      + (useSpecialSymbols ? specialSymbols : "")
+      (useLowerCase ? lower : "") +
+        (useUpperCase ? upper : "") +
+        (useNumbers ? numbers : "") +
+        (useSpecialSymbols ? specialSymbols : ""),
     )
   }, [
     useCustomAlphabet,
     useLowerCase,
     useUpperCase,
     useNumbers,
-    useSpecialSymbols
+    useSpecialSymbols,
   ])
 
-  useEffect(() => { setResult(generatePassword()) }, [
-    length,
-    useCustomAlphabet,
-    alphabet
-  ])
+  useEffect(() => {
+    setResult(generatePassword())
+  }, [length, useCustomAlphabet, alphabet])
 
-  return <PageGenerator database={generators} name="password">
-    <StandardGrid>
-      <InputField type="number" title={titles.length} value={length.toString()} onChange={setLength} />
-      <Button onClick={() => setResult(generatePassword())}>{titles.generate}</Button>
-      <CheckBox title={titles.customAlphabet} value={useCustomAlphabet} onChange={toggleUseCustomAlphabet} />
-    </StandardGrid>
-    {
-      useCustomAlphabet
-        ? <InputField
+  return (
+    <PageGenerator database={generators} name="password">
+      <StandardGrid>
+        <InputField
+          type="number"
+          title={titles.length}
+          value={length.toString()}
+          onChange={setLength}
+        />
+        <Button onClick={() => setResult(generatePassword())}>
+          {titles.generate}
+        </Button>
+        <CheckBox
+          title={titles.customAlphabet}
+          value={useCustomAlphabet}
+          onChange={toggleUseCustomAlphabet}
+        />
+      </StandardGrid>
+      {useCustomAlphabet ? (
+        <InputField
           type="text"
           title={titles.alphabet}
           value={alphabet}
           onChange={setAlphabet}
           styles={{ marginBottom: 4 }}
         />
-        : <StandardGrid>
-          <CheckBox title={titles.lowercase} value={useLowerCase} onChange={toggleUseLowerCase} />
-          <CheckBox title={titles.uppercase} value={useUpperCase} onChange={toggleUseUpperCase} />
-          <CheckBox title={titles.numbers} value={useNumbers} onChange={toggleUseNumbers} />
-          <CheckBox title={titles.specialSymbols} value={useSpecialSymbols} onChange={toggleUseSpecialSymbols} />
+      ) : (
+        <StandardGrid>
+          <CheckBox
+            title={titles.lowercase}
+            value={useLowerCase}
+            onChange={toggleUseLowerCase}
+          />
+          <CheckBox
+            title={titles.uppercase}
+            value={useUpperCase}
+            onChange={toggleUseUpperCase}
+          />
+          <CheckBox
+            title={titles.numbers}
+            value={useNumbers}
+            onChange={toggleUseNumbers}
+          />
+          <CheckBox
+            title={titles.specialSymbols}
+            value={useSpecialSymbols}
+            onChange={toggleUseSpecialSymbols}
+          />
         </StandardGrid>
-    }
-    <InputField type="text" title={titles.result} copyButton readOnly value={result} />
-  </PageGenerator>
+      )}
+      <InputField
+        type="text"
+        title={titles.result}
+        copyButton
+        readOnly
+        value={result}
+      />
+    </PageGenerator>
+  )
 }

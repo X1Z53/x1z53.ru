@@ -1,34 +1,34 @@
 [
-    {
-        "name": "converters",
-        "title": "Converters"
-    },
-    {
-        "name": "generators",
-        "title": "Generators"
-    },
-    {
-        "name": "ciphers",
-        "title": "Ciphers"
-    },
-    {
-        "name": "textTools",
-        "title": "Text Tools"
-    },
-    {
-        "name": "fileReaders",
-        "title": "File Readers"
-    },
-    {
-        "name": "musicTools",
-        "title": "Music Tools"
-    },
-    {
-        "name": "about",
-        "title": "About"
-    },
-    {
-        "name": "games",
-        "title": "Games"
-    }
+  {
+    "name": "converters",
+    "title": "Converters"
+  },
+  {
+    "name": "generators",
+    "title": "Generators"
+  },
+  {
+    "name": "ciphers",
+    "title": "Ciphers"
+  },
+  {
+    "name": "textTools",
+    "title": "Text Tools"
+  },
+  {
+    "name": "fileReaders",
+    "title": "File Readers"
+  },
+  {
+    "name": "musicTools",
+    "title": "Music Tools"
+  },
+  {
+    "name": "about",
+    "title": "About"
+  },
+  {
+    "name": "games",
+    "title": "Games"
+  }
 ]

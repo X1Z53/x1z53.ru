@@ -1,32 +1,32 @@
 [
-    {
-        "description": "A simple substitution cipher for alphabetic writing that does not require a key",
-        "name": "atbash",
-        "title": "Atbash Cipher"
-    },
-    {
-        "description": "Each character of the source text is encoded with a Caesar cipher using different keys",
-        "name": "vigenere",
-        "title": "Vigenere Cipher"
-    },
-    {
-        "description": "It is a classic type of transposition cipher, got its second name from the way encryption is performed - a zigzag cipher",
-        "name": "railFence",
-        "title": "Rail Fence Cipher"
-    },
-    {
-        "description": "The scytale is a tool used to implement permutation encryption, also known in cryptography as the cipher of Ancient Sparta.",
-        "name": "scytale",
-        "title": "Scytale Cipher"
-    },
-    {
-        "description": "One of the simplest and most widely known encryption methods",
-        "name": "caesar",
-        "title": "Caesar Cipher"
-    },
-    {
-        "description": "You can decipher the Morse code using a special alphabet. This tool is designed to simplify this process",
-        "name": "morse",
-        "title": "Morse code"
-    }
+  {
+    "description": "A simple substitution cipher for alphabetic writing that does not require a key",
+    "name": "atbash",
+    "title": "Atbash Cipher"
+  },
+  {
+    "description": "Each character of the source text is encoded with a Caesar cipher using different keys",
+    "name": "vigenere",
+    "title": "Vigenere Cipher"
+  },
+  {
+    "description": "It is a classic type of transposition cipher, got its second name from the way encryption is performed - a zigzag cipher",
+    "name": "railFence",
+    "title": "Rail Fence Cipher"
+  },
+  {
+    "description": "The scytale is a tool used to implement permutation encryption, also known in cryptography as the cipher of Ancient Sparta.",
+    "name": "scytale",
+    "title": "Scytale Cipher"
+  },
+  {
+    "description": "One of the simplest and most widely known encryption methods",
+    "name": "caesar",
+    "title": "Caesar Cipher"
+  },
+  {
+    "description": "You can decipher the Morse code using a special alphabet. This tool is designed to simplify this process",
+    "name": "morse",
+    "title": "Morse code"
+  }
 ]

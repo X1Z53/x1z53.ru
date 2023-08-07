@@ -6,10 +6,16 @@ import { useRouter } from "next/router"
 export default function LocaleToggleButtonGroup() {
   const { locales } = useRouter()
 
-  return <ToggleButtonGroup
-    buttons={locales.map(locale => <LinkOverlay as={Link} href="" {...{ locale }} key={locale}>{locale.toUpperCase()}</LinkOverlay>)}
-    noSelect
-    noAdaptive
-    onChange={() => {}}
-  />
+  return (
+    <ToggleButtonGroup
+      buttons={locales.map((locale) => (
+        <LinkOverlay as={Link} href="" {...{ locale }} key={locale}>
+          {locale.toUpperCase()}
+        </LinkOverlay>
+      ))}
+      noSelect
+      noAdaptive
+      onChange={() => {}}
+    />
+  )
 }

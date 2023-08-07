@@ -4,7 +4,13 @@ export default function Atbash({ text, alphabet }) {
   const lower = alphabet.toLowerCase()
   const upper = alphabet.toUpperCase()
   alphabet = lower + upper
-  const shiftedAlphabet = lower.split("").reverse().join("") + upper.split("").reverse().join("")
+  const shiftedAlphabet =
+    lower.split("").reverse().join("") + upper.split("").reverse().join("")
 
-  return text.split("").map(char => alphabet.includes(char) ? shiftedAlphabet[alphabet.indexOf(char)] : char).join("")
+  return text
+    .split("")
+    .map((char) =>
+      alphabet.includes(char) ? shiftedAlphabet[alphabet.indexOf(char)] : char,
+    )
+    .join("")
 }

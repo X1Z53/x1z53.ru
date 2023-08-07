@@ -7,22 +7,26 @@ export default function CopyButton({ styles, value }: CopyButtonProps) {
   const [copied, setCopied] = useState(false)
   const backgroundColor = useColorModeValue("gray.200", "gray.700")
 
-  return <Tooltip
-    {...{ backgroundColor }}
-    onClose={() => { setCopied(false) }}
-    closeOnClick={false}
-    hasArrow
-    color="chakra-body-text"
-    label={copied ? "Текст скопирован" : "Нажмите, чтобы скопировать"}
-  >
-    <IconButton
-      {...styles}
-      onClick={() => {
-        setCopied(true)
-        navigator.clipboard.writeText(value)
+  return (
+    <Tooltip
+      {...{ backgroundColor }}
+      onClose={() => {
+        setCopied(false)
       }}
-      icon={<BsFillClipboard2Fill />}
-      aria-label="Скопировать"
-    />
-  </Tooltip>
+      closeOnClick={false}
+      hasArrow
+      color="chakra-body-text"
+      label={copied ? "Текст скопирован" : "Нажмите, чтобы скопировать"}
+    >
+      <IconButton
+        {...styles}
+        onClick={() => {
+          setCopied(true)
+          navigator.clipboard.writeText(value)
+        }}
+        icon={<BsFillClipboard2Fill />}
+        aria-label="Скопировать"
+      />
+    </Tooltip>
+  )
 }

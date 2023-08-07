@@ -1,286 +1,286 @@
 [
-    {
-        "name": "value",
-        "title": "Value"
-    },
-    {
-        "name": "result",
-        "title": "Result"
-    },
-    {
-        "name": "sourceBase",
-        "title": "Source base"
-    },
-    {
-        "name": "targetBase",
-        "title": "Target base"
-    },
-    {
-        "name": "alphabet",
-        "title": "Alphabet"
-    },
-    {
-        "name": "text",
-        "title": "Text"
-    },
-    {
-        "name": "key",
-        "title": "Key"
-    },
-    {
-        "name": "footer",
-        "title": "An error occurred? Write me"
-    },
-    {
-        "name": "mainPage",
-        "title": "Main Page"
-    },
-    {
-        "name": "navigation",
-        "title": "Navigation"
-    },
-    {
-        "name": "createdBy",
-        "title": "Created by X1Z53"
-    },
-    {
-        "name": "developer",
-        "title": "Developer"
-    },
-    {
-        "name": "site",
-        "title": "Site"
-    },
-    {
-        "name": "complementUpToEightChars",
-        "title": "Complement up to 8 digits"
-    },
-    {
-        "name": "addSpaces",
-        "title": "Add spaces"
-    },
-    {
-        "name": "number",
-        "title": "Number"
-    },
-    {
-        "name": "file",
-        "title": "File"
-    },
-    {
-        "name": "chooseFile",
-        "title": "Choose or drag and drop files here"
-    },
-    {
-        "name": "length",
-        "title": "Length"
-    },
-    {
-        "name": "generate",
-        "title": "Generate"
-    },
-    {
-        "name": "customAlphabet",
-        "title": "Custom alphabet"
-    },
-    {
-        "name": "lowercase",
-        "title": "Lowercase letters"
-    },
-    {
-        "name": "numbers",
-        "title": "Numbers"
-    },
-    {
-        "name": "specialSymbols",
-        "title": "Special symbols"
-    },
-    {
-        "name": "firstColorOffset",
-        "title": "First color offset"
-    },
-    {
-        "name": "gradientColor",
-        "title": "Gradient color"
-    },
-    {
-        "name": "gradientColorOffset",
-        "title": "Second color offset"
-    },
-    {
-        "name": "gradientRotation",
-        "title": "Gradient rotation"
-    },
-    {
-        "name": "gradientType",
-        "title": "Gradient type"
-    },
-    {
-        "name": "qrcodeType",
-        "title": "QR code type"
-    },
-    {
-        "name": "marginsAtEdges",
-        "title": "Margins at edges"
-    },
-    {
-        "name": "additionalOptions",
-        "title": "Additional options"
-    },
-    {
-        "name": "embedImage",
-        "title": "Embed image"
-    },
-    {
-        "name": "imageUrl",
-        "title": "Image URL"
-    },
-    {
-        "name": "hideBackgroundDots",
-        "title": "Hide background dots"
-    },
-    {
-        "name": "imageSize",
-        "title": "Image size"
-    },
-    {
-        "name": "imageMargins",
-        "title": "Image margins"
-    },
-    {
-        "name": "backgroundOptions",
-        "title": "Background options"
-    },
-    {
-        "name": "backgroundColor",
-        "title": "Background color"
-    },
-    {
-        "name": "dotsOptions",
-        "title": "Dots options"
-    },
-    {
-        "name": "dotsType",
-        "title": "Dots type"
-    },
-    {
-        "name": "dotsColor",
-        "title": "Dots color"
-    },
-    {
-        "name": "cornerSquaresOptions",
-        "title": "Corner squares options"
-    },
-    {
-        "name": "cornerSquaresType",
-        "title": "Corner squares type"
-    },
-    {
-        "name": "cornerSquaresColor",
-        "title": "Corner squares color"
-    },
-    {
-        "name": "cornerDotsOptions",
-        "title": "Corner dots options"
-    },
-    {
-        "name": "cornerDotsType",
-        "title": "Corner dots type"
-    },
-    {
-        "name": "cornerDotsColor",
-        "title": "Corner dots color"
-    },
-    {
-        "name": "useGradient",
-        "title": "Use gradient"
-    },
-    {
-        "name": "showNotes",
-        "title": "Show notes"
-    },
-    {
-        "name": "showShortcuts",
-        "title": "Show shortcuts"
-    },
-    {
-        "name": "symbolsCount",
-        "title": "Symbols count"
-    },
-    {
-        "name": "wordsCount",
-        "title": "Words count"
-    },
-    {
-        "name": "withoutSpaces",
-        "title": "Without spaces"
-    },
-    {
-        "name": "withoutPunctuation",
-        "title": "Without punctuation"
-    },
-    {
-        "name": "modificator",
-        "title": "Modificator"
-    },
-    {
-        "name": "splitChar",
-        "title": "Split char"
-    },
-    {
-        "name": "joinChar",
-        "title": "Join char"
-    },
-    {
-        "name": "reverseSort",
-        "title": "Reverse sort"
-    },
-    {
-        "name": "caseSensitive",
-        "title": "Case sensitive"
-    },
-    {
-        "name": "naturalSort",
-        "title": "Natural sort"
-    },
-    {
-        "name": "spaceBeforeJoin",
-        "title": "Space before join"
-    },
-    {
-        "name": "spaceAfterJoin",
-        "title": "Space after join"
-    },
-    {
-        "name": "uppercase",
-        "title": "Uppercase letters"
-    },
-    {
-        "name": "about",
-        "title": "About"
-    },
-    {
-        "name": "algorithm",
-        "title": "Algotrithm"
-    },
-    {
-        "name": "congratulations",
-        "title": "Congratulations!"
-    },
-    {
-        "name": "youWon",
-        "title": "You won!"
-    },
-    {
-        "name": "originalGame",
-        "title": "Check original game"
-    },
-    {
-        "name": "undo",
-        "title": "Undo"
-    },
-    {
-        "name": "restart",
-        "title": "Restart"
-    }
+  {
+    "name": "value",
+    "title": "Value"
+  },
+  {
+    "name": "result",
+    "title": "Result"
+  },
+  {
+    "name": "sourceBase",
+    "title": "Source base"
+  },
+  {
+    "name": "targetBase",
+    "title": "Target base"
+  },
+  {
+    "name": "alphabet",
+    "title": "Alphabet"
+  },
+  {
+    "name": "text",
+    "title": "Text"
+  },
+  {
+    "name": "key",
+    "title": "Key"
+  },
+  {
+    "name": "footer",
+    "title": "An error occurred? Write me"
+  },
+  {
+    "name": "mainPage",
+    "title": "Main Page"
+  },
+  {
+    "name": "navigation",
+    "title": "Navigation"
+  },
+  {
+    "name": "createdBy",
+    "title": "Created by X1Z53"
+  },
+  {
+    "name": "developer",
+    "title": "Developer"
+  },
+  {
+    "name": "site",
+    "title": "Site"
+  },
+  {
+    "name": "complementUpToEightChars",
+    "title": "Complement up to 8 digits"
+  },
+  {
+    "name": "addSpaces",
+    "title": "Add spaces"
+  },
+  {
+    "name": "number",
+    "title": "Number"
+  },
+  {
+    "name": "file",
+    "title": "File"
+  },
+  {
+    "name": "chooseFile",
+    "title": "Choose or drag and drop files here"
+  },
+  {
+    "name": "length",
+    "title": "Length"
+  },
+  {
+    "name": "generate",
+    "title": "Generate"
+  },
+  {
+    "name": "customAlphabet",
+    "title": "Custom alphabet"
+  },
+  {
+    "name": "lowercase",
+    "title": "Lowercase letters"
+  },
+  {
+    "name": "numbers",
+    "title": "Numbers"
+  },
+  {
+    "name": "specialSymbols",
+    "title": "Special symbols"
+  },
+  {
+    "name": "firstColorOffset",
+    "title": "First color offset"
+  },
+  {
+    "name": "gradientColor",
+    "title": "Gradient color"
+  },
+  {
+    "name": "gradientColorOffset",
+    "title": "Second color offset"
+  },
+  {
+    "name": "gradientRotation",
+    "title": "Gradient rotation"
+  },
+  {
+    "name": "gradientType",
+    "title": "Gradient type"
+  },
+  {
+    "name": "qrcodeType",
+    "title": "QR code type"
+  },
+  {
+    "name": "marginsAtEdges",
+    "title": "Margins at edges"
+  },
+  {
+    "name": "additionalOptions",
+    "title": "Additional options"
+  },
+  {
+    "name": "embedImage",
+    "title": "Embed image"
+  },
+  {
+    "name": "imageUrl",
+    "title": "Image URL"
+  },
+  {
+    "name": "hideBackgroundDots",
+    "title": "Hide background dots"
+  },
+  {
+    "name": "imageSize",
+    "title": "Image size"
+  },
+  {
+    "name": "imageMargins",
+    "title": "Image margins"
+  },
+  {
+    "name": "backgroundOptions",
+    "title": "Background options"
+  },
+  {
+    "name": "backgroundColor",
+    "title": "Background color"
+  },
+  {
+    "name": "dotsOptions",
+    "title": "Dots options"
+  },
+  {
+    "name": "dotsType",
+    "title": "Dots type"
+  },
+  {
+    "name": "dotsColor",
+    "title": "Dots color"
+  },
+  {
+    "name": "cornerSquaresOptions",
+    "title": "Corner squares options"
+  },
+  {
+    "name": "cornerSquaresType",
+    "title": "Corner squares type"
+  },
+  {
+    "name": "cornerSquaresColor",
+    "title": "Corner squares color"
+  },
+  {
+    "name": "cornerDotsOptions",
+    "title": "Corner dots options"
+  },
+  {
+    "name": "cornerDotsType",
+    "title": "Corner dots type"
+  },
+  {
+    "name": "cornerDotsColor",
+    "title": "Corner dots color"
+  },
+  {
+    "name": "useGradient",
+    "title": "Use gradient"
+  },
+  {
+    "name": "showNotes",
+    "title": "Show notes"
+  },
+  {
+    "name": "showShortcuts",
+    "title": "Show shortcuts"
+  },
+  {
+    "name": "symbolsCount",
+    "title": "Symbols count"
+  },
+  {
+    "name": "wordsCount",
+    "title": "Words count"
+  },
+  {
+    "name": "withoutSpaces",
+    "title": "Without spaces"
+  },
+  {
+    "name": "withoutPunctuation",
+    "title": "Without punctuation"
+  },
+  {
+    "name": "modificator",
+    "title": "Modificator"
+  },
+  {
+    "name": "splitChar",
+    "title": "Split char"
+  },
+  {
+    "name": "joinChar",
+    "title": "Join char"
+  },
+  {
+    "name": "reverseSort",
+    "title": "Reverse sort"
+  },
+  {
+    "name": "caseSensitive",
+    "title": "Case sensitive"
+  },
+  {
+    "name": "naturalSort",
+    "title": "Natural sort"
+  },
+  {
+    "name": "spaceBeforeJoin",
+    "title": "Space before join"
+  },
+  {
+    "name": "spaceAfterJoin",
+    "title": "Space after join"
+  },
+  {
+    "name": "uppercase",
+    "title": "Uppercase letters"
+  },
+  {
+    "name": "about",
+    "title": "About"
+  },
+  {
+    "name": "algorithm",
+    "title": "Algotrithm"
+  },
+  {
+    "name": "congratulations",
+    "title": "Congratulations!"
+  },
+  {
+    "name": "youWon",
+    "title": "You won!"
+  },
+  {
+    "name": "originalGame",
+    "title": "Check original game"
+  },
+  {
+    "name": "undo",
+    "title": "Undo"
+  },
+  {
+    "name": "restart",
+    "title": "Restart"
+  }
 ]
