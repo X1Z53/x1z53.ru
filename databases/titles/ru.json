@@ -1,286 +1,286 @@
 [
-    {
-        "name": "addSpaces",
-        "title": "Добавить пробелы"
-    },
-    {
-        "name": "alphabet",
-        "title": "Алфавит"
-    },
-    {
-        "name": "complementUpToEightChars",
-        "title": "Дополнить до 8 цифр"
-    },
-    {
-        "name": "createdBy",
-        "title": "Создано X1Z53"
-    },
-    {
-        "name": "developer",
-        "title": "Разработчик"
-    },
-    {
-        "name": "footer",
-        "title": "Возникла ошибка? Напиши мне"
-    },
-    {
-        "name": "key",
-        "title": "Ключ"
-    },
-    {
-        "name": "mainPage",
-        "title": "Главная"
-    },
-    {
-        "name": "navigation",
-        "title": "Навигация"
-    },
-    {
-        "name": "number",
-        "title": "Число"
-    },
-    {
-        "name": "result",
-        "title": "Результат"
-    },
-    {
-        "name": "site",
-        "title": "Сайт"
-    },
-    {
-        "name": "sourceBase",
-        "title": "Исходная система"
-    },
-    {
-        "name": "targetBase",
-        "title": "Конечная база"
-    },
-    {
-        "name": "text",
-        "title": "Текст"
-    },
-    {
-        "name": "value",
-        "title": "Значение"
-    },
-    {
-        "name": "file",
-        "title": "Файл"
-    },
-    {
-        "name": "chooseFile",
-        "title": "Выберите или перетащите файлы сюда"
-    },
-    {
-        "name": "length",
-        "title": "Длина"
-    },
-    {
-        "name": "generate",
-        "title": "Сгенерировать"
-    },
-    {
-        "name": "customAlphabet",
-        "title": "Настраиваемый алфавит"
-    },
-    {
-        "name": "lowercase",
-        "title": "Строчные буквы"
-    },
-    {
-        "name": "numbers",
-        "title": "Числа"
-    },
-    {
-        "name": "specialSymbols",
-        "title": "Специальные символы"
-    },
-    {
-        "name": "firstColorOffset",
-        "title": "Сдвиг первого цвета"
-    },
-    {
-        "name": "gradientColor",
-        "title": "Цвет градиента"
-    },
-    {
-        "name": "gradientColorOffset",
-        "title": "Сдвиг второго цвета"
-    },
-    {
-        "name": "gradientRotation",
-        "title": "Поворот градиента"
-    },
-    {
-        "name": "gradientType",
-        "title": "Тип градиента"
-    },
-    {
-        "name": "qrcodeType",
-        "title": "Тип QR-кода"
-    },
-    {
-        "name": "marginsAtEdges",
-        "title": "Отступы по краям"
-    },
-    {
-        "name": "additionalOptions",
-        "title": "Дополнительные опции"
-    },
-    {
-        "name": "embedImage",
-        "title": "Встроить изображение"
-    },
-    {
-        "name": "imageUrl",
-        "title": "URL изображения"
-    },
-    {
-        "name": "hideBackgroundDots",
-        "title": "Скрыть фоновые точки"
-    },
-    {
-        "name": "imageSize",
-        "title": "Размер изображения"
-    },
-    {
-        "name": "imageMargins",
-        "title": "Отступы изображения"
-    },
-    {
-        "name": "backgroundOptions",
-        "title": "Настройки фона"
-    },
-    {
-        "name": "backgroundColor",
-        "title": "Цвет фона"
-    },
-    {
-        "name": "dotsOptions",
-        "title": "Настройки точек"
-    },
-    {
-        "name": "dotsType",
-        "title": "Тип точек"
-    },
-    {
-        "name": "dotsColor",
-        "title": "Цвет точек"
-    },
-    {
-        "name": "cornerSquaresOptions",
-        "title": "Настройки угловых квадратов"
-    },
-    {
-        "name": "cornerSquaresType",
-        "title": "Тип угловых квадратов"
-    },
-    {
-        "name": "cornerSquaresColor",
-        "title": "Цвет угловых квадратов"
-    },
-    {
-        "name": "cornerDotsOptions",
-        "title": "Настройки угловых точек"
-    },
-    {
-        "name": "cornerDotsType",
-        "title": "Тип угловых точек"
-    },
-    {
-        "name": "cornerDotsColor",
-        "title": "Цвет угловых точек"
-    },
-    {
-        "name": "useGradient",
-        "title": "Использовать градиент"
-    },
-    {
-        "name": "showNotes",
-        "title": "Показать ноты"
-    },
-    {
-        "name": "showShortcuts",
-        "title": "Показать сокращения"
-    },
-    {
-        "name": "symbolsCount",
-        "title": "Количество символов"
-    },
-    {
-        "name": "wordsCount",
-        "title": "Количество слов"
-    },
-    {
-        "name": "withoutSpaces",
-        "title": "Без пробелов"
-    },
-    {
-        "name": "withoutPunctuation",
-        "title": "Без пунктуации"
-    },
-    {
-        "name": "modificator",
-        "title": "Модификатор"
-    },
-    {
-        "name": "splitChar",
-        "title": "Символ разделения"
-    },
-    {
-        "name": "joinChar",
-        "title": "Символ соединения"
-    },
-    {
-        "name": "reverseSort",
-        "title": "Обратная сортировка"
-    },
-    {
-        "name": "caseSensitive",
-        "title": "Учёт регистра"
-    },
-    {
-        "name": "naturalSort",
-        "title": "Натуральная сортировка"
-    },
-    {
-        "name": "spaceBeforeJoin",
-        "title": "Пробел до объединения"
-    },
-    {
-        "name": "spaceAfterJoin",
-        "title": "Пробел после объединения"
-    },
-    {
-        "name": "uppercase",
-        "title": "Прописные буквы"
-    },
-    {
-        "name": "about",
-        "title": "О сайте"
-    },
-    {
-        "name": "algorithm",
-        "title": "Алгоритм"
-    },
-    {
-        "name": "congratulations",
-        "title": "Поздравляем!"
-    },
-    {
-        "name": "youWon",
-        "title": "Вы выйграли!"
-    },
-    {
-        "name": "originalGame",
-        "title": "Посмотрите на оригинальную игру"
-    },
-    {
-        "name": "undo",
-        "title": "Отмена"
-    },
-    {
-        "name": "restart",
-        "title": "Перезапуск"
-    }
+  {
+    "name": "addSpaces",
+    "title": "Добавить пробелы"
+  },
+  {
+    "name": "alphabet",
+    "title": "Алфавит"
+  },
+  {
+    "name": "complementUpToEightChars",
+    "title": "Дополнить до 8 цифр"
+  },
+  {
+    "name": "createdBy",
+    "title": "Создано X1Z53"
+  },
+  {
+    "name": "developer",
+    "title": "Разработчик"
+  },
+  {
+    "name": "footer",
+    "title": "Возникла ошибка? Напиши мне"
+  },
+  {
+    "name": "key",
+    "title": "Ключ"
+  },
+  {
+    "name": "mainPage",
+    "title": "Главная"
+  },
+  {
+    "name": "navigation",
+    "title": "Навигация"
+  },
+  {
+    "name": "number",
+    "title": "Число"
+  },
+  {
+    "name": "result",
+    "title": "Результат"
+  },
+  {
+    "name": "site",
+    "title": "Сайт"
+  },
+  {
+    "name": "sourceBase",
+    "title": "Исходная система"
+  },
+  {
+    "name": "targetBase",
+    "title": "Конечная база"
+  },
+  {
+    "name": "text",
+    "title": "Текст"
+  },
+  {
+    "name": "value",
+    "title": "Значение"
+  },
+  {
+    "name": "file",
+    "title": "Файл"
+  },
+  {
+    "name": "chooseFile",
+    "title": "Выберите или перетащите файлы сюда"
+  },
+  {
+    "name": "length",
+    "title": "Длина"
+  },
+  {
+    "name": "generate",
+    "title": "Сгенерировать"
+  },
+  {
+    "name": "customAlphabet",
+    "title": "Настраиваемый алфавит"
+  },
+  {
+    "name": "lowercase",
+    "title": "Строчные буквы"
+  },
+  {
+    "name": "numbers",
+    "title": "Числа"
+  },
+  {
+    "name": "specialSymbols",
+    "title": "Специальные символы"
+  },
+  {
+    "name": "firstColorOffset",
+    "title": "Сдвиг первого цвета"
+  },
+  {
+    "name": "gradientColor",
+    "title": "Цвет градиента"
+  },
+  {
+    "name": "gradientColorOffset",
+    "title": "Сдвиг второго цвета"
+  },
+  {
+    "name": "gradientRotation",
+    "title": "Поворот градиента"
+  },
+  {
+    "name": "gradientType",
+    "title": "Тип градиента"
+  },
+  {
+    "name": "qrcodeType",
+    "title": "Тип QR-кода"
+  },
+  {
+    "name": "marginsAtEdges",
+    "title": "Отступы по краям"
+  },
+  {
+    "name": "additionalOptions",
+    "title": "Дополнительные опции"
+  },
+  {
+    "name": "embedImage",
+    "title": "Встроить изображение"
+  },
+  {
+    "name": "imageUrl",
+    "title": "URL изображения"
+  },
+  {
+    "name": "hideBackgroundDots",
+    "title": "Скрыть фоновые точки"
+  },
+  {
+    "name": "imageSize",
+    "title": "Размер изображения"
+  },
+  {
+    "name": "imageMargins",
+    "title": "Отступы изображения"
+  },
+  {
+    "name": "backgroundOptions",
+    "title": "Настройки фона"
+  },
+  {
+    "name": "backgroundColor",
+    "title": "Цвет фона"
+  },
+  {
+    "name": "dotsOptions",
+    "title": "Настройки точек"
+  },
+  {
+    "name": "dotsType",
+    "title": "Тип точек"
+  },
+  {
+    "name": "dotsColor",
+    "title": "Цвет точек"
+  },
+  {
+    "name": "cornerSquaresOptions",
+    "title": "Настройки угловых квадратов"
+  },
+  {
+    "name": "cornerSquaresType",
+    "title": "Тип угловых квадратов"
+  },
+  {
+    "name": "cornerSquaresColor",
+    "title": "Цвет угловых квадратов"
+  },
+  {
+    "name": "cornerDotsOptions",
+    "title": "Настройки угловых точек"
+  },
+  {
+    "name": "cornerDotsType",
+    "title": "Тип угловых точек"
+  },
+  {
+    "name": "cornerDotsColor",
+    "title": "Цвет угловых точек"
+  },
+  {
+    "name": "useGradient",
+    "title": "Использовать градиент"
+  },
+  {
+    "name": "showNotes",
+    "title": "Показать ноты"
+  },
+  {
+    "name": "showShortcuts",
+    "title": "Показать сокращения"
+  },
+  {
+    "name": "symbolsCount",
+    "title": "Количество символов"
+  },
+  {
+    "name": "wordsCount",
+    "title": "Количество слов"
+  },
+  {
+    "name": "withoutSpaces",
+    "title": "Без пробелов"
+  },
+  {
+    "name": "withoutPunctuation",
+    "title": "Без пунктуации"
+  },
+  {
+    "name": "modificator",
+    "title": "Модификатор"
+  },
+  {
+    "name": "splitChar",
+    "title": "Символ разделения"
+  },
+  {
+    "name": "joinChar",
+    "title": "Символ соединения"
+  },
+  {
+    "name": "reverseSort",
+    "title": "Обратная сортировка"
+  },
+  {
+    "name": "caseSensitive",
+    "title": "Учёт регистра"
+  },
+  {
+    "name": "naturalSort",
+    "title": "Натуральная сортировка"
+  },
+  {
+    "name": "spaceBeforeJoin",
+    "title": "Пробел до объединения"
+  },
+  {
+    "name": "spaceAfterJoin",
+    "title": "Пробел после объединения"
+  },
+  {
+    "name": "uppercase",
+    "title": "Прописные буквы"
+  },
+  {
+    "name": "about",
+    "title": "О сайте"
+  },
+  {
+    "name": "algorithm",
+    "title": "Алгоритм"
+  },
+  {
+    "name": "congratulations",
+    "title": "Поздравляем!"
+  },
+  {
+    "name": "youWon",
+    "title": "Вы выйграли!"
+  },
+  {
+    "name": "originalGame",
+    "title": "Посмотрите на оригинальную игру"
+  },
+  {
+    "name": "undo",
+    "title": "Отмена"
+  },
+  {
+    "name": "restart",
+    "title": "Перезапуск"
+  }
 ]

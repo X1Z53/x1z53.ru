@@ -5,4 +5,3 @@ export { default as getReduced } from "./getReduced"
 export { default as getShuffled } from "./getShuffled"
 export * from "./klondike"
 export { default as useToggle } from "./useToggle"
-

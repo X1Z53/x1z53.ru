@@ -25,17 +25,20 @@ export const suits: string[] = ["heart", "club", "diamond", "spade"]
 export const createDeck = (): PlayingCard[] => {
   const deck: PlayingCard[] = []
   for (let i = 1; i < 14; i++) {
-    suits.forEach(suit => {
+    suits.forEach((suit) => {
       deck.push({
         rank: i,
         suit,
-        color: suit === "heart" || suit === "diamond" ? CardColor.Red : CardColor.Black,
+        color:
+          suit === "heart" || suit === "diamond"
+            ? CardColor.Red
+            : CardColor.Black,
         hidden: false,
         id: suit + i.toString(),
         type: "card",
         index: 0,
         state: CardState.Stack,
-        isDragging: false
+        isDragging: false,
       })
     })
   }
@@ -58,6 +61,6 @@ export const createNewGame = () => {
     })
     stacks.push(tempPiles)
   }
-  const deck = startDeck.map(card => ({ ...card, state: CardState.Deck }))
+  const deck = startDeck.map((card) => ({ ...card, state: CardState.Deck }))
   return { stacks, deck }
 }

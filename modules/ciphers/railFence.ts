@@ -13,7 +13,7 @@ export default function RailFence({ text, key, isDecrypt }) {
     }
   }
 
-  if (!isDecrypt) return rails.map(index => text[index]).join("")
+  if (!isDecrypt) return rails.map((index) => text[index]).join("")
 
   const result = []
   for (const [textIndex, resultIndex] of rails.entries())

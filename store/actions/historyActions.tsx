@@ -1,5 +1,5 @@
 export enum HistoryActionTypes {
-  ClearHistory = "history/ClearHistory"
+  ClearHistory = "history/ClearHistory",
 }
 
 export type ClearHistory = {
@@ -7,7 +7,7 @@ export type ClearHistory = {
 }
 
 export const clearHistory = (): ClearHistory => ({
-  type: HistoryActionTypes.ClearHistory
+  type: HistoryActionTypes.ClearHistory,
 })
 
 export type HistoryActions = ClearHistory

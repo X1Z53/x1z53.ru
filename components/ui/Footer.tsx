@@ -14,22 +14,28 @@ export default function Footer() {
     vk: <Icon24LogoVkOutline />,
     telegram: <BiLogoTelegram />,
     email: <HiOutlineMail />,
-    github: <BiLogoGithub />
+    github: <BiLogoGithub />,
   }
 
-  return <Box as="footer">
-    <Center flexDirection="column">
-      <Text userSelect="none">{footer}</Text>
-      <Box>
-        {
-          about.map(({ category, name, title, url }) =>
-            category === "developer" &&
-            <Link key={name} target="_blank" href={url}>
-              <IconButton margin={1} icon={icons[name]} aria-label={title} />
-            </Link>
-          )
-        }
-      </Box>
-    </Center>
-  </Box>
+  return (
+    <Box as="footer">
+      <Center flexDirection="column">
+        <Text userSelect="none">{footer}</Text>
+        <Box>
+          {about.map(
+            ({ category, name, title, url }) =>
+              category === "developer" && (
+                <Link key={name} target="_blank" href={url}>
+                  <IconButton
+                    margin={1}
+                    icon={icons[name]}
+                    aria-label={title}
+                  />
+                </Link>
+              ),
+          )}
+        </Box>
+      </Center>
+    </Box>
+  )
 }

@@ -1,34 +1,34 @@
 [
-    {
-        "name": "converters",
-        "title": "Конвертеры"
-    },
-    {
-        "name": "generators",
-        "title": "Генераторы"
-    },
-    {
-        "name": "ciphers",
-        "title": "Шифры"
-    },
-    {
-        "name": "textTools",
-        "title": "Текстовые инструменты"
-    },
-    {
-        "name": "fileReaders",
-        "title": "Чтение файлов"
-    },
-    {
-        "name": "musicTools",
-        "title": "Инструменты для музыки"
-    },
-    {
-        "name": "about",
-        "title": "О сайте"
-    },
-    {
-        "name": "games",
-        "title": "Игры"
-    }
+  {
+    "name": "converters",
+    "title": "Конвертеры"
+  },
+  {
+    "name": "generators",
+    "title": "Генераторы"
+  },
+  {
+    "name": "ciphers",
+    "title": "Шифры"
+  },
+  {
+    "name": "textTools",
+    "title": "Текстовые инструменты"
+  },
+  {
+    "name": "fileReaders",
+    "title": "Чтение файлов"
+  },
+  {
+    "name": "musicTools",
+    "title": "Инструменты для музыки"
+  },
+  {
+    "name": "about",
+    "title": "О сайте"
+  },
+  {
+    "name": "games",
+    "title": "Игры"
+  }
 ]

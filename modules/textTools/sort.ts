@@ -1,4 +1,3 @@
-
 export default function sort(a, b, useCaseSensitive) {
   a = useCaseSensitive ? a.toLowerCase().split(/(\d+)/) : a.split(/(\d+)/)
   b = useCaseSensitive ? b.toLowerCase().split(/(\d+)/) : b.split(/(\d+)/)

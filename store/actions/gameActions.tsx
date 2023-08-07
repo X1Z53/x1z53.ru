@@ -8,7 +8,7 @@ export enum GameActionTypes {
   NewGame = "game/NewGame",
   CardIsDragged = "game/CardIsDragged",
   CardDoubleClicked = "game/HandleDoubleClick",
-  UndoMove = "game/UndoMove"
+  UndoMove = "game/UndoMove",
 }
 
 type CardsPayload = {
@@ -74,36 +74,40 @@ export type CardDoubleClicked = {
   readonly payload: CardDoubleClickedPayload
 }
 
-export const addCardsToFoundation = (payload: CardsPayload): AddCardsToFoundation => ({
+export const addCardsToFoundation = (
+  payload: CardsPayload,
+): AddCardsToFoundation => ({
   type: GameActionTypes.FoundationAddCards,
-  payload
+  payload,
 })
 
 export const addCardsToStack = (payload: CardsPayload): AddCardsToStack => ({
   type: GameActionTypes.StackAddCards,
-  payload
+  payload,
 })
 
 export const turnCard = (payload: TurnCardPayload): TurnCard => ({
   type: GameActionTypes.TurnCard,
-  payload
+  payload,
 })
 
 export const drawCard = (): DrawCard => ({ type: GameActionTypes.DrawCard })
 
 export const startNewGame = (payload: NewGamePayload): StartNewGame => ({
   type: GameActionTypes.NewGame,
-  payload
+  payload,
 })
 
 export const cardIsDragged = (payload: CardDragPayload): CardIsDragged => ({
   type: GameActionTypes.CardIsDragged,
-  payload
+  payload,
 })
 
-export const handleDoubleClick = (payload: CardDoubleClickedPayload): CardDoubleClicked => ({
+export const handleDoubleClick = (
+  payload: CardDoubleClickedPayload,
+): CardDoubleClicked => ({
   type: GameActionTypes.CardDoubleClicked,
-  payload
+  payload,
 })
 
 export const undoMove = (): UndoMove => ({ type: GameActionTypes.UndoMove })

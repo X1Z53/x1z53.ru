@@ -23,17 +23,17 @@ export const Stack = ({ cards, index, width }: StackProps) => {
   const nextState = CardState.Stack
   const [, drop] = useDrop({
     accept: "card",
-    canDrop: item => getDroppable(item, cards),
+    canDrop: (item) => getDroppable(item, cards),
     drop: () => ({ index, nextState }),
-    collect: monitor => ({
+    collect: (monitor) => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
-    })
+      canDrop: monitor.canDrop(),
+    }),
   })
 
   return (
     <Box ref={drop} {...{ width }}>
-      {cards.map((card, index) =>
+      {cards.map((card, index) => (
         <Flex key={card.id} position="relative" paddingBottom={"2vw"}>
           <Card
             {...{ width }}
@@ -41,7 +41,7 @@ export const Stack = ({ cards, index, width }: StackProps) => {
             isLastCard={index === cards.length - 1 ? true : false}
           />
         </Flex>
-      )}
+      ))}
       <Box />
     </Box>
   )

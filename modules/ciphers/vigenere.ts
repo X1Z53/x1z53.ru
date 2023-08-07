@@ -4,10 +4,13 @@ export default function Vigenere({ text, key, alphabet, isDecrypt }) {
   const upper = alphabet.toUpperCase()
   alphabet = lower + upper
 
-  const vigenereTable: string[] = Array.from(Array(lower.length).keys())
-    .map(i => lower.slice(i) + lower.slice(0, i) + upper.slice(i) + upper.slice(0, i))
+  const vigenereTable: string[] = Array.from(Array(lower.length).keys()).map(
+    (i) =>
+      lower.slice(i) + lower.slice(0, i) + upper.slice(i) + upper.slice(0, i),
+  )
   const normalizedKey = Array.from(Array(text.replace(" ", "").length).keys())
-    .map((_, i) => key[i % key.length]).join("")
+    .map((_, i) => key[i % key.length])
+    .join("")
 
   let result = ""
   let nonAlphabetCharsCounter = 0

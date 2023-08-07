@@ -1,32 +1,32 @@
 [
-    {
-        "description": "Translating numbers from one number system to another",
-        "name": "number",
-        "title": "Number converter"
-    },
-    {
-        "description": "Translation from text to base64 and back",
-        "name": "base64",
-        "title": "Base64 converter"
-    },
-    {
-        "description": "Перевод текста в бинарный код и обратно",
-        "name": "binary",
-        "title": "Binary converter"
-    },
-    {
-        "description": "Translation of text into binary code and back",
-        "name": "time",
-        "title": "Time converter"
-    },
-    {
-        "description": "Transfer from one weight measure to another",
-        "name": "weight",
-        "title": "Weight converter"
-    },
-    {
-        "description": "Translation from one measure of length to another",
-        "name": "length",
-        "title": "Length converter"
-    }
+  {
+    "description": "Translating numbers from one number system to another",
+    "name": "number",
+    "title": "Number converter"
+  },
+  {
+    "description": "Translation from text to base64 and back",
+    "name": "base64",
+    "title": "Base64 converter"
+  },
+  {
+    "description": "Перевод текста в бинарный код и обратно",
+    "name": "binary",
+    "title": "Binary converter"
+  },
+  {
+    "description": "Translation of text into binary code and back",
+    "name": "time",
+    "title": "Time converter"
+  },
+  {
+    "description": "Transfer from one weight measure to another",
+    "name": "weight",
+    "title": "Weight converter"
+  },
+  {
+    "description": "Translation from one measure of length to another",
+    "name": "length",
+    "title": "Length converter"
+  }
 ]

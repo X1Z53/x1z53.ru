@@ -10,14 +10,31 @@ export default function shortUrl() {
   const [result, setResult] = useState("")
 
   useEffect(() => {
-    ky(`https://clck.ru/--?url=${text}`).text()
-      .then(result => { setResult(result) })
+    ky(`https://clck.ru/--?url=${text}`)
+      .text()
+      .then((result) => {
+        setResult(result)
+      })
   }, [text])
 
-  return <PageGenerator database={generators} name="shortUrl">
-    <StandardGrid>
-      <InputField type="text" title={titles.text} value={text} onChange={setText} />
-      <InputField type="text" title={titles.result} copyButton readOnly value={result} onChange={setResult} />
-    </StandardGrid>
-  </PageGenerator>
+  return (
+    <PageGenerator database={generators} name="shortUrl">
+      <StandardGrid>
+        <InputField
+          type="text"
+          title={titles.text}
+          value={text}
+          onChange={setText}
+        />
+        <InputField
+          type="text"
+          title={titles.result}
+          copyButton
+          readOnly
+          value={result}
+          onChange={setResult}
+        />
+      </StandardGrid>
+    </PageGenerator>
+  )
 }

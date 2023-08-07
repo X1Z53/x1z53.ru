@@ -5,10 +5,12 @@ export default function ThemeToggleButton() {
   const { toggleColorMode } = useColorMode()
   const iconButton = useColorModeValue(<BsSun />, <BsMoon />)
 
-  return <IconButton
-    variant="ghost"
-    onClick={toggleColorMode}
-    icon={iconButton}
-    aria-label="Изменить тему"
-  />
+  return (
+    <IconButton
+      variant="ghost"
+      onClick={toggleColorMode}
+      icon={iconButton}
+      aria-label="Изменить тему"
+    />
+  )
 }

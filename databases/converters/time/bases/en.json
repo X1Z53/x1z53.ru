@@ -1,54 +1,54 @@
 [
-    {
-        "name": "nanosecond",
-        "title": "Nanosecond, ns"
-    },
-    {
-        "name": "microsecond",
-        "title": "Microsecond, μs"
-    },
-    {
-        "name": "milisecond",
-        "title": "Milisecond, ms"
-    },
-    {
-        "name": "second",
-        "title": "Second, s"
-    },
-    {
-        "name": "minute",
-        "title": "Minute, min"
-    },
-    {
-        "name": "hour",
-        "title": "Hour, h"
-    },
-    {
-        "name": "day",
-        "title": "Day, d"
-    },
-    {
-        "name": "week",
-        "title": "Week, wk"
-    },
-    {
-        "name": "decadeOfDays",
-        "title": "Decade of days"
-    },
-    {
-        "name": "year",
-        "title": "Year, yr"
-    },
-    {
-        "name": "decadeOfYears",
-        "title": "Decade of years"
-    },
-    {
-        "name": "century",
-        "title": "Century, c"
-    },
-    {
-        "name": "millennium",
-        "title": "Millnnium"
-    }
+  {
+    "name": "nanosecond",
+    "title": "Nanosecond, ns"
+  },
+  {
+    "name": "microsecond",
+    "title": "Microsecond, μs"
+  },
+  {
+    "name": "milisecond",
+    "title": "Milisecond, ms"
+  },
+  {
+    "name": "second",
+    "title": "Second, s"
+  },
+  {
+    "name": "minute",
+    "title": "Minute, min"
+  },
+  {
+    "name": "hour",
+    "title": "Hour, h"
+  },
+  {
+    "name": "day",
+    "title": "Day, d"
+  },
+  {
+    "name": "week",
+    "title": "Week, wk"
+  },
+  {
+    "name": "decadeOfDays",
+    "title": "Decade of days"
+  },
+  {
+    "name": "year",
+    "title": "Year, yr"
+  },
+  {
+    "name": "decadeOfYears",
+    "title": "Decade of years"
+  },
+  {
+    "name": "century",
+    "title": "Century, c"
+  },
+  {
+    "name": "millennium",
+    "title": "Millnnium"
+  }
 ]

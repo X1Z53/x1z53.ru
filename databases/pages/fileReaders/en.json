@@ -1,17 +1,17 @@
 [
-    {
-        "description": "A tool for reading Word documents (currently only files with the .docx extension are supported)",
-        "name": "document",
-        "title": "Document reader"
-    },
-    {
-        "description": "A tool for reading text files",
-        "name": "text",
-        "title": "Text reader"
-    },
-    {
-        "description": "A tool for reading files containing tables. Currently, only the types are checked: .csv, .xlsx, .xls, .xml, .txt, .ods",
-        "name": "table",
-        "title": "Table reader"
-    }
+  {
+    "description": "A tool for reading Word documents (currently only files with the .docx extension are supported)",
+    "name": "document",
+    "title": "Document reader"
+  },
+  {
+    "description": "A tool for reading text files",
+    "name": "text",
+    "title": "Text reader"
+  },
+  {
+    "description": "A tool for reading files containing tables. Currently, only the types are checked: .csv, .xlsx, .xls, .xml, .txt, .ods",
+    "name": "table",
+    "title": "Table reader"
+  }
 ]

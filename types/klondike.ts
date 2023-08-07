@@ -2,7 +2,7 @@ import { CSSProperties } from "react"
 
 export enum CardColor {
   Red,
-  Black
+  Black,
 }
 
 export interface PlayingCard {
@@ -20,7 +20,7 @@ export interface PlayingCard {
 export enum CardState {
   Stack,
   Deck,
-  Foundation
+  Foundation,
 }
 
 export interface PreviewObject {
@@ -42,4 +42,3 @@ export interface DraggedItem {
   type?: string
   card?: PlayingCard
 }
-

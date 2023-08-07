@@ -1,58 +1,58 @@
 [
-    {
-        "category": "developer",
-        "description": null,
-        "name": "vk",
-        "title": "VKontakte",
-        "url": "https://vk.com/x1z53"
-    },
-    {
-        "category": "developer",
-        "description": null,
-        "name": "telegram",
-        "title": "Telegram",
-        "url": "https://t.me/x1z53"
-    },
-    {
-        "category": "developer",
-        "description": null,
-        "name": "github",
-        "title": "GitHub",
-        "url": "https://github.com/x1z53"
-    },
-    {
-        "category": "developer",
-        "description": null,
-        "name": "email",
-        "title": "E-mail",
-        "url": "mailto:x1z53@yandex.ru"
-    },
-    {
-        "category": "site",
-        "description": null,
-        "name": "github",
-        "title": "Project Repository",
-        "url": "https://github.com/x1z53/x1z53.ru"
-    },
-    {
-        "category": "site",
-        "description": null,
-        "name": "mainDomain",
-        "title": "Main Domain",
-        "url": "https://x1z53.ru"
-    },
-    {
-        "category": "site",
-        "description": null,
-        "name": "testSubdomain",
-        "title": "Test Subdomain",
-        "url": "https://test.x1z53.ru"
-    },
-    {
-        "category": "site",
-        "description": null,
-        "name": "imageSubdomain",
-        "title": "Image Subdomain",
-        "url": "https://images.x1z53.ru"
-    }
+  {
+    "category": "developer",
+    "description": null,
+    "name": "vk",
+    "title": "VKontakte",
+    "url": "https://vk.com/x1z53"
+  },
+  {
+    "category": "developer",
+    "description": null,
+    "name": "telegram",
+    "title": "Telegram",
+    "url": "https://t.me/x1z53"
+  },
+  {
+    "category": "developer",
+    "description": null,
+    "name": "github",
+    "title": "GitHub",
+    "url": "https://github.com/x1z53"
+  },
+  {
+    "category": "developer",
+    "description": null,
+    "name": "email",
+    "title": "E-mail",
+    "url": "mailto:x1z53@yandex.ru"
+  },
+  {
+    "category": "site",
+    "description": null,
+    "name": "github",
+    "title": "Project Repository",
+    "url": "https://github.com/x1z53/x1z53.ru"
+  },
+  {
+    "category": "site",
+    "description": null,
+    "name": "mainDomain",
+    "title": "Main Domain",
+    "url": "https://x1z53.ru"
+  },
+  {
+    "category": "site",
+    "description": null,
+    "name": "testSubdomain",
+    "title": "Test Subdomain",
+    "url": "https://test.x1z53.ru"
+  },
+  {
+    "category": "site",
+    "description": null,
+    "name": "imageSubdomain",
+    "title": "Image Subdomain",
+    "url": "https://images.x1z53.ru"
+  }
 ]

@@ -1,12 +1,12 @@
 import { StyleProps } from "@chakra-ui/react"
 
 export type CheckBoxProps = {
-  title: string,
-  value: boolean,
+  title: string
+  value: boolean
   onChange: (any) => void
 }
 export type ToggleButtonGroupProps = {
-  buttons: string[] | React.ReactElement[],
+  buttons: string[] | React.ReactElement[]
   onChange: (any: string) => void
   noSelect?: boolean
   noAdaptive?: boolean
@@ -26,8 +26,13 @@ export type InputFieldProps = {
   isLast?: boolean
   styles?: StyleProps
   minHeight?: string
-} & (TextProps | NumberProps | SelectProps | DropzoneProps | InputFieldGroupProps)
-
+} & (
+  | TextProps
+  | NumberProps
+  | SelectProps
+  | DropzoneProps
+  | InputFieldGroupProps
+)
 
 type TextProps = {
   type: "text"
