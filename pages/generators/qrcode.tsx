@@ -102,7 +102,7 @@ export default function QRCode() {
     [imageMargin, setImageMargin],
   ] = [
     useToggle(false),
-    useState("https://images.x1z53.ru/x1z53.svg"),
+    useState("https://x1z53.ru/x1z53.svg"),
     useToggle(true),
     useState(0.4),
     useState(5),
