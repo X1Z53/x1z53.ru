@@ -24,7 +24,7 @@ export default class Document extends NextDocument {
           <link
             rel="icon"
             type="image/png"
-            href="https://images.x1z53.ru/x1z53.svg"
+            href="/x1z53.svg"
           />
         </Head>
         <body>
