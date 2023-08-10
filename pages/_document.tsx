@@ -21,11 +21,7 @@ export default class Document extends NextDocument {
               }
             `}
           </style>
-          <link
-            rel="icon"
-            type="image/png"
-            href="/x1z53.svg"
-          />
+          <link rel="icon" type="image/png" href="/x1z53.svg" />
         </Head>
         <body>
           <ColorModeScript />
