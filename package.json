@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
-    "buildTest": "next build && next-sitemap --config test.next-sitemap.config.js",
+    "build": "next build && next-sitemap --config sitemap.js",
+    "buildTest": "next build && next-sitemap --config test.sitemap.js",
     "start": "next start"
   },
   "overrides": {
