@@ -33,6 +33,7 @@
     "qr-code-styling": "^1.6.0-rc.1",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
+    "react-device-detect": "^2.2.3",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dnd-multi-backend": "^8.0.1",
@@ -42,9 +43,12 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
+    "react-sound": "^1.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-undo": "^1.1.0",
+    "styled-components": "^6.0.7",
     "tonal": "^5.0.0",
+    "use-sound": "^4.0.1",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "devDependencies": {

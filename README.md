@@ -22,6 +22,8 @@ On site you can find:
   - Text
 - Games
   - Klondike
+  - Tic Tac Toe
+  - Tetris
 - Generators
   - Hash
   - Password
@@ -44,3 +46,5 @@ Sources I was inspired by
 - <a href="https://rapidtables.com">RapidTables</a>
 - <a href="https://symbl.cc/">SYMBL</a>
 - <a href="https://github.com/mikkovor/solitaire">Klondike by mikkovor</a>
+- <a href="https://github.com/pablonm/react-tetris">Tetris by pablonm</a>
+

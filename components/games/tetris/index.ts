@@ -1,0 +1,6 @@
+export { default as ActiveGame } from "./ActiveGame"
+export { default as BoardCells } from "./BoardCells"
+export { default as Cell } from "./Cell"
+export { default as GameOver } from "./GameOver"
+export { default as InfoPanel } from "./InfoPanel"
+export { default as Tetris } from "./Tetris"

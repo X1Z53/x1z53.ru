@@ -8,5 +8,10 @@
         "description": "A logical game between two opponents on a square field of 3 by 3 cells or larger (up to an \"infinite field\"). One of the players plays with \"crosses\", the second — with \"zeros\".",
         "name": "ticTacToe",
         "title": "Tic Tac Toe"
+    },
+    {
+        "description": "A computer game originally invented and developed by Soviet programmer Alexey Pajitnov. The game was released on June 6 , 1984",
+        "name": "tetris",
+        "title": "Tetris"
     }
 ]
