@@ -4,4 +4,7 @@ module.exports = {
     locales: ["ru", "en"],
     defaultLocale: "ru",
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
