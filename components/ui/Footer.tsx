@@ -3,8 +3,9 @@ import { Icon24LogoVkOutline } from "@vkontakte/icons"
 import { about as database } from "databases"
 import { getLocaled, getLocaledTitles } from "modules"
 import Link from "next/link"
-import { BiLogoGithub, BiLogoTelegram } from "react-icons/bi"
+import { BiLogoTelegram } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
+import { FaGit } from "react-icons/fa"
 
 export default function Footer() {
   const about = getLocaled(database)
@@ -14,7 +15,7 @@ export default function Footer() {
     vk: <Icon24LogoVkOutline />,
     telegram: <BiLogoTelegram />,
     email: <HiOutlineMail />,
-    github: <BiLogoGithub />,
+    git: <FaGit />,
   }
 
   return (
