@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  i18n: {
-    locales: ["ru", "en"],
-    defaultLocale: "ru",
-  },
+  output: "export",
+  //i18n: {
+  //  locales: ["ru", "en"],
+  //  defaultLocale: "ru",
+  //},
   typescript: {
     ignoreBuildErrors: true,
   },
