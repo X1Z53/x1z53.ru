@@ -34,9 +34,10 @@ export const CardDragPreview = memo(
               {...style}
               {...{ width }}
               top={2 * index + "vw"}
+              padding="4pt"
               alt={item.card.id}
               key={card.id}
-              src={`/cards/${card.id}.svg`}
+              src={`/games/cards/${card.id}.svg`}
             />
           ))}
         </Box>
@@ -45,7 +46,8 @@ export const CardDragPreview = memo(
           {...style}
           {...{ width }}
           alt={item.card.id}
-          src={`/cards/${item.card.id}.svg`}
+          padding="4pt"
+          src={`/games/cards/${item.card.id}.svg`}
           zIndex={1}
         />
       )

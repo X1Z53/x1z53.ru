@@ -25,12 +25,7 @@ export default function HashGenerator() {
   return (
     <PageGenerator database={generators} name="hash">
       <StandardGrid>
-        <InputField
-          title={titles.text}
-          type="text"
-          value={text}
-          onChange={setText}
-        />
+        <InputField type="text" value={text} onChange={setText} />
         <InputField
           title={titles.algorithm}
           type="select"

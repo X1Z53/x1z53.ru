@@ -73,15 +73,15 @@ export const Foundation = ({
   return (
     <Box ref={drop} {...{ width }}>
       <Flex
-        border="0.1vw solid black"
+        border="0.1vw dashed grey"
         userSelect="none"
         display={cards.length ? "none" : "flex"}
         justifyContent="center"
         alignItems="center"
+        marginX="4pt"
         borderRadius="0.5vw"
         height="full"
         position="relative"
-        backgroundColor="white"
       >
         {suits[foundationSuit]}
       </Flex>

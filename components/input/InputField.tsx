@@ -69,17 +69,18 @@ export default function InputField(props: InputFieldProps) {
         borderBottomLeftRadius: [6, 6, 0],
       }
     : isLast
-    ? rightStyles
-    : inGroup
-    ? {
-        borderRadius: 0,
-      }
-    : {
-        borderTopLeftRadius: title && 0,
-        borderTopRightRadius: title ? [0, 0, 6] : haveButton && 0,
-        borderBottomLeftRadius: title && [6, 6, 0],
-        borderBottomRightRadius: haveButton && 0,
-      }
+      ? rightStyles
+      : inGroup
+        ? {
+            borderRadius: 0,
+          }
+        : {
+            borderTopLeftRadius: title && 0,
+            borderTopRightRadius: haveButton ? 0 : title ? [6, 0, 6] : 6,
+
+            borderBottomLeftRadius: title && [6, 6, 0],
+            borderBottomRightRadius: haveButton && 0,
+          }
 
   const ref = useRef(null)
   useEffect(() => {

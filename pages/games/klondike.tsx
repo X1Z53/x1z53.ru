@@ -96,7 +96,10 @@ function DeckStack({ width }: { width }) {
       <Image
         {...{ width }}
         alt="deck"
-        src={deck.length - 1 ? "/cards/deck.svg" : "/cards/back.svg"}
+        padding="4pt"
+        src={
+          deck.length - 1 ? "/games/cards/deck.svg" : "/games/cards/back.svg"
+        }
         draggable={false}
         userSelect="none"
       />
