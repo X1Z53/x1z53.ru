@@ -4,3 +4,9 @@ node_modules
 
 next-env.d.ts
 yarn-error.log
+yarn.lock
+
+workbox-*.js
+workbox-*.js.map
+sw.js
+sw.js.map

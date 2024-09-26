@@ -21,7 +21,9 @@ export default class Document extends NextDocument {
               }
             `}
           </style>
-          <link rel="icon" type="image/png" href="/x1z53.svg" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="icon" type="image/svg+xml" href="/x1z53.svg" />
+          <link rel="apple-touch-icon" type="image/svg+xml" href="/x1z53.svg" />
         </Head>
         <body>
           <ColorModeScript />
