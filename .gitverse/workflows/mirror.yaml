@@ -1,0 +1,59 @@
+name: Зеркалирование
+
+on:
+  push:
+    branches:
+      - "*"
+    tags:
+      - "*"
+
+jobs:
+  github:
+    runs-on: ubuntu-cloud-runner
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ secrets.USERNAME }}"
+          git config --global user.email "${{ secrets.EMAIL }}"
+
+      - name: Mirror to Remote
+        env:
+          TARGET_REPO: "https://${{ secrets.USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.USERNAME }}/${{ secrets.REPO }}"
+        run: |
+          git remote add target $TARGET_REPO
+          git push --mirror --force target
+
+  gitlab:
+    runs-on: ubuntu-cloud-runner
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ secrets.USERNAME }}"
+          git config --global user.email "${{ secrets.EMAIL }}"
+
+      - name: Clean origin refs
+        run: |
+          git for-each-ref --format='delete %(refname)' refs/remotes/origin | git update-ref --stdin
+
+      - name: Mirror to Remote
+        env:
+          TARGET_REPO: "https://oauth2:${{ secrets.GL_TOKEN }}@gitlab.com/${{ secrets.USERNAME }}/${{ secrets.REPO }}"
+        run: |
+          git remote add target $TARGET_REPO
+          git push --mirror --force target
